@@ -1,0 +1,8 @@
+django-admin startproject proyecto_titulo // Crear proyecto django
+
+Scripts\activate.bat // Activar env
+python manage.py runserver // Activar django server
+
+
+------ POSTGRES -----
+pass: admin1
