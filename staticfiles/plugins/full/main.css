@@ -1443,3 +1443,24 @@ A VERTICAL event
     color: inherit; /* natural color for navlinks */
   }
 
+  #external-events {
+    position: fixed;
+    z-index: 2;
+    top: 20px;
+    left: 20px;
+    width: 150px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    background: #eee;
+  }
+  
+  #external-events .fc-event {
+    cursor: move;
+    margin: 3px 0;
+  }
+  
+  #calendar-container {
+    position: relative;
+    z-index: 1;
+    margin-left: 200px;
+  }

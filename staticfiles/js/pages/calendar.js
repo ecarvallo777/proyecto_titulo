@@ -40,31 +40,8 @@ $(document).ready(function() {
     drag();
     removeEvent();
     
-    var date = new Date();
-    var day = date.getDate();
-    var month = date.getMonth();
-    var year = date.getFullYear();
-
     
-    $('#calendario').fullCalendar({
-       
-			header: {
-				left: 'prev,next today',
-				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
-			},
-            editable: true,
-            droppable: true, // this allows things to be dropped onto the calendar
-			eventLimit: true, // allow "more" link when too many events
-			events: [
-                
-				{
-					title: "{{especialista.nombre}}",
-					start: new Date(year, month, day-8)
-				}
-                
-				
-			]
-		});
+    
+   
     
 });

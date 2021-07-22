@@ -31,8 +31,8 @@ class Especialista(models.Model):
 class Agenda(models.Model):
     especialista = models.ForeignKey(Especialista, on_delete=models.CASCADE)
     title = models.CharField(max_length=25)
-    start = models.DateField()
-    end = models.DateField()
+    start = models.CharField(max_length=25)
+    end = models.CharField(max_length=25)
     
     def __str__(self):
         return self.id

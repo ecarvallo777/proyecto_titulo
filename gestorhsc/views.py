@@ -93,7 +93,7 @@ def addEvent(request):
     p = Agenda(title=title,
                 especialista_id= id_especialista,
                start=start,
-               end=start)
+               end=end)
     
     p.save()   
     return render (request, 'addevent.html')
@@ -105,7 +105,7 @@ def updEvent(request):
 
     t = Agenda.objects.get(id=int(id_event))
     t.start = start
-    t.end = start
+    t.end = end
     t.save()
     return render (request, 'updevent.html')
 
