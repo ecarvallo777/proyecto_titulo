@@ -3014,6 +3014,7 @@ var FullCalendar = (function (exports) {
         CalendarApi.prototype.prev = function () {
             this.unselect();
             this.dispatch({ type: 'PREV' });
+            alert("Hla");
         };
         CalendarApi.prototype.next = function () {
             this.unselect();
@@ -5865,6 +5866,7 @@ var FullCalendar = (function (exports) {
         // when a prev/next operation happens.
         DateProfileGenerator.prototype.buildDateIncrement = function (fallback) {
             var dateIncrement = this.props.dateIncrement;
+            alert("hola");
             var customAlignment;
             if (dateIncrement) {
                 return dateIncrement;

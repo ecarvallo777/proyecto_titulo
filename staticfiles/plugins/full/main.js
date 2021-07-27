@@ -3014,7 +3014,7 @@ var FullCalendar = (function (exports) {
         CalendarApi.prototype.prev = function () {
             this.unselect();
             this.dispatch({ type: 'PREV' });
-            alert("hola");
+            alert("Hla");
         };
         CalendarApi.prototype.next = function () {
             this.unselect();
@@ -3036,12 +3036,13 @@ var FullCalendar = (function (exports) {
                 dateMarker: state.dateEnv.addYears(state.currentDate, 1),
             });
         };
-        CalendarApi.prototype.today = function () {
+        CalendarApi.prototype.today = function next() {
             var state = this.getCurrentData();
             this.unselect();
             this.dispatch({
                 type: 'CHANGE_DATE',
                 dateMarker: getNow(state.calendarOptions.now, state.dateEnv),
+            alert("Hola");
             });
         };
         CalendarApi.prototype.gotoDate = function (zonedDateInput) {

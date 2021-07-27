@@ -502,7 +502,7 @@
                                         }
                                             const csrftoken = getCookie('csrftoken');
 
-
+                                        
                                         function myFunction() {
                                             // Obtener selección y mostrar información respectiva a selección.
                                             var x = document.getElementById("selector").value;
@@ -526,7 +526,7 @@
                                                 // initialize the external events
                                                         // -----------------------------------------------------------------
 
-                                               
+
                                                 function readEvents(){
                                                 {% for agenda in agenda_context %}
                                                     if ({{agenda.especialista_id}} == especialista){
@@ -547,8 +547,31 @@
                                                 
                                                 var calendar = new FullCalendar.Calendar(calendarEl, {
                                                     initialView: 'timeGridWeek',
+                                                    customButtons:{
+                                                        anterior: {
+                                                            text: 'Anterior',
+                                                            click: function(){
+                                                                calendar.prev();
+                                                                calcularContador();
+                                                            }
+                                                        },
+                                                        siguiente: {
+                                                            text: 'Siguiente',
+                                                            click: function(){
+                                                                calendar.next();
+                                                                calcularContador();
+                                                            }
+                                                        },
+                                                        hoy: {
+                                                            text: 'Hoy',
+                                                            click: function(){
+                                                                calendar.today();
+                                                                calcularContador();
+                                                            }
+                                                        }
+                                                    },
                                                     headerToolbar: {
-                                                        left: 'prev,next today',
+                                                        left: 'anterior,siguiente hoy',
                                                         center: 'title',
                                                         right: 'dayGridMonth,timeGridWeek,timeGridDay'
                                                         },
@@ -751,6 +774,7 @@
 
 
                                         }
+                                        
                                                                                     
         </script>  
 
