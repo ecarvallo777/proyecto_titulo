@@ -3014,6 +3014,7 @@ var FullCalendar = (function (exports) {
         CalendarApi.prototype.prev = function () {
             this.unselect();
             this.dispatch({ type: 'PREV' });
+            alert("hola");
         };
         CalendarApi.prototype.next = function () {
             this.unselect();

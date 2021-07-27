@@ -278,11 +278,40 @@
                                         <label id="servicio" class="col-md-4 control-label">-</label>
                                         </div>
                                         <p></p>
+
+
                                         <label for="input-disabled" class="col-md-4 control-label">Horas</label>
                                         <div class="col-md-8">
                                         <label id="horas" class="col-md-4 control-label">-</label>
                                         </div>
+                                        <p><strong>Contador de horas</strong></p>
+                                        
+                                        <label for="input-disabled" class="col-md-4 control-label">Intervenciones: </label>
+                                        <div class="col-md-8">
+                                        <label id="intervenciones" class="col-md-4 control-label">-</label>
+                                        </div>
                                         <p></p>
+                                        <label for="input-disabled" class="col-md-4 control-label">Procedimientos: </label>
+                                        <div class="col-md-8">
+                                        <label id="procedimientos" class="col-md-4 control-label">-</label>
+                                        </div>
+                                        <p></p>
+                                        <label for="input-disabled" class="col-md-4 control-label">Consultas: </label>
+                                        <div class="col-md-8">
+                                        <label id="consultas" class="col-md-4 control-label">-</label>
+                                        </div>
+                                        <p></p>
+                                        <label for="input-disabled" class="col-md-4 control-label">Visitas: </label>
+                                        <div class="col-md-8">
+                                        <label id="visitas" class="col-md-4 control-label">-</label>
+                                        </div>
+                                        <p></p>
+                                        <label for="input-disabled" class="col-md-4 control-label">Colación: </label>
+                                        <div class="col-md-8">
+                                        <label id="colacion" class="col-md-4 control-label">-</label>
+                                        </div>
+                                        <p></p>
+
                                     </div>
                                     
                                     <p></p>
@@ -498,7 +527,7 @@
                                                         // -----------------------------------------------------------------
 
                                                
-                                                
+                                                function readEvents(){
                                                 {% for agenda in agenda_context %}
                                                     if ({{agenda.especialista_id}} == especialista){
                                                         date_time = "{{agenda.start}}";
@@ -512,6 +541,9 @@
                                                         })
                                                     }
                                                 {%endfor%}
+
+                                                }
+                                                readEvents();
                                                 
                                                 var calendar = new FullCalendar.Calendar(calendarEl, {
                                                     initialView: 'timeGridWeek',
@@ -571,8 +603,7 @@
                                                             end: info.event.endStr,
                                                             especialista_id: x
                                                         };
-                                                            console.log(info.event.end);
-                                                            console.log(info.event.endStr);
+
 
                                                             const data = new FormData();
                                                             data.append('id_especialista', eventData.especialista_id);
@@ -590,15 +621,26 @@
 
                                                             },
                                                             })
-
+                                                            calendar.render();
+                                                            calcularContador();
                                                             },
                                                     // Función al soltar un external-event en calendar
 
                                                     // Función al mover un evento dentro del calendario
+
                                                      eventClick: function(info) {
+
+                                                            eventos_selector.push({
+                                                            title: "prueba",
+                                                            start: "22-07-2021",
+                                                            end: "22-07-2021"
+                                                            })
+
+
+                                                            calendar.render();
+                                                            console.log(info.event.id);
                                                             const data = new FormData();
                                                             data.append('id', info.event.id);
-                                                      
                                                         
                                                             fetch("/delevent/", {
                                                             method: "POST",
@@ -635,14 +677,77 @@
                                                             }
                                                             })
                                                         
-                                                           calendar.refetchEvents();
+                                                            
+                                                            ();
 
      
                                                         },
                                                     events: eventos_selector
                                                         });
-                                                     
-                                                        calendar.render();
+                                                            function rerender(){
+                                                                readEvents();
+                                                                calendar.refetchEvents()
+                                                                console.log(eventos_selector);
+                                                            }
+                                                            calendar.render();
+                                                            calcularContador();
+                                                            function clearContador(){
+                                                                document.getElementById("procedimientos").innerHTML = "-";
+                                                                document.getElementById("intervenciones").innerHTML = "-";
+                                                                document.getElementById("consultas").innerHTML = "-";
+                                                                document.getElementById("visitas").innerHTML = "-";
+                                                                document.getElementById("colacion").innerHTML = "-";
+                                                                
+                                                            }
+                                                            function calcularContador(){
+                                                                clearContador();
+                                                                var view= calendar.view;
+                                                                var from = Date.parse((view.activeStart).toDateString());
+
+                                                                var to= Date.parse((view.activeEnd).toDateString());
+
+
+                                                                var cProcedimientos=0;
+                                                                var cConsultas=0;
+                                                                var cVisitas=0;
+                                                                var cColacion=0;
+                                                                var cIntervenciones=0;
+                                                                for (const x of eventos_selector) { 
+                                                                    var check = new Date(x.start);
+                                                                    check = Date.parse(check.toDateString());
+                                                                    console.log("From: "+from+" to: "+to +"check: "+check);
+
+                                                                    if((check <= to && check >= from)) {
+                                                                            if(x.title == "Procedimientos"){
+
+                                                                              cProcedimientos = cProcedimientos + .5;
+
+                                                                            }else if(x.title =="Consultas"){
+                                                                                cConsultas = cConsultas + .5;
+                                                                            }else if(x.title =="Visitas"){
+                                                                                cVisitas= cVisitas +.5;
+                                                                            }else if(x.title == "Colación"){
+                                                                                cColacion = cColacion+.5;
+
+                                                                            }else if(x.title=="Intervenciones"){
+                                                                                cIntervenciones=cIntervenciones+.5;
+                                                                            }
+                                                                        }
+                                                                        document.getElementById("procedimientos").innerHTML = cProcedimientos;
+                                                                        document.getElementById("consultas").innerHTML = cConsultas;
+                                                                        document.getElementById("visitas").innerHTML = cVisitas;
+                                                                        document.getElementById("colacion").innerHTML = cColacion;
+                                                                        document.getElementById("intervenciones").innerHTML = cIntervenciones;
+
+                                                                        
+
+
+
+                                                                    }
+
+ 
+
+                                                            }
 
 
                                         }

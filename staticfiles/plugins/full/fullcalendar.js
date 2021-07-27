@@ -8301,6 +8301,7 @@ function Calendar_constructor(element, overrides) {
 	
 	function prev() {
 		date = currentView.computePrevDate(date);
+		alert("Hola");
 		renderView();
 	}
 	
