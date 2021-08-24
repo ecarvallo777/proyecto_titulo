@@ -22,7 +22,6 @@ urlpatterns = [
     path('inicio/', inicio),
     path('agenda/', calendario),
     path('calendar/', calendars),
-    path('agregar/', agregarEvento),
     path('especialista/', especialista),
     path('especialidades/', especialidad),
     path('agregarEspecialista/', agregarEspecialista),
@@ -30,6 +29,8 @@ urlpatterns = [
     path('addevent/', addEvent),
     path('updevent/', updEvent),
     path('delevent/', delEvent),
+    path('prueba/', prueba),
+    path('test/', test),
 
 
 ]

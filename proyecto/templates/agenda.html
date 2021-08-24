@@ -516,28 +516,31 @@
 
                                                     }
                                                     
-                                             {%endfor%}
+                                             {%endfor%}  
+                                             
+                                             //Esto no me parece eficiente, quizás es mejor tomar el id y hacer un request a la bd en vez de buscar id x id con if
                                             // Mostrar calendario respectiva a selección
                                                 var calendarEl = document.getElementById('calendar');
 
                                                 
                                                 var especialista = parseInt(x); 
+                                                
                                                 var eventos_selector = [];
                                                 // initialize the external events
                                                         // -----------------------------------------------------------------
 
 
                                                 function readEvents(){
-                                                {% for agenda in agenda_context %}
-                                                    if ({{agenda.especialista_id}} == especialista){
-                                                        date_time = "{{agenda.start}}";
+                                                {% for evento in agenda_context %}
+                                                    if ({{evento.especialista_id}} == especialista){
+                                                        date_time = "{{evento.start}}";
 
                                                         
                                                         eventos_selector.push({
-                                                            id: "{{agenda.id}}",
-                                                            title: "{{agenda.title}}",
-                                                            start: "{{agenda.start}}",
-                                                            end: "{{agenda.end}}"
+                                                            id: "{{evento.id}}",
+                                                            title: "{{evento.title}}",
+                                                            start: "{{evento.start}}",
+                                                            end: "{{evento.end}}"
                                                         })
                                                     }
                                                 {%endfor%}
@@ -600,7 +603,8 @@
                                                             const data = new FormData();
                                                             data.append('id', eventData.id);
                                                             data.append('start', eventData.start);
-                                                            data.append('end', eventData.end);                                                        
+                                                            data.append('end', eventData.end);    
+
                                                             fetch("/updevent/", {
                                                             method: "POST",
                                                             dataType: "text",
@@ -627,25 +631,45 @@
                                                             especialista_id: x
                                                         };
 
+                                                            const datas = new FormData();
+                                                            datas.append('id_especialista', eventData.especialista_id);
+                                                            datas.append('title', eventData.title);
+                                                            datas.append('start', eventData.start);
+                                                            datas.append('end', eventData.end);                                                        
 
-                                                            const data = new FormData();
-                                                            data.append('id_especialista', eventData.especialista_id);
-                                                            data.append('title', eventData.title);
-                                                            data.append('start', eventData.start);
-                                                            data.append('end', eventData.end);                                                        
-                                                        
-                                                            fetch("/addevent/", {
-                                                            method: "POST",
-                                                            dataType: "text",
-                                                            
-                                                            body: data,
-                                                            headers:{
+                                                            $.ajax({
+                                                                method: 'POST',
+                                                                url: "/addevent/",
+                                                                dataType: "json",
+                                                                data: {
+                                                                    'id_especialista': eventData.especialista_id,
+                                                                    'title': info.event.title,
+                                                                    'start': info.event.startStr,
+                                                                    'end': info.event.endStr
+
+                                                                },
+                                                                headers:{
                                                                 "X-CSRFToken": getCookie('csrftoken'),
 
-                                                            },
-                                                            })
-                                                            calendar.render();
-                                                            calcularContador();
+                                                                     },
+                                                                success: function(response){
+                                                                    eventos_selector.push({
+                                                                    id: response,
+                                                                    title: eventData.title,
+                                                                    start: eventData.start,
+                                                                    end: eventData.end
+                                                                     })
+                                                                      info.event.setProp( 'id' , response)                                                               
+                                                                     calcularContador();
+                                                                    },
+                                                                error: function (jqXHR, exception) {
+                                                                    console.log(jqXHR);
+                                                                    // Your error handling logic here..
+                                                                }
+                                                                
+                                                            });        
+                                                            
+
                                                             },
                                                     // Función al soltar un external-event en calendar
 
@@ -653,28 +677,26 @@
 
                                                      eventClick: function(info) {
 
-                                                            eventos_selector.push({
-                                                            title: "prueba",
-                                                            start: "22-07-2021",
-                                                            end: "22-07-2021"
-                                                            })
 
 
-                                                            calendar.render();
-                                                            console.log(info.event.id);
                                                             const data = new FormData();
                                                             data.append('id', info.event.id);
                                                         
                                                             fetch("/delevent/", {
                                                             method: "POST",
-                                                            dataType: "text",
+                                                            dataType: "json",
                                                             
                                                             body: data,
+                                                            error: function(idd) {
+                                                                        console.log('Success:' +idd);
+
+                                                                    },
                                                             headers:{
                                                                 "X-CSRFToken": getCookie('csrftoken'),
 
                                                             }})
                                                             info.event.remove();
+                                                            calcularContador();
                                                             
 
                                                         // change the border color just for fun
@@ -707,13 +729,14 @@
                                                         },
                                                     events: eventos_selector
                                                         });
+                                                        calcularContador();
+
                                                             function rerender(){
                                                                 readEvents();
                                                                 calendar.refetchEvents()
                                                                 console.log(eventos_selector);
                                                             }
                                                             calendar.render();
-                                                            calcularContador();
                                                             function clearContador(){
                                                                 document.getElementById("procedimientos").innerHTML = "-";
                                                                 document.getElementById("intervenciones").innerHTML = "-";
@@ -738,7 +761,6 @@
                                                                 for (const x of eventos_selector) { 
                                                                     var check = new Date(x.start);
                                                                     check = Date.parse(check.toDateString());
-                                                                    console.log("From: "+from+" to: "+to +"check: "+check);
 
                                                                     if((check <= to && check >= from)) {
                                                                             if(x.title == "Procedimientos"){

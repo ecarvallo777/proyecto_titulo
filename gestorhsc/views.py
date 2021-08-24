@@ -1,7 +1,9 @@
+from django.http.response import HttpResponse
 from django.shortcuts import render
 from gestorhsc.models import Especialista, Contrato, Especialidad, Agenda
 from django.views.decorators.csrf import csrf_exempt
 import json
+from django.http import JsonResponse
 def calendars(request):
     return render(request, 'calendars.html' )
 def inicio(request):
@@ -61,16 +63,6 @@ def agregarEspecialista(request):
     return render(request, 'especialistas.html')
 @csrf_exempt 
 
-def agregarEvento(request):
-    
-
-    
-    p = Agenda(title="prueba",
-                especialista_id= 9,
-               start="2021-07-11",
-               end="2021-07-10")
-    p.save()
-    return render(request, 'agenda.html')
 
 def agregarEspecialidad(request):
     nombre = request.GET["input-nombre"]
@@ -82,11 +74,21 @@ def agregarEspecialidad(request):
                     ausentismo=ausentismo).save()
     return render(request, 'especialidades.html')
     
+def prueba(request):
+    return render(request, 'request.html')
+def test(request):
+    data= "s"
+    return render(request, 'test.html', {'data':data})
+
+
+
 def addEvent(request):
-    id_especialista = request.POST["id_especialista"]
-    title = request.POST["title"]
-    start = request.POST["start"]
-    end = request.POST["end"]
+    print(request.POST.get("id_especialista"))
+    id_especialista = request.POST.get("id_especialista")
+    
+    title = request.POST.get("title")
+    start = request.POST.get("start")
+    end = request.POST.get("end")
 
 
 
@@ -96,8 +98,7 @@ def addEvent(request):
                end=end)
     
     p.save()   
-    return render (request, 'addevent.html')
-
+    return HttpResponse(str(p.id))
 def updEvent(request):
     id_event = request.POST["id"]
     start = request.POST["start"]
