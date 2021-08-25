@@ -83,7 +83,6 @@ def test(request):
 
 
 def addEvent(request):
-    print(request.POST.get("id_especialista"))
     id_especialista = request.POST.get("id_especialista")
     
     title = request.POST.get("title")
