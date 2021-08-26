@@ -29,8 +29,7 @@ urlpatterns = [
     path('addevent/', addEvent),
     path('updevent/', updEvent),
     path('delevent/', delEvent),
-    path('prueba/', prueba),
-    path('test/', test),
+
 
 
 ]
