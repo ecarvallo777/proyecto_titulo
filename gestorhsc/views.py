@@ -23,7 +23,40 @@ def calendario(request):
     
     return render(request, 'agenda.html', context)
 
+def addEvent(request):
+    id_especialista = request.POST.get("id_especialista")
+    
+    title = request.POST.get("title")
+    start = request.POST.get("start")
+    end = request.POST.get("end")
 
+
+
+    p = Agenda(title=title,
+                especialista_id= id_especialista,
+               start=start,
+               end=end)
+    
+    p.save()   
+    return HttpResponse(str(p.id))
+def updEvent(request):
+    id_event = request.POST.get("id")
+    start = request.POST.get("start")
+    end = request.POST.get("end")
+
+    t = Agenda.objects.get(id=int(id_event))
+    t.start = start
+    t.end = end
+    t.save()
+    return HttpResponse(id_event)
+
+def delEvent(request):
+    id_event = int(request.POST.get("id"))
+    print(id_event)
+    print(type(id_event))
+    s = Agenda.objects.get(id=id_event).delete()
+
+    return HttpResponse(id_event)
 
 
 
@@ -74,48 +107,11 @@ def agregarEspecialidad(request):
                     ausentismo=ausentismo).save()
     return render(request, 'especialidades.html')
     
-def prueba(request):
-    return render(request, 'request.html')
-def test(request):
-    data= "s"
-    return render(request, 'test.html', {'data':data})
 
 
 
-def addEvent(request):
-    id_especialista = request.POST.get("id_especialista")
-    
-    title = request.POST.get("title")
-    start = request.POST.get("start")
-    end = request.POST.get("end")
 
 
-
-    p = Agenda(title=title,
-                especialista_id= id_especialista,
-               start=start,
-               end=end)
-    
-    p.save()   
-    return HttpResponse(str(p.id))
-def updEvent(request):
-    id_event = request.POST["id"]
-    start = request.POST["start"]
-    end = request.POST["end"]
-
-    t = Agenda.objects.get(id=int(id_event))
-    t.start = start
-    t.end = end
-    t.save()
-    return render (request, 'updevent.html')
-
-def delEvent(request):
-    id_event = int(request.POST["id"])
-    print(id_event)
-    print(type(id_event))
-    s = Agenda.objects.get(id=id_event).delete()
-
-    return render (request, 'delevent.html')
 
 
 # Create your views here.

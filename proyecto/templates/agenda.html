@@ -32,6 +32,8 @@
         <link href="{% static 'plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css' %}" rel="stylesheet" type="text/css"/>
         <link href="{% static 'plugins/select2/css/select2.min.css' %}" rel="stylesheet" type="text/css"/>
         <link href="{% static 'plugins/full/main.css' %}" rel="stylesheet"/>
+        <link href="{% static 'plugins/toastr/toastr.min.css' %}" rel="stylesheet"/>
+
 
        
 
@@ -472,6 +474,7 @@
        
         <script src="{% static 'plugins/full/main.js' %}"></script>
         <script src="{% static 'plugins/full/main.min.js' %}"></script>
+        <script src="{% static 'plugins/toastr/toastr.min.js' %}"></script>
 
         <script src="{% static 'plugins/formatdate.js' %}"></script>
         <script>                                        
@@ -547,7 +550,23 @@
 
                                                 }
                                                 readEvents();
-                                                
+                                                toastr.options = {
+                                                                        "closeButton": true,
+                                                                        "debug": true,
+                                                                        "newestOnTop": true,
+                                                                        "progressBar": true,
+                                                                        "positionClass": "toast-bottom-right",
+                                                                        "preventDuplicates": false,
+                                                                        "onclick": null,
+                                                                        "showDuration": "300",
+                                                                        "hideDuration": "1000",
+                                                                        "timeOut": "5000",
+                                                                        "extendedTimeOut": "1000",
+                                                                        "showEasing": "swing",
+                                                                        "hideEasing": "linear",
+                                                                        "showMethod": "fadeIn",
+                                                                        "hideMethod": "fadeOut"
+                                                                        }
                                                 var calendar = new FullCalendar.Calendar(calendarEl, {
                                                     initialView: 'timeGridWeek',
                                                     customButtons:{
@@ -623,7 +642,7 @@
                                                     eventReceive: function(info) {
 
                                                         //get the bits of data we want to send into a simple object
-
+                                                                    
                                                         
 
                                                                                                                 
@@ -653,9 +672,12 @@
                                                                      });
                                                                       info.event.setProp( 'id' , idStr)                                                               
                                                                      calcularContador();
+                                                                       toastr["success"]("Evento añadido exitosamente!")
+
+
                                                                     },
                                                                 error: function (jqXHR, exception) {
-                                                                    console.log(jqXHR);
+                                                                    toastr["error"]("Acción no se pudo realizar en BD. Consultar con especialista.")
                                                                     // Your error handling logic here..
                                                                 }
                                                                 
@@ -669,35 +691,50 @@
 
                                                      eventClick: function(info) {
 
-                    
+                                                            
 
-                                                            eventos_selector = eventos_selector.filter(function(obj){
-                                                                return obj.id !==info.event.id;
-                                                            });
+                                                            
 
                                                             const data = new FormData();
                                                             data.append('id', info.event.id);
 
+                                                            $.ajax({
+                                                                 method: 'POST',
+                                                                 url: "/delevent/",
+                                                                 dataType: "json",
+                                                                 data: {
+                                                                    'id': info.event.id
+
+                                                                 },
+                                                                 headers:{
+                                                                 "X-CSRFToken": getCookie('csrftoken'),
+
+                                                                     },
+                                                                 success: function(response){
+                                                                                                                                
+                                                                     
+                                                                    info.event.remove();
+                                                                    toastr["error"]("Evento eliminado exitosamente!")
+                                                                    eventos_selector = eventos_selector.filter(function(obj){
+                                                                            return obj.id !==info.event.id;
+                                                                        });
+                                                                    calcularContador();
+                                                                    
 
 
-                                                            fetch("/delevent/", {
-                                                            method: "POST",
-                                                            dataType: "json",
-                                                            
-                                                            body: data,
-                                                            error: function(idd) {
-                                                                        console.log('Success:' +idd);
 
                                                                     },
-                                                            headers:{
-                                                                "X-CSRFToken": getCookie('csrftoken'),
+                                                                 error: function (jqXHR, exception) {
+                                                                    toastr["error"]("Acción no se pudo realizar en BD. Consultar con especialista.")
+                                                                    // Your error handling logic here..
+                                                                 }
+                                                                
+                                                            });
 
-                                                            }})
+                                                        
                                                             
-                                                            info.event.remove();
                                                             
 
-                                                            calcularContador();
                                                             
 
                                                         // change the border color just for fu
@@ -708,23 +745,47 @@
                                                                 start: info.event.startStr,
                                                                 end: info.event.endStr,
                                                             };
+
+
                                                             const data = new FormData();
                                                             data.append('id', eventData.id);
                                                             data.append('start', eventData.start);
-                                                            data.append('end', eventData.end);                                                        
-                                                            fetch("/updevent/", {
-                                                            method: "POST",
-                                                            dataType: "text",
-                                                            
-                                                            body: data,
-                                                            headers:{
-                                                                "X-CSRFToken": getCookie('csrftoken'),
+                                                            data.append('end', eventData.end);
 
-                                                            }
-                                                            })
+
+                                                            $.ajax({
+                                                                 method: 'POST',
+                                                                 url: "/updevent/",
+                                                                 dataType: "json",
+                                                                 data: {
+                                                                    'id': info.event.id,
+                                                                    'start': info.event.startStr,
+                                                                    'end': info.event.endStr
+
+                                                                 },
+                                                                 headers:{
+                                                                 "X-CSRFToken": getCookie('csrftoken'),
+
+                                                                     },
+                                                                 success: function(response){
+                                                                                                                                
+                                                                     
+                                                                    toastr["warning"]("Evento modificado exitosamente!")
+                                                                    
+                                                                    
+
+
+
+                                                                    },
+                                                                 error: function (jqXHR, exception) {
+                                                                     toastr["error"]("Acción no se pudo realizar en BD. Consultar con especialista.")
+                                                                    // Your error handling logic here..
+                                                                 }
+                                                                
+                                                            });
+
                                                         
                                                             
-                                                            ();
 
      
                                                         },

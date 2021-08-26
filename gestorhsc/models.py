@@ -36,5 +36,9 @@ class Agenda(models.Model):
     
     def __str__(self):
         return self.id
+    
+    
+    
+    
 # Create your models here.
 
