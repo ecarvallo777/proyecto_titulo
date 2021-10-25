@@ -104,16 +104,26 @@ function myFunction() {
                             calcularContador();
                         }
                     },
+
                     hoy: {
                         text: 'Hoy',
                         click: function(){
                             calendar.today();
                             calcularContador();
                         }
+                    },
+                    precargar: {
+                        text: 'Precargar',
+                        click: function(){
+                            var date = calendar.getDate();
+                            date = date.toISOString();
+                            precargar(date);
+                            calcularContador();
+                        }
                     }
                 },
                 headerToolbar: {
-                    left: 'anterior,siguiente hoy',
+                    left: 'anterior,siguiente,hoy,precargar',
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay'
                     },
@@ -388,40 +398,25 @@ function myFunction() {
 
             });
         } 
-function precargar(){
+function precargar(semana1){
     var x = document.getElementById("selector").value;
+
     $.ajax({
         method: 'POST',
         url:    "/precargar/",
         dataType: "json",
-        data: {'id':x},   
+        data: {'id':x,
+                'semana1':semana1},   
         headers:{
         "X-CSRFToken": getCookie('csrftoken'),
 
             },
         success: function(response){
-            var eventos_selector = [];
-            console.log(eventos_selector);
-            var eventos = Object.values(response);
-            for (evento of eventos ){
-
-                eventos_selector.push({
-                                id: null,
-                                title: evento.title,
-                                start: evento.start,
-                                end: evento.end
-                            })
-
-
-            }
-            myFunction();
-
-        },
+                                    },
         error: function (xhr) {
 
              }
             });
-
 }
 
 

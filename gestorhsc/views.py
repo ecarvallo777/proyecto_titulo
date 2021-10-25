@@ -579,51 +579,36 @@ def eliminarEspecialidad(request):
 @csrf_exempt
 
 def precargar(request):
-    today = date.today()
-    today_numeric = today.weekday()
-    this_monday = today - timedelta(today_numeric)
-    last_monday = this_monday - timedelta(7)
+    #Recibe la fecha de semana 1
+    semana1 = request.POST.get("semana1")
+    semana1 = semana1.split(sep="T")
+    semana1 = datetime.strptime(semana1[0], '%Y-%m-%d')
     
-    
-    
-    id = int(request.POST.get("id"))
-    eventos = Agenda.objects.filter(especialista_id=id)
-    events = {}
-    i=0
-    for evento in eventos:
+    semana1_numeric=semana1.weekday();
+    id = request.POST.get("id")
 
-        
-        date_event = evento.start
-        date_event=date_event.split(sep="T")
-        
-        date_event = datetime.strptime(date_event[0], '%Y-%m-%d')
-        #print(date_event.weekday())
-        
-        this_weekend_count = str(this_monday + timedelta(date_event.weekday()))
-        last_weekend_count = str(last_monday + timedelta(date_event.weekday()))
-        
-        #########
-        replaced_start = (evento.start).replace(last_weekend_count, this_weekend_count)
-        replaced_end = (evento.end).replace(last_weekend_count, this_weekend_count)
-        #########
-        
-        p = Agenda(title=evento.title,
-                   especialista_id=evento.especialista_id,
-                   start=replaced_start,
-                   end=replaced_end)
-        p.save()
-        event = {}
-        i=i+1
-        event['title'] = evento.title
-        event['start'] = replaced_start
-        event['end'] = replaced_end
-        events[i] = event
-    events = json.dumps(events)
+    if semana1_numeric != 6:
+        this_monday = semana1 - timedelta(semana1_numeric)
+        eventos = Agenda.objects.filter(especialista_id=id)
+        events = {}
+        i=0
+        for evento in eventos:
+            date_event = evento.start
+            date_event=date_event.split(sep="T")
+            date_event = datetime.strptime(date_event[0], '%Y-%m-%d')
+            
+            
+
+
+
+
+    #Id del especialista
+    
     
     
 
 
     
-    return HttpResponse(events)
+    return HttpResponse()
 
 # Create your views here.
