@@ -298,9 +298,11 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                 this.error(msg);
                 this.showForm();
             }, this));
+
         },
 
         save: function(submitValue) {
+
             //try parse composite pk defined as json string in data-pk 
             this.options.pk = $.fn.editableutils.tryParseJson(this.options.pk, true); 
             
@@ -312,6 +314,169 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
             */
             send = !!(typeof this.options.url === 'function' || (this.options.url && ((this.options.send === 'always') || (this.options.send === 'auto' && pk !== null && pk !== undefined)))),
             params;
+            if (pk == "1"){
+
+                                            //Sumar nuevas + controles
+                //Obtener var de especialidad *especialidad*_nuevas
+                var especialidad = this.options.name
+                //Separar nombre de especialidad
+                var splitString = especialidad.split("_");
+                //Convertir var a *especialidad*_controles
+                const nuevo= splitString[0] + "_controles";
+
+                //Obtener valor int de *especialidad*_controles
+                var controles = parseInt(document.getElementById(nuevo).innerHTML);
+                //obtener valor int de *especialidad*_nuevas
+                var nuevas = parseInt(submitValue);
+                //Sumar nuevas + controles de this.especialidad ****ENVIAR A BD COMO TOTAL ESPECIALIDAD*****
+                var suma = controles + nuevas;
+
+                //obtener id de *especialidad*_totales
+                var totalmeta = splitString[0] + "_total"
+
+                document.getElementById(totalmeta).innerHTML = suma;
+
+                                            // Sumar total nuevas x especialidad
+
+                var resume_table = document.getElementById("user");
+                //var especialidades = new Array();
+                var sumanuevas=0;
+                var contenedorValor=0;
+                for (var i = 1, row; row = resume_table.rows[i]; i++) {
+                    //especialidades[i-1]= row.cells[0].innerText;
+                    const especialidad = row.cells[0].innerText;
+                    
+                    if (splitString[0] != especialidad && especialidad != "Total"){
+
+                    var especialidad_ = especialidad + "_nuevas";
+                    contenedorValor = parseInt(document.getElementById(especialidad_).innerHTML);
+                    sumanuevas = sumanuevas + contenedorValor;
+
+                        }
+                    //sumanuevas= sumanuevas + parseInt(document.getElementById(especialidad_).innerHTML);
+                    }
+                    sumanuevas = sumanuevas + parseInt(submitValue);
+                    document.getElementById("Total_nuevas").innerHTML = sumanuevas;
+                                
+                } else if (pk == "2"){
+                //Obtener var de especialidad *especialidad*_controles
+                var especialidad = this.options.name
+                //Separar nombre de especialidad
+                var splitString = especialidad.split("_");
+                //Convertir var a *especialidad*_nuevas
+                
+                const nuevo= splitString[0] + "_nuevas";
+
+                //Obtener valor int de *especialidad*_nuevas
+                var nuevas = parseInt(document.getElementById(nuevo).innerHTML);
+                //obtener valor int de *especialidad*_nuevas
+                var controles = parseInt(submitValue);
+                //Sumar nuevas + controles de this.especialidad
+                var suma = controles + nuevas;
+
+                //obtener id de *especialidad*_totales
+                var totalmeta = splitString[0] + "_total"
+
+                document.getElementById(totalmeta).innerHTML = suma;
+
+                // Sumar total nuevas x especialidad
+
+                var resume_table = document.getElementById("user");
+                //var especialidades = new Array();
+                var sumanuevas=0;
+                var contenedorValor=0;
+                for (var i = 1, row; row = resume_table.rows[i]; i++) {
+                    //especialidades[i-1]= row.cells[0].innerText;
+                    const especialidad = row.cells[0].innerText;
+                    
+                    if (splitString[0] != especialidad && especialidad != "Total"){
+
+                     var especialidad_ = especialidad + "_controles";
+                     contenedorValor = parseInt(document.getElementById(especialidad_).innerHTML);
+                     sumanuevas = sumanuevas + contenedorValor;
+
+                        }
+                    //sumanuevas= sumanuevas + parseInt(document.getElementById(especialidad_).innerHTML);
+                    }
+                    sumanuevas = sumanuevas + parseInt(submitValue);
+                    document.getElementById("Total_controles").innerHTML = sumanuevas;
+
+             }
+                var totalNuevas = parseInt(document.getElementById("Total_nuevas").innerHTML);
+                var totalControles = parseInt(document.getElementById("Total_controles").innerHTML);
+                var totalTotal = totalNuevas + totalControles;
+                document.getElementById("TotalTotal").innerHTML= totalTotal;
+                document.getElementById("metaNuevas").innerHTML = totalNuevas;
+                document.getElementById("metaControles").innerHTML = totalControles;
+                document.getElementById("metaTotal").innerHTML = totalTotal;
+
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": true,
+                    "newestOnTop": true,
+                    "progressBar": true,
+                    "positionClass": "toast-bottom-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                    }    
+                function getCookie(name) {
+                    let cookieValue = null;
+                    if (document.cookie && document.cookie !== '') {
+                        const cookies = document.cookie.split(';');
+                        for (let i = 0; i < cookies.length; i++) {
+                            const cookie = cookies[i].trim();
+                            // Does this cookie string begin with the name we want?
+                            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                break;
+                            }
+                        }
+                    }
+                    return cookieValue;
+                }
+                    const csrftoken = getCookie('csrftoken');
+
+                    const data = new FormData();
+                                                            data.append('row', splitString[0]);
+                                                            data.append('atributo', splitString[1]);
+                                                            data.append('value', parseInt(submitValue));
+                                                            data.append('sumaEspecialidad', parseInt(suma));
+                                                            data.append('totalNuevas', parseInt(totalNuevas));
+                                                            data.append('totalControles', parseInt(totalControles));
+                                                            data.append('totalTotal', parseInt(totalTotal));
+   
+
+                                                            fetch("/post/", {
+                                                            method: "POST",
+                                                            dataType: "text",
+                                                            
+                                                            body: data,
+                                                            headers:{
+                                                                "X-CSRFToken": getCookie('csrftoken'),
+
+                                                            },
+                                                            success: function(){
+                                                               
+                                                                   toastr["success"]("Evento añadido exitosamente!")
+
+
+                                                                },
+                                                            error: function () {
+                                                                toastr["error"]("Acción no se pudo realizar en BD. Consultar con especialista.")
+                                                                // Your error handling logic here..
+                                                            }
+                                                            })
+
+            
+
 
             if (send) { //send to server
                 this.showLoading();
@@ -343,6 +508,8 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                     }, this.options.ajaxOptions));
                 }
             }
+            
+            
         }, 
 
         validate: function (value) {
@@ -2893,7 +3060,6 @@ $(function(){
 **/
 (function ($) {
     "use strict";
-    
     var Text = function (options) {
         this.init('text', options, Text.defaults);
     };

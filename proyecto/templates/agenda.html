@@ -77,87 +77,11 @@
                                 <li>		
                                     <a href="javascript:void(0);" class="waves-effect waves-button waves-classic sidebar-toggle"><i class="fa fa-bars"></i></a>
                                 </li>
-                                <li>
-                                    <a href="#cd-nav" class="waves-effect waves-button waves-classic cd-nav-trigger"><i class="fa fa-diamond"></i></a>
-                                </li>
+
                                 <li>		
                                     <a href="javascript:void(0);" class="waves-effect waves-button waves-classic toggle-fullscreen"><i class="fa fa-expand"></i></a>
                                 </li>
-                                <li class="dropdown">
-                                    
-                                    <ul class="dropdown-menu dropdown-md dropdown-list theme-settings" role="menu">
-                                        <li class="li-group">
-                                            <ul class="list-unstyled">
-                                                <li class="no-link" role="presentation">
-                                                    Fixed Header 
-                                                    <div class="ios-switch pull-right switch-md">
-                                                        <input type="checkbox" class="js-switch pull-right fixed-header-check" checked>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="li-group">
-                                            <ul class="list-unstyled">
-                                                <li class="no-link" role="presentation">
-                                                    Fixed Sidebar 
-                                                    <div class="ios-switch pull-right switch-md">
-                                                        <input type="checkbox" class="js-switch pull-right fixed-sidebar-check">
-                                                    </div>
-                                                </li>
-                                                <li class="no-link" role="presentation">
-                                                    Horizontal bar 
-                                                    <div class="ios-switch pull-right switch-md">
-                                                        <input type="checkbox" class="js-switch pull-right horizontal-bar-check">
-                                                    </div>
-                                                </li>
-                                                <li class="no-link" role="presentation">
-                                                    Toggle Sidebar 
-                                                    <div class="ios-switch pull-right switch-md">
-                                                        <input type="checkbox" class="js-switch pull-right toggle-sidebar-check">
-                                                    </div>
-                                                </li>
-                                                <li class="no-link" role="presentation">
-                                                    Compact Menu 
-                                                    <div class="ios-switch pull-right switch-md">
-                                                        <input type="checkbox" class="js-switch pull-right compact-menu-check">
-                                                    </div>
-                                                </li>
-                                                <li class="no-link" role="presentation">
-                                                    Hover Menu 
-                                                    <div class="ios-switch pull-right switch-md">
-                                                        <input type="checkbox" class="js-switch pull-right hover-menu-check">
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="li-group">
-                                            <ul class="list-unstyled">
-                                                <li class="no-link" role="presentation">
-                                                    Boxed Layout 
-                                                    <div class="ios-switch pull-right switch-md">
-                                                        <input type="checkbox" class="js-switch pull-right boxed-layout-check">
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="li-group">
-                                            <ul class="list-unstyled">
-                                                <li class="no-link" role="presentation">
-                                                    Choose Theme Color
-                                                    <div class="color-switcher">
-                                                        <a class="colorbox color-blue" href="?theme=blue" title="Blue Theme" data-css="blue"></a>
-                                                        <a class="colorbox color-green" href="?theme=green" title="Green Theme" data-css="green"></a>
-                                                        <a class="colorbox color-red" href="?theme=red" title="Red Theme" data-css="red"></a>
-                                                        <a class="colorbox color-white" href="?theme=white" title="White Theme" data-css="white"></a>
-                                                        <a class="colorbox color-purple" href="?theme=purple" title="purple Theme" data-css="purple"></a>
-                                                        <a class="colorbox color-dark" href="?theme=dark" title="Dark Theme" data-css="dark"></a>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="no-link"><button class="btn btn-default reset-options">Reset Options</button></li>
-                                    </ul>
-                                </li>
+                                
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
 
@@ -197,11 +121,11 @@
                     </div>
                     <ul class="menu accordion-menu">
                         
-                        <li><a href="iniciomockup.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a></li>
-                        <li class="droplink"><a href="inputmockup.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon glyphicon-stats"></span><p>Proyección</p><span class="arrow"></span></a>
+                        <li><a href="/inicio" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a></li>
+                        <li class="droplink"><a href="inputmockup.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon glyphicon-stats"></span><p>Listas</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
-                                <li><a href="proyectar.html"><p>Proyectar</p></a>
-                                <li><a href="historicos.html"><p>Históricos</p></a>
+                                <li><a href="/consultas"><p>Consultas</p></a>
+                                <li><a href="/noges"><p>No GES</p></a>
 
                         
                     </ul>
@@ -217,7 +141,6 @@
                         
                     </ul>
                         </li>
-                        <li><a href="profile.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon glyphicon-pushpin"></span><p>Patología</p></a></li>
                         
                 </div><!-- Page Sidebar Inner -->
             </div><!-- Page Sidebar -->
@@ -226,7 +149,7 @@
                     <h3>Agendar</h3>
                     <div class="page-breadcrumb">
                         <ol class="breadcrumb">
-                            <li><a href="index.html">Inicio</a></li>
+                            <li><a href="/inicio">Inicio</a></li>
                             <li class="active">Agendar horas médicas</li>
                         </ol>
                     </div>
@@ -239,7 +162,16 @@
                                 
                                 
                                 <div class="panel-body">
-                                    <h4 class="no-m m-b-sm">Especialista</h4>
+                                <!-- BOTON IMPRIMIR -->
+                                <div style="text-align: center;">
+                                <button data-html2canvas-ignore="true" type="button" onclick="Print()" class="btn btn-default btn-addon m-b-sm"><i class="fa fa-print"></i> Imprimir</button>
+                                <button data-html2canvas-ignore="true" type="button" onclick="precargar()" class="btn btn-default btn-addon m-b-sm" ><i class="fa fa-print"></i> Precargar</button></div>
+
+                                <!-- BOTON IMPRIMIR -->
+                                <!-- CARGA Y MUESTRA ESPECIALISTAS-->
+                                <p>
+                                                    <strong>Especialista</strong>
+                                                </p>
                                     <select class="js-states form-control" id="selector" onchange="myFunction()" tabindex="-1" style="display: none; width: 100%">
                                         <option value="">Seleccione un especialista</option>
                                         {% for especialidad in especialidad_context%}
@@ -253,7 +185,7 @@
                                             
                                         
                                     </select>
-
+                                <!-- CARGA Y MUESTRA ESPECIALISTAS-->
 
                             
 
@@ -313,6 +245,11 @@
                                         <label id="colacion" class="col-md-4 control-label">-</label>
                                         </div>
                                         <p></p>
+                                        <label for="input-disabled" class="col-md-4 control-label">Total: </label>
+                                        <div class="col-md-8">
+                                        <label id="cTotal" class="col-md-4 control-label">-</label>
+                                        </div>
+                                        <p></p>
 
                                     </div>
                                     
@@ -330,6 +267,7 @@
                                         <div class="calendar-event"><p>Visitas</p></div>
                                         <div class="calendar-event"><p>Colación</p></div>
                                         <div class="calendar-event"><p>Intervenciones</p></div>
+                                        
                                     </div>
                                 </div>
                                 </div>
@@ -338,7 +276,7 @@
                             </div>
                             
                         </div>
-                        
+                        <!--CALENDARIO-->
                         <div class="col-md-8">
                             <div class="panel panel-white">
                                 <div class="panel-body">
@@ -352,95 +290,14 @@
                     </div><!-- Row -->
                 </div><!-- Main Wrapper -->
                 <div class="page-footer">
+
                     <p class="no-s">2021 &copy; Universidad de Talca.</p>
                 </div>
             </div><!-- Page Inner -->
         </main><!-- Page Content -->
-        <nav class="cd-nav-container" id="cd-nav">
-            <header>
-                <h3>Navigation</h3>
-                <a href="#0" class="cd-close-nav">Close</a>
-            </header>
-            <ul class="cd-nav list-unstyled">
-                <li class="cd-selected" data-menu="index">
-                    <a href="javsacript:void(0);">
-                        <span>
-                            <i class="glyphicon glyphicon-home"></i>
-                        </span>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
-                <li data-menu="profile">
-                    <a href="javsacript:void(0);">
-                        <span>
-                            <i class="glyphicon glyphicon-user"></i>
-                        </span>
-                        <p>Profile</p>
-                    </a>
-                </li>
-                <li data-menu="inbox">
-                    <a href="javsacript:void(0);">
-                        <span>
-                            <i class="glyphicon glyphicon-envelope"></i>
-                        </span>
-                        <p>Mailbox</p>
-                    </a>
-                </li>
-                <li data-menu="#">
-                    <a href="javsacript:void(0);">
-                        <span>
-                            <i class="glyphicon glyphicon-tasks"></i>
-                        </span>
-                        <p>Tasks</p>
-                    </a>
-                </li>
-                <li data-menu="#">
-                    <a href="javsacript:void(0);">
-                        <span>
-                            <i class="glyphicon glyphicon-cog"></i>
-                        </span>
-                        <p>Settings</p>
-                    </a>
-                </li>
-                <li data-menu="calendar">
-                    <a href="javsacript:void(0);">
-                        <span>
-                            <i class="glyphicon glyphicon-calendar"></i>
-                        </span>
-                        <p>Calendar</p>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        
         <div class="cd-overlay"></div>
-        <!-- Probando commits jejsj-->
-         <!-- Modal agregar -->
-                    <div class="modal fade" id="modalDrop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">Agregar evento</h4>
-                                </div>
-                                <div class="modal-body">
-                                      <form method="GET" action="/agregar">
-                                        <div class="form-group">
-                                            <label id="dateEvento" class="col-sm-6 control-label" name="dateEvento" value=""></label>
-
-                                        </div>
-                                        
-
-                                        
-                                                                                                {%csrf_token%}
-
-                                        <button type="submit" class="btn btn-primary">Guardar</button>
-                                        </form>
-
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                    
 
         <!-- Javascripts -->
         <script src="{% static 'plugins/jquery/jquery-2.1.4.min.js' %}"></script>
@@ -477,387 +334,11 @@
         <script src="{% static 'plugins/toastr/toastr.min.js' %}"></script>
 
         <script src="{% static 'plugins/formatdate.js' %}"></script>
-        <script>                                        
-                                        var containerEl = document.getElementById('events');
-                                        var Draggable = FullCalendar.Draggable;
-                                        new Draggable(containerEl, {
-                                                            itemSelector: '.calendar-event',
-                                                            eventData: function(eventEl) {
-                                                            return {
-                                                                title: eventEl.innerText
-                                                            };
-                                                            }
-                                                        });
-                                        function getCookie(name) {
-                                            let cookieValue = null;
-                                            if (document.cookie && document.cookie !== '') {
-                                                const cookies = document.cookie.split(';');
-                                                for (let i = 0; i < cookies.length; i++) {
-                                                    const cookie = cookies[i].trim();
-                                                    // Does this cookie string begin with the name we want?
-                                                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                                                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                                                        break;
-                                                    }
-                                                }
-                                            }
-                                            return cookieValue;
-                                        }
-                                            const csrftoken = getCookie('csrftoken');
+        <script src="{% static 'js/ss/html2canvas.js' %}"></script>
+        <script src="{% static 'js/ss/html2canvas.min.js' %}"></script>
+        <script src="{% static 'js/agenda/agenda.js' %}"></script>  
 
-                                        
-                                        function myFunction() {
-                                            // Obtener selección y mostrar información respectiva a selección.
-                                            var x = document.getElementById("selector").value;
-
-                                            {% for especialista in especialistas_context %}
-                                                if ( "{{especialista.id}}" == x){
-                                                    document.getElementById("codsirh").innerHTML = "{{ especialista.sirh }}";
-                                                    document.getElementById("rut").innerHTML = "{{ especialista.rut }}";
-                                                    document.getElementById("servicio").innerHTML = "{{ especialista.especialidad_id }}";
-                                                    document.getElementById("horas").innerHTML = "{{ especialista.contrato_id }}";
-
-                                                    }
-                                                    
-                                             {%endfor%}  
-                                             
-                                             //Esto no me parece eficiente, quizás es mejor tomar el id y hacer un request a la bd en vez de buscar id x id con if
-                                            // Mostrar calendario respectiva a selección
-                                                var calendarEl = document.getElementById('calendar');
-
-                                                
-                                                var especialista = parseInt(x); 
-                                                
-                                                var eventos_selector = [];
-                                                // initialize the external events
-                                                        // -----------------------------------------------------------------
-
-
-                                                function readEvents(){
-                                                {% for evento in agenda_context %}
-                                                    if ({{evento.especialista_id}} == especialista){
-                                                        date_time = "{{evento.start}}";
-
-                                                        
-                                                        eventos_selector.push({
-                                                            id: "{{evento.id}}",
-                                                            title: "{{evento.title}}",
-                                                            start: "{{evento.start}}",
-                                                            end: "{{evento.end}}"
-                                                        })
-                                                    }
-                                                {%endfor%}
-
-                                                }
-                                                readEvents();
-                                                toastr.options = {
-                                                                        "closeButton": true,
-                                                                        "debug": true,
-                                                                        "newestOnTop": true,
-                                                                        "progressBar": true,
-                                                                        "positionClass": "toast-bottom-right",
-                                                                        "preventDuplicates": false,
-                                                                        "onclick": null,
-                                                                        "showDuration": "300",
-                                                                        "hideDuration": "1000",
-                                                                        "timeOut": "5000",
-                                                                        "extendedTimeOut": "1000",
-                                                                        "showEasing": "swing",
-                                                                        "hideEasing": "linear",
-                                                                        "showMethod": "fadeIn",
-                                                                        "hideMethod": "fadeOut"
-                                                                        }
-                                                var calendar = new FullCalendar.Calendar(calendarEl, {
-                                                    initialView: 'timeGridWeek',
-                                                    customButtons:{
-                                                        anterior: {
-                                                            text: 'Anterior',
-                                                            click: function(){
-                                                                calendar.prev();
-                                                                calcularContador();
-                                                            }
-                                                        },
-                                                        siguiente: {
-                                                            text: 'Siguiente',
-                                                            click: function(){
-                                                                calendar.next();
-                                                                calcularContador();
-                                                            }
-                                                        },
-                                                        hoy: {
-                                                            text: 'Hoy',
-                                                            click: function(){
-                                                                calendar.today();
-                                                                calcularContador();
-                                                            }
-                                                        }
-                                                    },
-                                                    headerToolbar: {
-                                                        left: 'anterior,siguiente hoy',
-                                                        center: 'title',
-                                                        right: 'dayGridMonth,timeGridWeek,timeGridDay'
-                                                        },
-                                                    editable: true,
-                                                    defaultTimedEventDuration: '00:30',
-                                                    forceEventDuration: true,
-                                                    locale: 'es',
-                                                    hiddenDays: [0],
-                                                    slotMaxTime: "22:00:00",
-                                                    slotMinTime: "08:00:00",
-                                                    businessHours: {
-                                                            // days of week. an array of zero-based day of week integers (0=Sunday)
-                                                            dow: [ 1, 2, 3, 4, 5], // Monday - Thursday
-                                                        
-                                                            startTime: '8:00', // a start time (10am in this example)
-                                                            endTime: '17:30' // an end time (6pm in this example)
-                                                        },
-                                                    droppable: true, // this allows things to be dropped onto the calendar
-                                                    eventResize: function(info){
-                                                            var eventData = {
-                                                                id: info.event.id,
-                                                                start: info.event.startStr,
-                                                                end: info.event.endStr,
-                                                            };
-                                                            console.log(info.event.endStr);
-                                                            const data = new FormData();
-                                                            data.append('id', eventData.id);
-                                                            data.append('start', eventData.start);
-                                                            data.append('end', eventData.end);    
-
-                                                            fetch("/updevent/", {
-                                                            method: "POST",
-                                                            dataType: "text",
-                                                            
-                                                            body: data,
-                                                            headers:{
-                                                                "X-CSRFToken": getCookie('csrftoken'),
-
-                                                            }
-                                                            })
-                                                        
-                                                           calendar.refetchEvents()
-
-
-                                                    },
-                                                    eventReceive: function(info) {
-
-                                                        //get the bits of data we want to send into a simple object
-                                                                    
-                                                        
-
-                                                                                                                
-                                                            
-                                                            $.ajax({
-                                                                method: 'POST',
-                                                                url: "/addevent/",
-                                                                dataType: "json",
-                                                                data: {
-                                                                    'id_especialista': x,
-                                                                    'title': info.event.title,
-                                                                    'start': info.event.startStr,
-                                                                    'end': info.event.endStr
-
-                                                                },
-                                                                headers:{
-                                                                "X-CSRFToken": getCookie('csrftoken'),
-
-                                                                     },
-                                                                success: function(response){
-                                                                    idStr = response.toString();
-                                                                    eventos_selector.push({
-                                                                    id: idStr,
-                                                                    title: info.event.title,
-                                                                    start:info.event.startStr,
-                                                                    end: info.event.endStr
-                                                                     });
-                                                                      info.event.setProp( 'id' , idStr)                                                               
-                                                                     calcularContador();
-                                                                       toastr["success"]("Evento añadido exitosamente!")
-
-
-                                                                    },
-                                                                error: function (jqXHR, exception) {
-                                                                    toastr["error"]("Acción no se pudo realizar en BD. Consultar con especialista.")
-                                                                    // Your error handling logic here..
-                                                                }
-                                                                
-                                                            });        
-                                                            
-
-                                                            },
-                                                    // Función al soltar un external-event en calendar
-
-                                                    // Función al mover un evento dentro del calendario
-
-                                                     eventClick: function(info) {
-
-                                                            
-
-                                                            
-
-                                                            const data = new FormData();
-                                                            data.append('id', info.event.id);
-
-                                                            $.ajax({
-                                                                 method: 'POST',
-                                                                 url: "/delevent/",
-                                                                 dataType: "json",
-                                                                 data: {
-                                                                    'id': info.event.id
-
-                                                                 },
-                                                                 headers:{
-                                                                 "X-CSRFToken": getCookie('csrftoken'),
-
-                                                                     },
-                                                                 success: function(response){
-                                                                                                                                
-                                                                     
-                                                                    info.event.remove();
-                                                                    toastr["error"]("Evento eliminado exitosamente!")
-                                                                    eventos_selector = eventos_selector.filter(function(obj){
-                                                                            return obj.id !==info.event.id;
-                                                                        });
-                                                                    calcularContador();
-                                                                    
-
-
-
-                                                                    },
-                                                                 error: function (jqXHR, exception) {
-                                                                    toastr["error"]("Acción no se pudo realizar en BD. Consultar con especialista.")
-                                                                    // Your error handling logic here..
-                                                                 }
-                                                                
-                                                            });
-
-                                                        
-                                                            
-                                                            
-
-                                                            
-
-                                                        // change the border color just for fu
-                                                        },
-                                                    eventDrop: function(info){
-                                                            var eventData = {
-                                                                id: info.event.id,
-                                                                start: info.event.startStr,
-                                                                end: info.event.endStr,
-                                                            };
-
-
-                                                            const data = new FormData();
-                                                            data.append('id', eventData.id);
-                                                            data.append('start', eventData.start);
-                                                            data.append('end', eventData.end);
-
-
-                                                            $.ajax({
-                                                                 method: 'POST',
-                                                                 url: "/updevent/",
-                                                                 dataType: "json",
-                                                                 data: {
-                                                                    'id': info.event.id,
-                                                                    'start': info.event.startStr,
-                                                                    'end': info.event.endStr
-
-                                                                 },
-                                                                 headers:{
-                                                                 "X-CSRFToken": getCookie('csrftoken'),
-
-                                                                     },
-                                                                 success: function(response){
-                                                                                                                                
-                                                                     
-                                                                    toastr["warning"]("Evento modificado exitosamente!")
-                                                                    
-                                                                    
-
-
-
-                                                                    },
-                                                                 error: function (jqXHR, exception) {
-                                                                     toastr["error"]("Acción no se pudo realizar en BD. Consultar con especialista.")
-                                                                    // Your error handling logic here..
-                                                                 }
-                                                                
-                                                            });
-
-                                                        
-                                                            
-
-     
-                                                        },
-                                                    events: eventos_selector
-                                                        });
-                                                        calcularContador();
-
-                                                            
-                                                            calendar.render();
-                                                            function clearContador(){
-                                                                document.getElementById("procedimientos").innerHTML = "-";
-                                                                document.getElementById("intervenciones").innerHTML = "-";
-                                                                document.getElementById("consultas").innerHTML = "-";
-                                                                document.getElementById("visitas").innerHTML = "-";
-                                                                document.getElementById("colacion").innerHTML = "-";
-                                                                
-                                                            }
-                                                            function calcularContador(){
-                                                                clearContador();
-                                                                var view= calendar.view;
-                                                                var from = Date.parse((view.activeStart).toDateString());
-
-                                                                var to= Date.parse((view.activeEnd).toDateString());
-
-
-                                                                var cProcedimientos=0;
-                                                                var cConsultas=0;
-                                                                var cVisitas=0;
-                                                                var cColacion=0;
-                                                                var cIntervenciones=0;
-                                                                for (const x of eventos_selector) { 
-                                                                    var check = new Date(x.start);
-                                                                    check = Date.parse(check.toDateString());
-
-                                                                    if((check <= to && check >= from)) {
-                                                                            if(x.title == "Procedimientos"){
-
-                                                                              cProcedimientos = cProcedimientos + .5;
-
-                                                                            }else if(x.title =="Consultas"){
-                                                                                cConsultas = cConsultas + .5;
-                                                                            }else if(x.title =="Visitas"){
-                                                                                cVisitas= cVisitas +.5;
-                                                                            }else if(x.title == "Colación"){
-                                                                                cColacion = cColacion+.5;
-
-                                                                            }else if(x.title=="Intervenciones"){
-                                                                                cIntervenciones=cIntervenciones+.5;
-                                                                            }
-                                                                        }
-                                                                        document.getElementById("procedimientos").innerHTML = cProcedimientos;
-                                                                        document.getElementById("consultas").innerHTML = cConsultas;
-                                                                        document.getElementById("visitas").innerHTML = cVisitas;
-                                                                        document.getElementById("colacion").innerHTML = cColacion;
-                                                                        document.getElementById("intervenciones").innerHTML = cIntervenciones;
-
-                                                                        
-
-
-
-                                                                    }
-
- 
-
-                                                            }
-
-
-                                        }
-                                        
-                                                                                    
-        </script>  
-
+        
                                       
                                    
         

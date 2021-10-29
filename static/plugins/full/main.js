@@ -3014,7 +3014,6 @@ var FullCalendar = (function (exports) {
         CalendarApi.prototype.prev = function () {
             this.unselect();
             this.dispatch({ type: 'PREV' });
-            alert("Hla");
         };
         CalendarApi.prototype.next = function () {
             this.unselect();
@@ -7663,7 +7662,7 @@ var FullCalendar = (function (exports) {
                 var buttonName = widget.buttonName, buttonClick = widget.buttonClick, buttonText = widget.buttonText, buttonIcon = widget.buttonIcon;
                 if (buttonName === 'title') {
                     isOnlyButtons = false;
-                    children.push(createElement("h2", { className: "fc-toolbar-title" }, props.title));
+                    children.push(createElement("h2", { className: "fc-toolbar-title"  }, props.title));
                 }
                 else {
                     var ariaAttrs = buttonIcon ? { 'aria-label': buttonName } : {};

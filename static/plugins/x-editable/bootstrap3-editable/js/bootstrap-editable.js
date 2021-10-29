@@ -298,9 +298,11 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                 this.error(msg);
                 this.showForm();
             }, this));
+
         },
 
         save: function(submitValue) {
+
             //try parse composite pk defined as json string in data-pk 
             this.options.pk = $.fn.editableutils.tryParseJson(this.options.pk, true); 
             
@@ -312,7 +314,351 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
             */
             send = !!(typeof this.options.url === 'function' || (this.options.url && ((this.options.send === 'always') || (this.options.send === 'auto' && pk !== null && pk !== undefined)))),
             params;
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            toastr.options = {
+                "closeButton": true,
+                "debug": true,
+                "newestOnTop": true,
+                "progressBar": true,
+                "positionClass": "toast-bottom-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+                }    
+            var separador_accion = this.options.name
+            var codigo = separador_accion.split("_");
+            if (codigo[0] != "Nuevas" && codigo[0] != "Controles" && codigo[0] != "Total" && codigo[0] != "NSP" && codigo[0] != "a") {
+                if (pk == "1"){
 
+                                                //Sumar nuevas + controles
+                    //Obtener var de especialidad *especialidad*_nuevas
+                    var especialidad = this.options.name
+                    //Separar nombre de especialidad
+                    var splitString = especialidad.split("_");
+                    //Convertir var a *especialidad*_controles
+                    const nuevo= splitString[0] + "_controles";
+
+                    //Obtener valor int de *especialidad*_controles
+                    var controles = parseInt(document.getElementById(nuevo).innerHTML);
+                    //obtener valor int de *especialidad*_nuevas
+                    var nuevas = parseInt(submitValue);
+                    //Sumar nuevas + controles de this.especialidad ****ENVIAR A BD COMO TOTAL ESPECIALIDAD*****
+                    var suma = controles + nuevas;
+
+                    //obtener id de *especialidad*_totales
+                    var totalmeta = splitString[0] + "_total"
+
+                    document.getElementById(totalmeta).innerHTML = suma;
+
+                                                // Sumar total nuevas x especialidad
+
+                    var resume_table = document.getElementById("user");
+                    //var especialidades = new Array();
+                    var sumanuevas=0;
+                    var contenedorValor=0;
+                    for (var i = 1, row; row = resume_table.rows[i]; i++) {
+                        //especialidades[i-1]= row.cells[0].innerText;
+                        const especialidad = row.cells[0].innerText;
+                        
+                        if (splitString[0] != especialidad && especialidad != "Total"){
+
+                        var especialidad_ = especialidad + "_nuevas";
+                        contenedorValor = parseInt(document.getElementById(especialidad_).innerHTML);
+                        sumanuevas = sumanuevas + contenedorValor;
+
+                            }
+                        //sumanuevas= sumanuevas + parseInt(document.getElementById(especialidad_).innerHTML);
+                        }
+                        sumanuevas = sumanuevas + parseInt(submitValue);
+                        document.getElementById("Total_nuevas").innerHTML = sumanuevas;
+                                    
+                 } else if (pk == "2"){
+                    //Obtener var de especialidad *especialidad*_controles
+                    var especialidad = this.options.name
+                    //Separar nombre de especialidad
+                    var splitString = especialidad.split("_");
+                    //Convertir var a *especialidad*_nuevas
+                    
+                    const nuevo= splitString[0] + "_nuevas";
+
+                    //Obtener valor int de *especialidad*_nuevas
+                    var nuevas = parseInt(document.getElementById(nuevo).innerHTML);
+                    //obtener valor int de *especialidad*_nuevas
+                    var controles = parseInt(submitValue);
+                    //Sumar nuevas + controles de this.especialidad
+                    var suma = controles + nuevas;
+
+                    //obtener id de *especialidad*_totales
+                    var totalmeta = splitString[0] + "_total"
+
+                    document.getElementById(totalmeta).innerHTML = suma;
+
+                    // Sumar total nuevas x especialidad
+
+                    var resume_table = document.getElementById("user");
+                    //var especialidades = new Array();
+                    var sumanuevas=0;
+                    var contenedorValor=0;
+                    for (var i = 1, row; row = resume_table.rows[i]; i++) {
+                        //especialidades[i-1]= row.cells[0].innerText;
+                        const especialidad = row.cells[0].innerText;
+                        
+                        if (splitString[0] != especialidad && especialidad != "Total"){
+
+                        var especialidad_ = especialidad + "_controles";
+                        contenedorValor = parseInt(document.getElementById(especialidad_).innerHTML);
+                        sumanuevas = sumanuevas + contenedorValor;
+
+                            }
+                        //sumanuevas= sumanuevas + parseInt(document.getElementById(especialidad_).innerHTML);
+                        }
+                        sumanuevas = sumanuevas + parseInt(submitValue);
+                        document.getElementById("Total_controles").innerHTML = sumanuevas;
+                }
+                    var totalNuevas = parseInt(document.getElementById("Total_nuevas").innerHTML);
+                    var totalControles = parseInt(document.getElementById("Total_controles").innerHTML);
+                    var totalTotal = totalNuevas + totalControles;
+                    document.getElementById("TotalTotal").innerHTML= totalTotal;
+                    document.getElementById("metaNuevas").innerHTML = totalNuevas;
+                    document.getElementById("metaControles").innerHTML = totalControles;
+                    document.getElementById("metaTotal").innerHTML = totalTotal;
+                    calculatePercent();
+
+                    
+                        
+    
+
+                        $.ajax({
+                            method: 'POST',
+                            url: "/post/",
+                            dataType: "text",
+                            data: { 'row': splitString[0],
+                                    'atributo': splitString[1],
+                                    'value': parseInt(submitValue),
+                                    'sumaEspecialidad': parseInt(suma),
+                                    'totalNuevas': parseInt(totalNuevas),
+                                    'totalControles': parseInt(totalControles),
+                                    'totalTotal': parseInt(totalTotal),
+
+                            },
+                            headers:{
+                            "X-CSRFToken": getCookie('csrftoken'),
+
+                                },
+                            success: function(response){
+                                                                                        
+                                
+                            toastr["success"]("Meta de especialidad modificada exitosamente!")
+
+                            },
+                            error: function (data) {
+                            toastr["error"]("Acción no se pudo realizar en BD. Consultar con especialista.")
+                            // Your error handling logic here..
+                            }
+                        
+                    });
+            
+            } else if(codigo[0] == "Nuevas" || codigo[0] =="Controles" || codigo[0] =="Total"){
+                var suma= 0;
+                var tipo_consulta = codigo[0];
+                var tipo_total = codigo[0] +"_tot";
+        
+                var meses = {0: "ene", 1:"feb", 2:"mar", 3:"abr", 4:"may", 5:"jun", 6:"jul", 7:"ago", 8:"sep", 9:"oct", 10:"nov",11:"dic",12:"tot"};
+                for (var i=0; i<12; i++){
+                    var consulta = tipo_consulta +"_"+ meses[i];
+
+                    if (consulta != this.options.name){
+                    var mes = parseInt(document.getElementById(consulta).innerHTML);
+                    suma = suma + mes;
+                    }
+                }
+                var submitvalue = parseInt(submitValue);
+                suma = suma + submitvalue;
+                document.getElementById(tipo_total).innerHTML = suma;
+                
+                //Sumar total * mes
+                var tipo_actual = parseInt(submitValue);
+                if(codigo[0] == 'Nuevas'){
+                    var tipo_parasumar= "Controles_"+codigo[1];
+                }else if (codigo[0] == 'Controles'){
+                    var tipo_parasumar= "Nuevas_"+codigo[1];
+                }
+                var tipo_otro = parseInt(document.getElementById(tipo_parasumar).innerHTML);
+                
+                var sumaMes = tipo_otro + tipo_actual;
+                var tipo_total = "Total_"+codigo[1];
+
+                document.getElementById(tipo_total).innerHTML = sumaMes;
+                document.getElementById("Total_"+codigo[1]+"_a").innerHTML = sumaMes;
+
+                var total_nuevas = parseInt(document.getElementById("Nuevas_tot").innerHTML);
+                var total_controles = parseInt(document.getElementById("Controles_tot").innerHTML);
+                var total_total = total_nuevas + total_controles;
+
+
+                document.getElementById("Total_"+codigo[1]+"_").innerHTML = sumaMes;
+                document.getElementById("Total_tot_").innerHTML = total_total;
+
+                document.getElementById("Total_tot").innerHTML = total_total;
+                document.getElementById("Nuevas").innerHTML = total_nuevas;
+                document.getElementById("Controles").innerHTML = total_controles;
+                document.getElementById("Total").innerHTML = total_total;
+                calculatePercent();
+
+
+                // Enviar submitvalue + suma meses backend
+                        $.ajax({
+                        method: 'POST',
+                        url:    "/post_consultas/",
+                        dataType: "json",
+                        data: { 'row': codigo[0],
+                                'atributo': codigo[1],
+                                'valueTotal': parseInt(suma),
+                                'valueSubmit': parseInt(submitValue),
+                                'sumaMes': parseInt(sumaMes),
+                                'totalTotal':parseInt(total_total),
+                                
+
+                        },
+                        headers:{
+                        "X-CSRFToken": getCookie('csrftoken'),
+
+                            },
+                        success: function(response){
+                        var value = document.getElementById("NSP_"+codigo[1]).innerHTML;  
+                        var key = "NSP"; 
+                        reCargarPorcentaje(codigo[1], parseInt(value), key);   
+
+                        var value2 = document.getElementById("a_"+codigo[1]).innerHTML;  
+                        var key2 = "a";           
+                        reCargarPorcentaje(codigo[1], parseInt(value2), key2);
+                        toastr["success"]("Meta de especialidad modificada exitosamente!")
+
+                        },
+                        error: function (data) {
+                        toastr["error"]("Acción no se pudo realizar en BD. Consultar con especialista.")
+                        // Your error handling logic here..
+                        }
+                    
+                });
+
+
+            }else if(codigo[0] == "NSP"){
+                var meses = {0: "ene", 1:"feb", 2:"mar", 3:"abr", 4:"may", 5:"jun", 6:"jul", 7:"ago", 8:"sep", 9:"oct", 10:"nov",11:"dic",12:"tot"};
+                var acumulador;
+                var suma =0;
+                for(var i =0; i<12; i++){
+                    if(meses[i] != codigo[1]){
+                    
+                    acumulador = document.getElementById(codigo[0]+"_"+meses[i]).innerHTML;
+                    suma = suma+parseInt(acumulador)
+                                        }
+                                            }
+
+                    
+                suma = suma + parseInt(submitValue);
+
+                document.getElementById(codigo[0]+"_tot").innerHTML = suma;
+            
+                $.ajax({
+                    method: 'POST',
+                    url:    "/post_ausentismo/",
+                    dataType: "text",
+                    data: { 'atributo': codigo[1],
+                            'valueSubmit': parseInt(submitValue),
+                            'totalTotal':parseInt(suma),
+                            
+
+                    },
+                    headers:{
+                    "X-CSRFToken": getCookie('csrftoken'),
+
+                        },
+                    success: function(response){
+                        
+                        
+         
+                    reCargarPorcentaje(codigo[1], parseInt(submitValue), codigo[0]);
+                    toastr["success"]("Consultas en ausentismo agregada exitosamente!")
+                                  },
+                    error: function (data) {
+                    toastr["error"]("Acción no se pudo realizar en BD. Consultar con especialista.")
+                    // Your error handling logic here..
+                    }
+                
+            });
+
+            }else if(codigo[0] == "a"){
+                saveRefresh();
+                
+            }
+            function saveRefresh(){
+                var meses = {0: "ene", 1:"feb", 2:"mar", 3:"abr", 4:"may", 5:"jun", 6:"jul", 7:"ago", 8:"sep", 9:"oct", 10:"nov",11:"dic",12:"tot"};
+                var acumulador;
+                var suma =0;
+
+                for(var i =0; i<12; i++){
+                    if(meses[i] != codigo[1]){
+                    
+                    acumulador = document.getElementById(codigo[0]+"_"+meses[i]).innerHTML;
+                    suma = suma+parseInt(acumulador)
+                                        }
+                                            }
+
+                    
+                suma = suma + parseInt(submitValue);
+
+                document.getElementById(codigo[0]+"_tot").innerHTML = suma;
+                console.log(suma);
+                $.ajax({
+                    method: 'POST',
+                    url:    "/post_"+codigo[0]+"/",
+                    dataType: "text",
+                    data: { 'atributo': codigo[1],
+                            'valueSubmit': parseInt(submitValue),
+                            'totalTotal':parseInt(suma),
+                            
+
+                    },
+                    headers:{
+                    "X-CSRFToken": getCookie('csrftoken'),
+
+                        },
+                    success: function(response){
+                        
+                        
+                    reCargarPorcentaje(codigo[1], parseInt(submitValue), codigo[0]);
+                     
+                    toastr["success"]("Consultas en Alta agregadas exitosamente!")
+                                  },
+                    error: function (data) {
+                    toastr["error"]("Acción no se pudo realizar en BD. Consultar con especialista.")
+                    // Your error handling logic here..
+                    }
+                
+            });
+            }
             if (send) { //send to server
                 this.showLoading();
 
@@ -343,6 +689,8 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                     }, this.options.ajaxOptions));
                 }
             }
+            
+            
         }, 
 
         validate: function (value) {
@@ -2893,7 +3241,6 @@ $(function(){
 **/
 (function ($) {
     "use strict";
-    
     var Text = function (options) {
         this.init('text', options, Text.defaults);
     };

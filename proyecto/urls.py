@@ -21,6 +21,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('inicio/', inicio),
     path('agenda/', calendario),
+    path('consultas/', consultas),
+    path('noges/', noges),
     path('calendar/', calendars),
     path('especialista/', especialista),
     path('especialidades/', especialidad),
@@ -29,7 +31,23 @@ urlpatterns = [
     path('addevent/', addEvent),
     path('updevent/', updEvent),
     path('delevent/', delEvent),
-
-
+    path('post/', post),
+    path('post_consultas/', postconsultas),
+    path('get_dashboard/', getdash),
+    path('get_eventos/', get_eventos),
+    path('modificarEspecialista/', modificarEspecialista),
+    path('eliminarEspecialista/', eliminarEspecialista),
+    
+    path('modificarEspecialidad/', modificarEspecialidad),
+    path('eliminarEspecialidad/', eliminarEspecialidad),
+    
+    path('get_especialistas/', get_especialistas),
+    path('post_ausentismo/', post_ausentismo),
+    path('get_ausentismo/', get_ausentismo),
+    
+    path('post_a/', post_altas),
+    path('get_programacion/', get_programacion),
+    
+    path('precargar/', precargar),
 
 ]

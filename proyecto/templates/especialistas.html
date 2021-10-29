@@ -29,6 +29,7 @@
          <link href="{% static 'plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.css' %}" rel="stylesheet" type="text/css">
          <link href="{% static 'plugins/bootstrap-datepicker/css/datepicker3.css' %}" rel="stylesheet" type="text/css"/>
          <link href="{% static 'plugins/select2/css/select2.min.css' %}" rel="stylesheet" type="text/css"/>
+         <link href="{% static 'plugins/toastr/toastr.min.css' %}" rel="stylesheet"/>
 
         <!-- Theme Styles -->
         <link href="{% static 'css/modern.min.css' %}" rel="stylesheet" type="text/css"/>
@@ -67,88 +68,11 @@
                                 <li>		
                                     <a href="javascript:void(0);" class="waves-effect waves-button waves-classic sidebar-toggle"><i class="fa fa-bars"></i></a>
                                 </li>
-                                <li>
-                                    <a href="#cd-nav" class="waves-effect waves-button waves-classic cd-nav-trigger"><i class="fa fa-diamond"></i></a>
-                                </li>
+
                                 <li>		
                                     <a href="javascript:void(0);" class="waves-effect waves-button waves-classic toggle-fullscreen"><i class="fa fa-expand"></i></a>
                                 </li>
-                                <li class="dropdown">
-                                    
-                                    <ul class="dropdown-menu dropdown-md dropdown-list theme-settings" role="menu">
-                                        <li class="li-group">
-                                            <ul class="list-unstyled">
-                                                <li class="no-link" role="presentation">
-                                                    Fixed Header 
-                                                    <div class="ios-switch pull-right switch-md">
-                                                        <input type="checkbox" class="js-switch pull-right fixed-header-check" checked>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="li-group">
-                                            <ul class="list-unstyled">
-                                                <li class="no-link" role="presentation">
-                                                    Fixed Sidebar 
-                                                    <div class="ios-switch pull-right switch-md">
-                                                        <input type="checkbox" class="js-switch pull-right fixed-sidebar-check">
-                                                    </div>
-                                                </li>
-                                                <li class="no-link" role="presentation">
-                                                    Horizontal bar 
-                                                    <div class="ios-switch pull-right switch-md">
-                                                        <input type="checkbox" class="js-switch pull-right horizontal-bar-check">
-                                                    </div>
-                                                </li>
-                                                <li class="no-link" role="presentation">
-                                                    Toggle Sidebar 
-                                                    <div class="ios-switch pull-right switch-md">
-                                                        <input type="checkbox" class="js-switch pull-right toggle-sidebar-check">
-                                                    </div>
-                                                </li>
-                                                <li class="no-link" role="presentation">
-                                                    Compact Menu 
-                                                    <div class="ios-switch pull-right switch-md">
-                                                        <input type="checkbox" class="js-switch pull-right compact-menu-check">
-                                                    </div>
-                                                </li>
-                                                <li class="no-link" role="presentation">
-                                                    Hover Menu 
-                                                    <div class="ios-switch pull-right switch-md">
-                                                        <input type="checkbox" class="js-switch pull-right hover-menu-check">
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="li-group">
-                                            <ul class="list-unstyled">
-                                                <li class="no-link" role="presentation">
-                                                    Boxed Layout 
-                                                    <div class="ios-switch pull-right switch-md">
-                                                        <input type="checkbox" class="js-switch pull-right boxed-layout-check">
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="li-group">
-                                            <ul class="list-unstyled">
-                                                <li class="no-link" role="presentation">
-                                                    Choose Theme Color
-                                                    <div class="color-switcher">
-                                                        <a class="colorbox color-blue" href="?theme=blue" title="Blue Theme" data-css="blue"></a>
-                                                        <a class="colorbox color-green" href="?theme=green" title="Green Theme" data-css="green"></a>
-                                                        <a class="colorbox color-red" href="?theme=red" title="Red Theme" data-css="red"></a>
-                                                        <a class="colorbox color-white" href="?theme=white" title="White Theme" data-css="white"></a>
-                                                        <a class="colorbox color-purple" href="?theme=purple" title="purple Theme" data-css="purple"></a>
-                                                        <a class="colorbox color-dark" href="?theme=dark" title="Dark Theme" data-css="dark"></a>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="no-link"><button class="btn btn-default reset-options">Reset Options</button></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                                
                             <ul class="nav navbar-nav navbar-right">
 
                                 
@@ -180,35 +104,34 @@
                                     <img src="images/profile-menu-image.png" class="img-circle img-responsive" alt="">
                                 </div>
                                 <div class="sidebar-profile-details">
-                                    <span>fzavala<br><small>control y gestión</small></span>
+                                     <span>fzavala<br><small>control y gestión</small></span>
                                 </div>
                             </a>
                         </div>
                     </div>
                     <ul class="menu accordion-menu">
                         
-                        <li><a href="iniciomockup.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a></li>
-                        <li class="droplink"><a href="inputmockup.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon glyphicon-stats"></span><p>Proyección</p><span class="arrow"></span></a>
+                        <li><a href="/inicio" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a></li>
+                        <li class="droplink"><a href="inputmockup.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon glyphicon-stats"></span><p>Listas</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
-                                <li><a href="proyectar.html"><p>Proyectar</p></a>
-                                <li><a href="historicos.html"><p>Históricos</p></a>
+                                <li ><a href="/consultas"><p>Consultas</p></a>
+                                <li><a href="/noges"><p>No ges</p></a>
 
                         
                     </ul>
                         </li>
-                       <li><a href="/agenda" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-calendar"></span><p>Agenda médica</p></a>
-   
-                        </li>
+                        <li ><a href="/agenda" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-calendar"></span><p>Agenda médica</p></span></a></a>
+
                         
-                        <li class="droplink active open"><a href="index.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>Especialista</p><span class="arrow"></span></a></a>
+                        
+                        <li class="droplink  active open" ><a href="profile.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>Especialista</p><span class="arrow"></span></a></a>
                             <ul class="sub-menu">
-                                <li class="active"><a href="especialistas.html"><p>Especialistas</p></a>
+                               <li class="active"><a href="/especialista"><p>Especialistas</p></a>
                                 <li><a href="/especialidades"><p>Especialidades</p></a>
 
                         
                     </ul>
                         </li>
-                        <li><a href="patologias.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon glyphicon-pushpin"></span><p>Patología</p></a></li>
                         
                 </div><!-- Page Sidebar Inner -->
             </div><!-- Page Sidebar -->
@@ -219,6 +142,7 @@
                         <ol class="breadcrumb">
                             <li><a href="index.html">Inicio</a></li>
                             <li class="active">Especialistas</li>
+                            
                         </ol>
                     </div>
                 </div>
@@ -229,8 +153,12 @@
                             <div class="panel panel-white">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">Especialistas</h4>
+                                    
+
                                 </div>
                                 <div class="panel-body">
+                                <button id="bmodificar" type="button" style= "display:none"data-toggle="modal" data-target="#modificarModal"></button>
+                                <button type="button" class="btn btn-success m-b-sm" data-toggle="modal" data-target="#myModal">Agregar nuevo</button>
                                <div class="table-responsive">
                                    <table id="example2" class="display table">
                                        <thead>
@@ -242,6 +170,7 @@
                                                 <th>Rut</th>
                                                 <th>Teléfono</th>
                                                 <th>Contrato</th>
+                                                <th>Acción</th>
 
 
                                             </tr>
@@ -254,9 +183,10 @@
                                                 <th>Rut</th>
                                                 <th>Teléfono</th>
                                                 <th>Contrato</th>
+                                                <th>Acción</th>
                                             </tr>
                                         </tfoot>
-                                        <tbody>
+                                        <tbody id="especialista_body">
                                             {%for especialista in especialista_context%}
                                             <tr>
                                                 <td>{{especialista.nombre}}</td>
@@ -265,6 +195,21 @@
                                                 <td>{{especialista.rut}}</td>
                                                 <td>{{especialista.telefono}}</td>
                                                 <td>{{especialista.contrato}}</td>
+                                                
+                                                <td>
+                                                <form>
+                                                    <input type="hidden" name="nombre" value="{{especialista.nombre}}">
+                                                    <input type="hidden" name="especialidad" value="{{especialista.especialidad}}">
+                                                    <input type="hidden" name="contrato" value="{{especialista.contrato}}">
+                                                    <input type="hidden" name="sirh" value="{{especialista.sirh}}">
+                                                    <input type="hidden" name="rut" value="{{especialista.rut}}">
+                                                    <input type="hidden" name="telefono" value="{{especialista.telefono}}">
+
+                                                    <button type="button" name ="modificarid" value="{{especialista.id}}" class="btn btn-warning btn-rounded" onClick=modif(this.form);>Modificar</button>
+                                                    <button type="button" name ="eliminarid" value="{{especialista.id}}" class="btn btn-danger btn-rounded" onClick=eliminate(this.form);>Eliminar</button>
+
+                                                </form>
+                                                </td>
                                                 
 
                                             </tr>
@@ -276,7 +221,6 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-success m-b-sm" data-toggle="modal" data-target="#myModal">Agregar nuevo</button>
 
                     </div>    
 
@@ -284,129 +228,21 @@
                  
                  
                  
-                 <!-- Modal especialista-->
-
-                 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myLargeModalLabel">#Alexis Lamus</h4>
-                            </div>
-                            <div class="modal-body">
-
-                                <div role="tabpanel">
-                                    <!-- Nav tabs -->
-                                    <ul class="nav nav-pills" role="tablist">
-                                        <li role="presentation" class="active"><a href="#tab25" role="tab" data-toggle="tab">Información básica</a></li>
-                                        <li role="presentation"><a href="#tab26" role="tab" data-toggle="tab">Contrato</a></li>
-                                        <li role="presentation"><a href="#tab27" role="tab" data-toggle="tab">Rendimiento</a></li>
-
-                                    </ul>
-                                    <div class="tab-content">
-                                        <div role="tabpanel" class="tab-pane active fade in" id="tab25">
-                                            <table id="user" class="table table-bordered table-striped" style="clear: both">
-                                                <tbody> 
-                                                    <tr>   
-                                                        <td style="width: 35%;">Nombre completo</td>
-                                                        <td style="width: 65%;"><a href="#" id="username" data-type="text" data-pk="1" data-title="Ingresa nombre" class="editable editable-click" style="display: inline;">Alexis Darkside Lamus Mosqueira</a></td>
-                                                    </tr>
-                                                    <tr>   
-                                                        <td style="width: 35%;">Rut</td>
-                                                        <td style="width: 65%;"><a href="#" id="username" data-type="text" data-pk="1" data-title="Ingresa rut" class="editable editable-click" style="display: inline;">19.486.544-9</a></td>
-                                                    </tr> 
-                                                    <tr>   
-                                                        <td style="width: 35%;">Especialidad</td>
-                                                        <td style="width: 65%;"><a href="#" id="username" data-type="text" data-pk="1" data-title="Ingresa especialidad" class="editable editable-click" style="display: inline;">Cirugia infantil</a></td>
-                                                    </tr>
-
-                                                    <tr>   
-                                                        <td style="width: 35%;">Teléfono</td>
-                                                        <td style="width: 65%;"><a href="#" id="username" data-type="text" data-pk="1" data-title="Ingresa número telefónico" class="editable editable-click" style="display: inline;">978346074</a></td>
-                                                    </tr>
-   
-                                                </tbody>
-                                            </table>
-                                            <div style="float: right; margin-bottom: 10px">
-                                                <button id="enable" class="btn btn-default">Editor</button>
-                                            </div>                                               
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane fade" id="tab26">
-                                            <table id="user" class="table table-bordered table-striped" style="clear: both">
-                                                <tbody> 
-                                                    <tr>   
-                                                        <td style="width: 35%;">Nombre contrato</td>
-                                                        <td style="width: 65%;"><a href="#" id="username" data-type="text" data-pk="1" data-title="Ingresa nombre" class="editable editable-click" style="display: inline;">Full45</a></td>
-                                                    </tr>
-                                                    <tr>   
-                                                        <td style="width: 35%;">Horas contrato</td>
-                                                        <td style="width: 65%;"><a href="#" id="username" data-type="text" data-pk="1" data-title="Ingresa rut" class="editable editable-click" style="display: inline;">44</a></td>
-                                                    </tr> 
-                                                    <tr>   
-                                                        <td style="width: 35%;">Tipo contrato</td>
-                                                        <td style="width: 65%;"><a href="#" id="username" data-type="text" data-pk="1" data-title="Ingresa rut" class="editable editable-click" style="display: inline;">Full</a></td>
-                                                    </tr> 
-                                                    <tr>   
-                                                        <td style="width: 35%;">Horas pabellon</td>
-                                                        <td style="width: 65%;"><a href="#" id="username" data-type="text" data-pk="1" data-title="Ingresa especialidad" class="editable editable-click" style="display: inline;">12</a></td>
-                                                    </tr>
-                                                    <tr>   
-                                                        <td style="width: 35%;">Horas atención abierta</td>
-                                                        <td style="width: 65%;"><a href="#" id="username" data-type="text" data-pk="1" data-title="Ingresa número telefónico" class="editable editable-click" style="display: inline;">5</a></td>
-                                                    </tr>
-                                                    <tr>   
-                                                        <td style="width: 35%;">Horas atención cerrada</td>
-                                                        <td style="width: 65%;"><a href="#" id="username" data-type="text" data-pk="1" data-title="Ingresa número telefónico" class="editable editable-click" style="display: inline;">11</a></td>
-                                                    </tr>
-                                                    <tr>   
-                                                        <td style="width: 35%;">Horas Administrativas</td>
-                                                        <td style="width: 65%;"><a href="#" id="username" data-type="text" data-pk="1" data-title="Ingresa número telefónico" class="editable editable-click" style="display: inline;">5</a></td>
-                                                    </tr>
-                                                    <tr>   
-                                                        <td style="width: 35%;">Horas Capacitación</td>
-                                                        <td style="width: 65%;"><a href="#" id="username" data-type="text" data-pk="1" data-title="Ingresa número telefónico" class="editable editable-click" style="display: inline;">6</a></td>
-                                                    </tr>
-                                                    <tr>   
-                                                        <td style="width: 35%;">Horas procedimientos</td>
-                                                        <td style="width: 65%;"><a href="#" id="username" data-type="text" data-pk="1" data-title="Ingresa número telefónico" class="editable editable-click" style="display: inline;">0</a></td>
-                                                    </tr>
-
-   
-                                                </tbody>
-                                            </table>
-                                            <div style="float: right; margin-bottom: 10px">
-                                                <button id="enable" class="btn btn-default">Editor</button>
-                                            </div>                                         </div>
-                                        <div role="tabpanel" class="tab-pane fade" id="tab27">
-                                            <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-success">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                 
                 <!-- Modal especialista-->
                 <!-- Modal agregar -->
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <button type="button" id ="cerrar" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     <h4 class="modal-title" id="myModalLabel">Nuevo Especialista</h4>
                                 </div>
                                 <div class="modal-body">
-                                      <form method="get" action="/agregarEspecialista">
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Nombre</label>
                                             <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="input-nombre">
+                                            <input type="text" class="form-control" name="input-nombre" id="input-nombre">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -433,28 +269,27 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">SIRH</label>
                                             <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="input-sirh">
+                                            <input type="text" class="form-control" name="input-sirh" id="input-sirh">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Rut</label>
                                             <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="input-rut">
+                                            <input type="text" class="form-control" name="input-rut" id="input-rut" placeholder="Ingrese rut sin puntos.">
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">teléfono</label>
                                             <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="input-telefono">
+                                            <input type="number" class="form-control" name="input-telefono" placeholder="9xxxxxxxx" id="input-telefono">
                                             </div>
                                         </div>
 
                                         
                                         
-                                        <button type="submit" class="btn btn-primary">Guardar</button>
-                                        </form>
+                                        <button type="submit" class="btn btn-primary" onClick=agregar();>Guardar</button>
 
                                 </div>
                                 
@@ -463,68 +298,80 @@
                     </div>
                 <!-- Modal agregar nueva espc.-->
 
+                <!-- Modal modificar -->
+                    <div class="modal fade" id="modificarModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" id ="cerrarM" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Modificar</h4>
+                                </div>
+                                <div class="modal-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Nombre</label>
+                                            <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="input-nombreM" id="input-nombreM" value="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                           <label class="col-sm-2 control-label">Especialidad</label>
+                                            <div class="col-sm-10">
+                                                <select class="form-control m-b-sm" name="especialidadM" id="especialidadM" >
+                                                    {%for especialidad in especialidad_context %}
+                                                    <option value="{{especialidad.id}}" id ="{{especialidad.nombre}}">{{especialidad.nombre}}</option>
+                                                    {%endfor%}
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Hrs. semanales</label>
+                                            <div class="col-sm-10">
+                                                <select class="form-control m-b-sm" name="contratoM" id="contratoM">
+                                                    {%for contrato in contrato_context %}
+                                                    <option value="{{contrato.id}}" id="{{contrato.nombre}}">{{contrato.horas_contrato}}</option>
+                                                    {%endfor%}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">SIRH</label>
+                                            <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="input-sirhM" id="input-sirhM">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Rut</label>
+                                            <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="input-rutM" id="input-rutM" placeholder="Ingrese rut sin puntos.">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">teléfono</label>
+                                            <div class="col-sm-10">
+                                            <input type="number" class="form-control" name="input-telefonoM" placeholder="9xxxxxxxx" id="input-telefonoM">
+                                            </div>
+                                        </div>
+
+                                        
+                                        
+                                        <button type="submit" class="btn btn-primary" onClick=enviar();>Guardar</button>
+
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
                  <!-- Main Wrapper -->
                 <div class="page-footer">
                     <p class="no-s">2021 &copy; Universidad de Talca.</p>
                 </div>
             </div><!-- Page Inner -->
         </main><!-- Page Content -->
-        <nav class="cd-nav-container" id="cd-nav">
-            <header>
-                <h3>Navigation</h3>
-                <a href="#0" class="cd-close-nav">Close</a>
-            </header>
-            <ul class="cd-nav list-unstyled">
-                <li class="cd-selected" data-menu="index">
-                    <a href="javsacript:void(0);">
-                        <span>
-                            <i class="glyphicon glyphicon-home"></i>
-                        </span>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
-                <li data-menu="profile">
-                    <a href="javsacript:void(0);">
-                        <span>
-                            <i class="glyphicon glyphicon-user"></i>
-                        </span>
-                        <p>Profile</p>
-                    </a>
-                </li>
-                <li data-menu="inbox">
-                    <a href="javsacript:void(0);">
-                        <span>
-                            <i class="glyphicon glyphicon-envelope"></i>
-                        </span>
-                        <p>Mailbox</p>
-                    </a>
-                </li>
-                <li data-menu="#">
-                    <a href="javsacript:void(0);">
-                        <span>
-                            <i class="glyphicon glyphicon-tasks"></i>
-                        </span>
-                        <p>Tasks</p>
-                    </a>
-                </li>
-                <li data-menu="#">
-                    <a href="javsacript:void(0);">
-                        <span>
-                            <i class="glyphicon glyphicon-cog"></i>
-                        </span>
-                        <p>Settings</p>
-                    </a>
-                </li>
-                <li data-menu="calendar">
-                    <a href="javsacript:void(0);">
-                        <span>
-                            <i class="glyphicon glyphicon-calendar"></i>
-                        </span>
-                        <p>Calendar</p>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        
         <div class="cd-overlay"></div>
 	
 
@@ -551,10 +398,14 @@
         <script src="{% static 'plugins/x-editable/bootstrap3-editable/js/bootstrap-editable.js' %}"></script>
         <script src="{% static 'plugins/bootstrap-datepicker/js/bootstrap-datepicker.js' %}"></script>
         <script src="{% static 'js/modern.min.js' %}"></script>
+        <script src="{% static 'plugins/toastr/toastr.min.js' %}"></script>
+
         <script src="{% static 'js/pages/table-data.js' %}"></script>
         <script src="{% static 'js/pages/form-x-editable.js' %}"></script>
-        <script src="{% static 'js/pages/form-select2.js' %}"></script>
 
+        <script src="{% static 'js/pages/crud_especialistas.js' %}"></script>
+        <!--<script src="{% static 'js/pages/form-select2.js' %}"></script>
+        -->
 
         
     </body>

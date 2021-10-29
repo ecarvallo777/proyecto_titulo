@@ -89,7 +89,6 @@ $(function(){
     $('#username').editable({
            url: '/post',
            type: 'text',
-           pk: 1,
            name: 'username',
            title: 'Enter username'
     });
@@ -118,7 +117,7 @@ $(function(){
         }   
     });    
     
-    $('#status').editable();   
+    $('#statuss').editable();   
     
     $('#group').editable({
        showbuttons: false 

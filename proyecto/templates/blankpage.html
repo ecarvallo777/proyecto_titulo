@@ -10,28 +10,28 @@
         <meta name="description" content="Admin Dashboard Template" />
         <meta name="keywords" content="admin,dashboard" />
         <meta name="author" content="Steelcoders" />
-        
+        {% load static %}
         <!-- Styles -->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-        <link href="assets/plugins/pace-master/themes/blue/pace-theme-flash.css" rel="stylesheet"/>
-        <link href="assets/plugins/uniform/css/uniform.default.min.css" rel="stylesheet"/>
-        <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/plugins/fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/plugins/line-icons/simple-line-icons.css" rel="stylesheet" type="text/css"/>	
-        <link href="assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet" type="text/css"/>	
-        <link href="assets/plugins/waves/waves.min.css" rel="stylesheet" type="text/css"/>	
-        <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/plugins/3d-bold-navigation/css/style.css" rel="stylesheet" type="text/css"/>	
-        <link href="assets/plugins/slidepushmenus/css/component.css" rel="stylesheet" type="text/css"/>
+        <link href="{% static 'plugins/pace-master/themes/blue/pace-theme-flash.css' %}" rel="stylesheet"/>
+        <link href="{% static 'plugins/uniform/css/uniform.default.min.css' %}" rel="stylesheet"/>
+        <link href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static 'plugins/fontawesome/css/font-awesome.css' %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static 'plugins/line-icons/simple-line-icons.css' %}" rel="stylesheet" type="text/css"/>	
+        <link href="{% static 'plugins/offcanvasmenueffects/css/menu_cornerbox.css' %}" rel="stylesheet" type="text/css"/>	
+        <link href="{% static 'plugins/waves/waves.min.css" rel="stylesheet' %}" type="text/css"/>	
+        <link href="{% static 'plugins/switchery/switchery.min.css' %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static 'plugins/3d-bold-navigation/css/style.css' %}" rel="stylesheet" type="text/css"/>	
+        <link href="{% static 'plugins/slidepushmenus/css/component.css' %}" rel="stylesheet" type="text/css"/>
 
         
         <!-- Theme Styles -->
-        <link href="assets/css/modern.min.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/css/themes/green.css" class="theme-color" rel="stylesheet" type="text/css"/>
-        <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
+        <link href="{% static 'css/modern.min.css' %} " rel="stylesheet" type="text/css"/>
+        <link href="{% static 'css/themes/green.css' %} " class="theme-color" rel="stylesheet" type="text/css"/>
+        <link href="{% static 'css/custom.css' %} " rel="stylesheet" type="text/css"/>
         
-        <script src="assets/plugins/3d-bold-navigation/js/modernizr.js"></script>
-        <script src="assets/plugins/offcanvasmenueffects/js/snap.svg-min.js"></script>
+        <script src="{% static 'plugins/3d-bold-navigation/js/modernizr.js' %} "></script>
+        <script src="{% static 'plugins/offcanvasmenueffects/js/snap.svg-min.js' %} "></script>
         
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -183,21 +183,17 @@
                     <ul class="menu accordion-menu">
                         
                         <li><a href="iniciomockup.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-home"></span><p>Dashboard</p></a></li>
-                        <li class="droplink"><a href="inputmockup.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon glyphicon-stats"></span><p>Proyección</p><span class="arrow"></span></a>
+                        <li class="droplink active open"><a href="inputmockup.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon glyphicon-stats"></span><p>Listas</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
-                                <li><a href="proyectar.html"><p>Proyectar</p></a>
-                                <li><a href="historicos.html"><p>Históricos</p></a>
+                                <li class="active"><a href="/consultas"><p>Consultas</p></a>
+                                <li><a href="/noges"><p>No ges</p></a>
 
                         
                     </ul>
                         </li>
-                        <li class="droplink"><a href="patologias.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-calendar"></span><p>Agenda médica</p><span class="arrow"></span></a></a>
-                            <ul class="sub-menu">
-                                <li><a href="agenda.html"><p>Agendar</p></a>
-                                <li><a href="veragendas.html"><p>Ver agendas</p></a>
+                        <li ><a href="/agenda" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-calendar"></span><p>Agenda médica</p></span></a></a>
 
                         
-                            </ul>  
                         
                         <li class="droplink"><a href="profile.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon-user"></span><p>Especialista</p><span class="arrow"></span></a></a>
                             <ul class="sub-menu">
@@ -213,11 +209,11 @@
             </div><!-- Page Sidebar -->
             <div class="page-inner">
                 <div class="page-title">
-                    <h3>Blank page</h3>
+                    <h3>Consultas</h3>
                     <div class="page-breadcrumb">
                         <ol class="breadcrumb">
-                            <li><a href="index.html">Inicio</a></li>
-                            <li class="active">blank</li>
+                            <li><a href="/inicio">Inicio</a></li>
+                            <li class="active">Consultas</li>
                         </ol>
                     </div>
                 </div>
@@ -289,22 +285,20 @@
 	
 
         <!-- Javascripts -->
-        <script src="assets/plugins/jquery/jquery-2.1.4.min.js"></script>
-        <script src="assets/plugins/jquery-ui/jquery-ui.min.js"></script>
-        <script src="assets/plugins/pace-master/pace.min.js"></script>
-        <script src="assets/plugins/jquery-blockui/jquery.blockui.js"></script>
-        <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-        <script src="assets/plugins/switchery/switchery.min.js"></script>
-        <script src="assets/plugins/uniform/jquery.uniform.min.js"></script>
-        <script src="assets/plugins/offcanvasmenueffects/js/classie.js"></script>
-        <script src="assets/plugins/offcanvasmenueffects/js/main.js"></script>
-        <script src="assets/plugins/waves/waves.min.js"></script>
-        <script src="assets/plugins/3d-bold-navigation/js/main.js"></script>
-        <script src="assets/plugins/fullcalendar/lib/moment.min.js"></script>
-        <script src="assets/plugins/fullcalendar/fullcalendar.min.js"></script>
-        <script src="assets/js/modern.min.js"></script>
-        <script src="assets/js/pages/calendar.js"></script>
+        <script src="{% static 'plugins/jquery/jquery-2.1.4.min.js' %}"></script>
+        <script src="{% static 'plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+        <script src="{% static 'plugins/pace-master/pace.min.js' %}"></script>
+        <script src="{% static 'plugins/jquery-blockui/jquery.blockui.js' %}"></script>
+        <script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'plugins/jquery-slimscroll/jquery.slimscroll.min.js' %}"></script>
+        <script src="{% static 'plugins/switchery/switchery.min.js' %}"></script>
+        <script src="{% static 'plugins/uniform/jquery.uniform.min.js' %}"></script>
+        <script src="{% static 'plugins/offcanvasmenueffects/js/classie.js' %}"></script>
+        <script src="{% static 'plugins/offcanvasmenueffects/js/main.js' %}"></script>
+        <script src="{% static 'plugins/waves/waves.min.js' %}"></script>
+        <script src="{% static 'plugins/3d-bold-navigation/js/main.js' %}"></script>
+
+        <script src="{% static 'js/modern.min.js' %}"></script>
         
 
 
