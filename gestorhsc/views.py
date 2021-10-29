@@ -586,29 +586,54 @@ def precargar(request):
     
     semana1_numeric=semana1.weekday();
     id = request.POST.get("id")
+    events = {}
 
     if semana1_numeric != 6:
-        this_monday = semana1 - timedelta(semana1_numeric)
-        eventos = Agenda.objects.filter(especialista_id=id)
-        events = {}
-        i=0
-        for evento in eventos:
-            date_event = evento.start
-            date_event=date_event.split(sep="T")
-            date_event = datetime.strptime(date_event[0], '%Y-%m-%d')
+        first_monday = semana1 - timedelta(semana1_numeric)
+ 
+    else:
+        first_monday = semana1 + timedelta(1)
+        
+    eventos = Agenda.objects.filter(especialista_id=id)
+    i=0
+    for evento in eventos:
+        date_event = evento.start
+        date_event=date_event.split(sep="T")
+        date_event = datetime.strptime(date_event[0], '%Y-%m-%d')
+        
+        posicion_evento = first_monday + timedelta(date_event.weekday()) #Fecha original
+        posicion_evento_ = str(posicion_evento).split(sep=" ")
+        posicion_evento_ = posicion_evento_[0]
+        #print("La fecha del evento es: "+str(date_event))
+        #print("La fecha base del evento es: "+str(posicion_evento))
+        if str(date_event) == str(posicion_evento):
+            for u in range(1, 17): 
+                semanaI= posicion_evento+timedelta(u*7)
+                semanaI= str(semanaI).split(sep=" ")
+                semanaI= semanaI[0]
+                    
+                    
+                replaced_start = (evento.start).replace(str(posicion_evento_), semanaI)
+                replaced_end = (evento.end).replace(str(posicion_evento_), semanaI)
+                p= Agenda(title=evento.title,
+                            especialista_id=evento.especialista_id,
+                            start=replaced_start,
+                            end=replaced_end)
+                p.save()
+                event = {}
+                i=i+1
+                event['title'] = evento.title
+                event['start'] = replaced_start
+                event['end'] = replaced_end
+                events[i] = event
             
-            
-
-
-
-
-    #Id del especialista
-    
+    events = json.dumps(events)           
+        
     
     
 
 
     
-    return HttpResponse()
+    return HttpResponse(events)
 
 # Create your views here.
