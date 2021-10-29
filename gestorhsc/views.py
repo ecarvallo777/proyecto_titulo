@@ -574,8 +574,8 @@ def eliminarEspecialidad(request):
     
     return HttpResponse()
 
-
-
+## Prueba github
+##
 @csrf_exempt
 
 def precargar(request):
