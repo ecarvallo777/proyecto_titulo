@@ -593,6 +593,7 @@ def precargar(request):
  
     else:
         first_monday = semana1 + timedelta(1)
+        print(first_monday)
         
     eventos = Agenda.objects.filter(especialista_id=id)
     i=0
