@@ -212,36 +212,71 @@
                                             <div class="tab-content">
                                                 <div class="tab-pane active fade in" id="tab1">
                                                           <div class="table-responsive">
-                                                 <table id ="user" class="table">
+                                                 <table id ="user" class="display table" style="width: 100%; cellspacing: 0;">
                                             <thead>
                                                 <tr>
                                                     <th></th>
-                                                    <th>Nuevas</th>
-                                                    <th>Controles</th>
+                                                    <th>Ene</th>
+                                                    <th>Feb</th>
+                                                    <th>Mar</th>
+                                                    <th>Abr</th>
+                                                    <th>May</th>
+                                                    <th>Jun</th>
+                                                    <th>Jul</th>
+                                                    <th>Ago</th>
+                                                    <th>Sep</th>
+                                                    <th>Oct</th>
+                                                    <th>Nov</th>
+                                                    <th>Dic</th>
                                                     <th>Total</th>
+
 
                                                 </tr>
                                             </thead>
                                             <tbody>
 
-                                             {%for meta in consultas_metas%}
+                                             {%for especialidad in nogesMES%}
                                                 <tr>
 
-                                                    <th scope="row" id="{{meta.especialidad}}">{{meta.especialidad}}</th>
-                                                    <td><a href="#" id="{{meta.especialidad}}_nuevas" data-type="number" data-pk="1" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{meta.nuevas}}</a></td>
-                                                    <td><a href="#" id="{{meta.especialidad}}_controles" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{meta.controles}}</a></td>
+                                                    <th scope="row" id="{{especialidad.especialidad}}">{{especialidad.especialidad}}</th>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_ene" data-type="number" data-pk="1" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.ene}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_feb" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.feb}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_mar" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.mar}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_abr" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.abr}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_may" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.may}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_jun" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.jun}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_jul" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.jul}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_ago" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.ago}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_sep" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.sep}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_oct" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.oct}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_nov" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.nov}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_dic" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.dic}}</a></td>
 
-                                                    <td id="{{meta.especialidad}}_total">{{meta.total}}</td>
+                                                    <td id="{{especialidad.especialidad}}_total">{{especialidad.tot}}</td>
 
                                                 </tr>
                                             {%endfor%}
+                                            {%for total in NogesTotales %}
                                              <tr>
                                                     <th scope="row">Total</th>
-                                                    <td id="Total_nuevas">{{consultas_totales.totalNuevas}}</td>
-                                                    <td id="Total_controles">{{consultas_totales.totalControles}}</td>
-                                                    <td id ="TotalTotal">{{consultas_totales.totalTotal}}</td>
+                                                    <td id="tot_ene">{{total.ene}}</td>
+                                                    <td id="tot_feb">{{total.feb}}</td>
+                                                    <td id="tot_mar">{{total.mar}}</td>
+                                                    <td id="tot_abr">{{total.abr}}</td>
+                                                    <td id="tot_may">{{total.may}}</td>
+                                                    <td id="tot_jun">{{total.jun}}</td>
+                                                    <td id="tot_jul">{{total.jul}}</td>
+                                                    <td id="tot_ago">{{total.ago}}</td>
+                                                    <td id="tot_sep">{{total.sep}}</td>
+                                                    <td id="tot_oct">{{total.oct}}</td>
+                                                    <td id="tot_nov">{{total.nov}}</td>
+                                                    <td id="tot_dic">{{total.dic}}</td>
+
+                                                    <td id="tot_total">{{total.tot}}</td>
+
 
                                                 </tr>
+                                            {%endfor%}
                                             </tbody>
                                         </table>
                                     </div>
@@ -559,8 +594,13 @@
         <script src="{% static 'plugins/waves/waves.min.js' %}"></script>
         <script src="{% static 'plugins/3d-bold-navigation/js/main.js' %}"></script>
 
-        <script src="{% static 'js/modern.min.js' %}"></script>
         
+        <script src="{% static 'plugins/x-editable/bootstrap3-editable/js/bootstrap-editable_noges.js' %}"></script>
+
+        <script src="{% static 'js/modern.min.js' %}"></script>
+        <script src="{% static 'plugins/toastr/toastr.min.js' %}"></script>
+
+        <script src="{% static 'js/pages/form-x-editable_noges.js' %}"></script>
 
 
 

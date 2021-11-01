@@ -1,6 +1,6 @@
 from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import render
-from gestorhsc.models import Especialista, Contrato, Especialidad, Agenda, MetasConsultas, MetasTotales, ConsultasCumplimiento
+from gestorhsc.models import Especialista, Contrato, Especialidad, Agenda, MetasConsultas, MetasTotales, ConsultasCumplimiento, NogesMES, Nogestotales
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 from datetime import date, timedelta, datetime
@@ -449,9 +449,13 @@ def consultas(request):
     
     return render(request, 'consultas.html/', context)
 def noges(request):
+    # nogesMES, EspecialidadnoGES
+    nogesMES = NogesMES.objects.all()
+    NogesTotales = Nogestotales.objects.all()
     
+    context = {'nogesMES':nogesMES, 'NogesTotales':NogesTotales}
     
-    return render(request, 'noges.html/')
+    return render(request, 'noges.html/', context)
 
 @csrf_exempt
 
@@ -637,4 +641,152 @@ def precargar(request):
     
     return HttpResponse(events)
 
+@csrf_exempt
+
+def post_noges(request):
+    name = request.POST.get('name') 
+    valueSubmit = request.POST.get('submitValue')
+    name= name.split(sep="_")
+    
+    t = NogesMES.objects.get(nombre=name[0])
+    s = Nogestotales.objects.get(id=1)
+    
+    dict_total=s.__dict__
+    
+    
+    
+    meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic']
+    dicts= t.__dict__
+    def sumaMess(fila):
+        sumaMes=0
+        for mes in meses:
+            sumaMes=sumaMes+ int(fila[mes])
+        return sumaMes 
+    def sumaTotal():
+        totalActual = dict_total[name[1]]   
+        sumaTotal_= int(totalActual) - int(oldValue) + int(valueSubmit)
+        
+        return sumaTotal_
+
+    if name[1] == "ene":
+        oldValue= t.ene
+        totalMes = sumaTotal()
+        s.ene = totalMes
+        s.save()
+        t.ene = valueSubmit
+        t.save()
+        
+
+
+    elif name[1] =="feb":
+        oldValue= t.feb
+        totalMes = sumaTotal()
+        s.feb = totalMes
+        s.save()
+        t.feb = valueSubmit
+        t.save()
+
+    elif name[1] == "mar":
+        oldValue= t.mar
+        totalMes = sumaTotal()
+        s.feb = totalMes
+        s.save()
+        t.mar = valueSubmit
+        t.save()
+
+    elif name[1] == "abr":
+        oldValue= t.abr
+        totalMes = sumaTotal()
+        s.abr = totalMes
+        s.save()
+        t.abr = valueSubmit
+        t.save()
+
+    elif name[1] == "may":
+        oldValue= t.may
+        totalMes = sumaTotal()
+        s.may = totalMes
+        s.save()
+        t.may = valueSubmit
+        t.save()
+
+    elif name[1] == "jun":
+        oldValue= t.jun
+        totalMes = sumaTotal()
+        s.jun = totalMes
+        s.save()
+        t.jun = valueSubmit
+        t.save()
+
+    elif name[1] == "jul":
+        oldValue= t.jul
+        totalMes = sumaTotal()
+        s.jul = totalMes
+        s.save()
+        t.jul = valueSubmit
+        t.save()
+
+    elif name[1] == "ago":
+        oldValue= t.ago
+        totalMes = sumaTotal()
+        s.ago = totalMes
+        s.save()
+        t.ago = valueSubmit
+        t.save()
+
+    elif name[1] == "sep":
+        oldValue= t.sep
+        totalMes = sumaTotal()
+        s.sep = totalMes
+        s.save()
+        t.sep = valueSubmit
+        t.save()
+ 
+    elif name[1] == "oct":
+        oldValue= t.oct
+        totalMes = sumaTotal()
+        s.oct = totalMes
+        s.save()
+        t.oct = valueSubmit
+        t.save()
+
+    elif name[1] == "nov":
+        oldValue= t.nov
+        totalMes = sumaTotal()
+        s.nov = totalMes
+        s.save()
+        t.nov = valueSubmit
+        t.save()
+
+    elif name[1] == "dic":
+        oldValue= t.dic
+        totalMes = sumaTotal()
+        s.dic = totalMes
+        s.save()
+        t.dic = valueSubmit
+        t.save()
+
+    totalEspecialidad= sumaMess(dicts)
+    t.tot = totalEspecialidad
+    t.save()
+    sumaTotal()
+    
+    totalTotal=sumaMess(dict_total)
+    s.tot= totalTotal
+    s.save()
+    
+    ## Send Json
+    context = {}
+    context['totalMes'] = totalMes
+    context['totalEspecialidad'] = totalEspecialidad
+    context['totalTotal'] = totalTotal
+    context['Especialidad'] = name[0]
+    context['Mes'] = name[1]
+    context = json.dumps(context)
+
+    
+    
+    
+
+    return HttpResponse(context)
 # Create your views here.

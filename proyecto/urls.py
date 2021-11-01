@@ -49,5 +49,6 @@ urlpatterns = [
     path('get_programacion/', get_programacion),
     
     path('precargar/', precargar),
+    path('post_noges/', post_noges),
 
 ]
