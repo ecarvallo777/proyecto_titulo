@@ -374,8 +374,11 @@ def get_eventos(request):
     eventos_queryset = Agenda.objects.filter(title='Consultas')   
     list =[]
     post = eventos_queryset.only('especialista_id')
+    especialidades = Especialidad.objects.all()
+    print(especialidades['Cardiología'])    
     for e in post:
         especialidad = str(e.especialista.especialidad)
+
 
         i =0
         u='false'
