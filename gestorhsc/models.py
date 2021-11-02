@@ -3,7 +3,7 @@ from django.db import models
 class Especialidad(models.Model):
     nombre= models.CharField(max_length=30)
     tasa_crecimiento= models.FloatField()
-    rendimiento= models.FloatField()
+    ausentismo= models.FloatField()
     
     def __str__(self): # __unicode__ en Python 2
         return self.nombre
