@@ -1,6 +1,6 @@
 from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import render
-from gestorhsc.models import Especialista, Contrato, Especialidad, Agenda, MetasConsultas, MetasTotales, ConsultasCumplimiento
+from gestorhsc.models import Especialista, Contrato, Especialidad, Agenda, MetasConsultas, MetasTotales, ConsultasCumplimiento, NogesMES, Nogestotales
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 from datetime import date, timedelta, datetime
@@ -374,8 +374,10 @@ def get_eventos(request):
     eventos_queryset = Agenda.objects.filter(title='Consultas')   
     list =[]
     post = eventos_queryset.only('especialista_id')
+  
     for e in post:
         especialidad = str(e.especialista.especialidad)
+
 
         i =0
         u='false'
@@ -449,9 +451,13 @@ def consultas(request):
     
     return render(request, 'consultas.html/', context)
 def noges(request):
+    # nogesMES, EspecialidadnoGES
+    nogesMES = NogesMES.objects.all()
+    NogesTotales = Nogestotales.objects.all()
     
+    context = {'nogesMES':nogesMES, 'NogesTotales':NogesTotales}
     
-    return render(request, 'noges.html/')
+    return render(request, 'noges.html/', context)
 
 @csrf_exempt
 
@@ -574,51 +580,62 @@ def eliminarEspecialidad(request):
     
     return HttpResponse()
 
-
-
+## Prueba github
+##
 @csrf_exempt
 
 def precargar(request):
-    today = date.today()
-    today_numeric = today.weekday()
-    this_monday = today - timedelta(today_numeric)
-    last_monday = this_monday - timedelta(7)
+    #Recibe la fecha de semana 1
+    semana1 = request.POST.get("semana1")
+    semana1 = semana1.split(sep="T")
+    semana1 = datetime.strptime(semana1[0], '%Y-%m-%d')
     
-    
-    
-    id = int(request.POST.get("id"))
-    eventos = Agenda.objects.filter(especialista_id=id)
+    semana1_numeric=semana1.weekday();
+    id = request.POST.get("id")
     events = {}
+
+    if semana1_numeric != 6:
+        first_monday = semana1 - timedelta(semana1_numeric)
+ 
+    else:
+        first_monday = semana1 + timedelta(1)
+        print(first_monday)
+        
+    eventos = Agenda.objects.filter(especialista_id=id)
     i=0
     for evento in eventos:
-
-        
         date_event = evento.start
         date_event=date_event.split(sep="T")
-        
         date_event = datetime.strptime(date_event[0], '%Y-%m-%d')
-        #print(date_event.weekday())
         
-        this_weekend_count = str(this_monday + timedelta(date_event.weekday()))
-        last_weekend_count = str(last_monday + timedelta(date_event.weekday()))
+        posicion_evento = first_monday + timedelta(date_event.weekday()) #Fecha original
+        posicion_evento_ = str(posicion_evento).split(sep=" ")
+        posicion_evento_ = posicion_evento_[0]
+        #print("La fecha del evento es: "+str(date_event))
+        #print("La fecha base del evento es: "+str(posicion_evento))
+        if str(date_event) == str(posicion_evento):
+            for u in range(1, 17): 
+                semanaI= posicion_evento+timedelta(u*7)
+                semanaI= str(semanaI).split(sep=" ")
+                semanaI= semanaI[0]
+                    
+                    
+                replaced_start = (evento.start).replace(str(posicion_evento_), semanaI)
+                replaced_end = (evento.end).replace(str(posicion_evento_), semanaI)
+                p= Agenda(title=evento.title,
+                            especialista_id=evento.especialista_id,
+                            start=replaced_start,
+                            end=replaced_end)
+                p.save()
+                event = {}
+                i=i+1
+                event['title'] = evento.title
+                event['start'] = replaced_start
+                event['end'] = replaced_end
+                events[i] = event
+            
+    events = json.dumps(events)           
         
-        #########
-        replaced_start = (evento.start).replace(last_weekend_count, this_weekend_count)
-        replaced_end = (evento.end).replace(last_weekend_count, this_weekend_count)
-        #########
-        
-        p = Agenda(title=evento.title,
-                   especialista_id=evento.especialista_id,
-                   start=replaced_start,
-                   end=replaced_end)
-        p.save()
-        event = {}
-        i=i+1
-        event['title'] = evento.title
-        event['start'] = replaced_start
-        event['end'] = replaced_end
-        events[i] = event
-    events = json.dumps(events)
     
     
 
@@ -626,4 +643,152 @@ def precargar(request):
     
     return HttpResponse(events)
 
+@csrf_exempt
+
+def post_noges(request):
+    name = request.POST.get('name') 
+    valueSubmit = request.POST.get('submitValue')
+    name= name.split(sep="_")
+    
+    t = NogesMES.objects.get(nombre=name[0])
+    s = Nogestotales.objects.get(id=1)
+    
+    dict_total=s.__dict__
+    
+    
+    
+    meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic']
+    dicts= t.__dict__
+    def sumaMess(fila):
+        sumaMes=0
+        for mes in meses:
+            sumaMes=sumaMes+ int(fila[mes])
+        return sumaMes 
+    def sumaTotal():
+        totalActual = dict_total[name[1]]   
+        sumaTotal_= int(totalActual) - int(oldValue) + int(valueSubmit)
+        
+        return sumaTotal_
+
+    if name[1] == "ene":
+        oldValue= t.ene
+        totalMes = sumaTotal()
+        s.ene = totalMes
+        s.save()
+        t.ene = valueSubmit
+        t.save()
+        
+
+
+    elif name[1] =="feb":
+        oldValue= t.feb
+        totalMes = sumaTotal()
+        s.feb = totalMes
+        s.save()
+        t.feb = valueSubmit
+        t.save()
+
+    elif name[1] == "mar":
+        oldValue= t.mar
+        totalMes = sumaTotal()
+        s.feb = totalMes
+        s.save()
+        t.mar = valueSubmit
+        t.save()
+
+    elif name[1] == "abr":
+        oldValue= t.abr
+        totalMes = sumaTotal()
+        s.abr = totalMes
+        s.save()
+        t.abr = valueSubmit
+        t.save()
+
+    elif name[1] == "may":
+        oldValue= t.may
+        totalMes = sumaTotal()
+        s.may = totalMes
+        s.save()
+        t.may = valueSubmit
+        t.save()
+
+    elif name[1] == "jun":
+        oldValue= t.jun
+        totalMes = sumaTotal()
+        s.jun = totalMes
+        s.save()
+        t.jun = valueSubmit
+        t.save()
+
+    elif name[1] == "jul":
+        oldValue= t.jul
+        totalMes = sumaTotal()
+        s.jul = totalMes
+        s.save()
+        t.jul = valueSubmit
+        t.save()
+
+    elif name[1] == "ago":
+        oldValue= t.ago
+        totalMes = sumaTotal()
+        s.ago = totalMes
+        s.save()
+        t.ago = valueSubmit
+        t.save()
+
+    elif name[1] == "sep":
+        oldValue= t.sep
+        totalMes = sumaTotal()
+        s.sep = totalMes
+        s.save()
+        t.sep = valueSubmit
+        t.save()
+ 
+    elif name[1] == "oct":
+        oldValue= t.oct
+        totalMes = sumaTotal()
+        s.oct = totalMes
+        s.save()
+        t.oct = valueSubmit
+        t.save()
+
+    elif name[1] == "nov":
+        oldValue= t.nov
+        totalMes = sumaTotal()
+        s.nov = totalMes
+        s.save()
+        t.nov = valueSubmit
+        t.save()
+
+    elif name[1] == "dic":
+        oldValue= t.dic
+        totalMes = sumaTotal()
+        s.dic = totalMes
+        s.save()
+        t.dic = valueSubmit
+        t.save()
+
+    totalEspecialidad= sumaMess(dicts)
+    t.tot = totalEspecialidad
+    t.save()
+    sumaTotal()
+    
+    totalTotal=sumaMess(dict_total)
+    s.tot= totalTotal
+    s.save()
+    
+    ## Send Json
+    context = {}
+    context['totalMes'] = totalMes
+    context['totalEspecialidad'] = totalEspecialidad
+    context['totalTotal'] = totalTotal
+    context['Especialidad'] = name[0]
+    context['Mes'] = name[1]
+    context = json.dumps(context)
+
+    
+    
+    
+
+    return HttpResponse(context)
 # Create your views here.

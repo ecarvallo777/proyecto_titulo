@@ -71,7 +71,51 @@ class Agenda(models.Model):
     
     def __str__(self):
         return self.title
+
+class EspecialidadnoGES(models.Model):
+    nombre= models.CharField(max_length=30)
+    tasa_crecimiento= models.FloatField()
+    ausentismo= models.FloatField()
     
+    def __str__(self): # __unicode__ en Python 2
+        return self.nombre
+
+class NogesMES(models.Model):
+    nombre = models.CharField(max_length=30)
+    especialidad = models.ForeignKey(EspecialidadnoGES,  on_delete=models.CASCADE) 
+    ene= models.IntegerField()
+    feb= models.IntegerField()
+    mar=models.IntegerField()
+    abr=models.IntegerField()
+    may=models.IntegerField()
+    jun=models.IntegerField()
+    jul=models.IntegerField()
+    ago=models.IntegerField()
+    sep=models.IntegerField()
+    oct=models.IntegerField()
+    nov=models.IntegerField()
+    dic=models.IntegerField()
+    tot=models.IntegerField()
+    def __str__(self):
+        return self.nombre
+    
+class Nogestotales(models.Model):
+    ene= models.IntegerField()
+    feb= models.IntegerField()
+    mar=models.IntegerField()
+    abr=models.IntegerField()
+    may=models.IntegerField()
+    jun=models.IntegerField()
+    jul=models.IntegerField()
+    ago=models.IntegerField()
+    sep=models.IntegerField()
+    oct=models.IntegerField()
+    nov=models.IntegerField()
+    dic=models.IntegerField()
+    tot=models.IntegerField()
+    
+    def __str__(self): # __unicode__ en Python 2
+        return self.tot    
     
     
     
