@@ -181,7 +181,7 @@
                                     <div id="rootwizard">
                                         <ul class="nav nav-tabs" role="tablist">
                                             <li role="presentation" class="active"><a href="#tab1" data-toggle="tab"><i class="fa fa-trophy m-r-xs"></i>Según Especialidad</a></li>
-                                            <li role="presentation"><a href="#tab2" data-toggle="tab"><i class="fa  fa-calendar m-r-xs"></i>Según Mes</a></li>
+                                            <li role="presentation"><a href="#tab2" data-toggle="tab"><i class="fa  fa-calendar m-r-xs"></i>Según Horas</a></li>
                                             
 
 
@@ -267,235 +267,208 @@
                                                      
                                                 </div>
                                                 <div class="tab-pane fade" id="tab2">
-                                                    <div class="table-responsive">
-                                                    <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th></th>
-                                                   
-                                                    <th>Total</th>
-
-                                                </tr>
-                                            </thead>
-                                            <tbody id="eventos_cons">
-
-                                                
-                                                
-                                            </tbody>
-                                        </table>
-                                    </div><!-- Row -->
-                                 </div>
-                                    <div class="tab-pane fade" id="tab3">
-                                        <table class="table" id="cumplimiento">
-                                            <thead>
-                                                <tr>
-                                                    <th></th>
-                                                    <th>Ene</th>
-                                                    <th>Feb</th>
-                                                    <th>Mar</th>
-                                                    <th>Abr</th>
-                                                    <th>May</th>
-                                                    <th>Jun</th>
-                                                    <th>Jul</th>
-                                                    <th>Ago</th>
-                                                    <th>Sep</th>
-                                                    <th>Oct</th>
-                                                    <th>Nov</th>
-                                                    <th>Dic</th>
-                                                    <th>Total</th>
-
-
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                 {% for cumplimiento in consultas_cumplimiento%}
-                                                    {%if cumplimiento.id != 3 and cumplimiento.id != 4 and cumplimiento.id != 5%}
-                                                <tr>
-                                                    <th scope="row">{{cumplimiento.name}}</th>
-                                                    <td><a href="#" id="{{cumplimiento.name}}_ene" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{cumplimiento.ene}}</a></td>
-                                                    <td><a href="#" id="{{cumplimiento.name}}_feb" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{cumplimiento.feb}}</a></td>
-                                                    <td><a href="#" id="{{cumplimiento.name}}_mar" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{cumplimiento.mar}}</a></td>
-                                                    <td><a href="#" id="{{cumplimiento.name}}_abr" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{cumplimiento.abr}}</a></td>
-                                                    <td><a href="#" id="{{cumplimiento.name}}_may" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{cumplimiento.may}}</a></td>
-                                                    <td><a href="#" id="{{cumplimiento.name}}_jun" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{cumplimiento.jun}}</a></td>
-                                                    <td><a href="#" id="{{cumplimiento.name}}_jul" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{cumplimiento.jul}}</a></td>
-                                                    <td><a href="#" id="{{cumplimiento.name}}_ago" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{cumplimiento.ago}}</a></td>
-                                                    <td><a href="#" id="{{cumplimiento.name}}_sep" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{cumplimiento.sep}}</a></td>
-                                                    <td><a href="#" id="{{cumplimiento.name}}_oct" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{cumplimiento.oct}}</a></td>
-                                                    <td><a href="#" id="{{cumplimiento.name}}_nov" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{cumplimiento.nov}}</a></td>
-                                                    <td><a href="#" id="{{cumplimiento.name}}_dic" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{cumplimiento.dic}}</a></td>
-                                                    <td id="{{cumplimiento.name}}_tot">{{cumplimiento.tot}}</td>
-                                                    {%endif%}
-                                                    {%if cumplimiento.id == 3%}
-                                                     <tr>
-                                                    <th scope="row">{{cumplimiento.name}}</th>
-                                                    <td id="Total_ene">{{cumplimiento.ene}}</td>
-                                                    <td id="Total_feb">{{cumplimiento.feb}}</td>
-                                                    <td id="Total_mar">{{cumplimiento.mar}}</td>
-                                                    <td id="Total_abr">{{cumplimiento.abr}}</td>
-                                                    <td id="Total_may">{{cumplimiento.may}}</td>
-                                                    <td id="Total_jun">{{cumplimiento.jun}}</td>
-                                                    <td id="Total_jul">{{cumplimiento.jul}}</td>
-                                                    <td id="Total_ago">{{cumplimiento.ago}}</td>
-                                                    <td id="Total_sep">{{cumplimiento.sep}}</td>
-                                                    <td id="Total_oct">{{cumplimiento.oct}}</td>
-                                                    <td id="Total_nov">{{cumplimiento.nov}}</td>
-                                                    <td id="Total_dic">{{cumplimiento.dic}}</td>
-                                                    <td id="Total_tot">{{cumplimiento.tot}}</td>
-                                                    {%endif%}
-                                                    {%endfor%}
-                                                    
-                                                </tr> 
-                                              
-                                                
-                                                
-                                            </tbody>
-                                        </table>
-                                        </div>
-                                        <div class="tab-pane fade" id="tab4">
-                                                    <div class="table-responsive">
-                                                    <table class="table" id="NSP">
-                                            <thead>
-                                                <tr>
-                                                    <th></th>
-                                                   
-                                                    <th>Ene</th>
-                                                    <th>Feb</th>
-                                                    <th>Mar</th>
-                                                    <th>Abr</th>
-                                                    <th>May</th>
-                                                    <th>Jun</th>
-                                                    <th>Jul</th>
-                                                    <th>Ago</th>
-                                                    <th>Sep</th>
-                                                    <th>Oct</th>
-                                                    <th>Nov</th>
-                                                    <th>Dic</th>
-                                                    <th>Total</th>
-
-
-
-                                                </tr>
-                                            </thead>
-                                            <tbody id="ausentismo">
-                                                 {% for cumplimiento in consultas_cumplimiento%}
-                                                        {%if cumplimiento.id == 3%}
-                                                        <tr>
-                                                        <th scope="row">Ejecutadas</th>
-                                                        <td id="{{cumplimiento.name}}_ene_">{{cumplimiento.ene}}</td>
-                                                        <td id="{{cumplimiento.name}}_feb_">{{cumplimiento.feb}}</td>
-                                                        <td id="{{cumplimiento.name}}_mar_">{{cumplimiento.mar}}</td>
-                                                        <td id="{{cumplimiento.name}}_abr_">{{cumplimiento.abr}}</td>
-                                                        <td id="{{cumplimiento.name}}_may_">{{cumplimiento.may}}</td>
-                                                        <td id="{{cumplimiento.name}}_jun_">{{cumplimiento.jun}}</td>
-                                                        <td id="{{cumplimiento.name}}_jul_">{{cumplimiento.jul}}</td>
-                                                        <td id="{{cumplimiento.name}}_ago_">{{cumplimiento.ago}}</td>
-                                                        <td id="{{cumplimiento.name}}_sep_">{{cumplimiento.sep}}</td>
-                                                        <td id="{{cumplimiento.name}}_oct_">{{cumplimiento.oct}}</td>
-                                                        <td id="{{cumplimiento.name}}_nov_">{{cumplimiento.nov}}</td>
-                                                        <td id="{{cumplimiento.name}}_dic_">{{cumplimiento.dic}}</td>
-                                                        <td id="{{cumplimiento.name}}_tot_">{{cumplimiento.tot}}</td>
-                                                        </tr>
-
-                                                        {%endif%}                                                        
-                                                        {%if cumplimiento.id == 4%}
-                                                        <tr>
-                                                        <th scope="row">{{cumplimiento.name}}</th>
-                                                        <td><a href="#" id="{{cumplimiento.name}}_ene" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.ene}}</a></td>
-                                                        <td><a href="#" id="{{cumplimiento.name}}_feb" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.feb}}</a></td>
-                                                        <td><a href="#" id="{{cumplimiento.name}}_mar" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.mar}}</a></td>
-                                                        <td><a href="#" id="{{cumplimiento.name}}_abr" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.abr}}</a></td>
-                                                        <td><a href="#" id="{{cumplimiento.name}}_may" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.may}}</a></td>
-                                                        <td><a href="#" id="{{cumplimiento.name}}_jun" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.jun}}</a></td>
-                                                        <td><a href="#" id="{{cumplimiento.name}}_jul" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.jul}}</a></td>
-                                                        <td><a href="#" id="{{cumplimiento.name}}_ago" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.ago}}</a></td>
-                                                        <td><a href="#" id="{{cumplimiento.name}}_sep" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.sep}}</a></td>
-                                                        <td><a href="#" id="{{cumplimiento.name}}_oct" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.oct}}</a></td>
-                                                        <td><a href="#" id="{{cumplimiento.name}}_nov" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.nov}}</a></td>
-                                                        <td><a href="#" id="{{cumplimiento.name}}_dic" data-type="number" data-pk="8" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.dic}}</a></td>
-                                                        <td id="{{cumplimiento.name}}_tot">{{cumplimiento.tot}}</td>
-                                                        </tr>
-                                                        {%endif%}
-
-                                                    {%endfor%}
-                                                
-                                                
-                                            </tbody>
-                                        </table>
-                                        </div>
+                                                    <div class="panel-heading clearfix">
+                                        <h3 class="panel-title">Año de seguimiento</h3>
                                     </div>
-                                    <div class="tab-pane fade" id="tab5">
-                                                    <div class="table-responsive">
-                                                    <table class="table" id="a">
-                                                        <thead>
+                                    <div class="panel-body">
+
+                                            <div role="tabpanel">
+                                            <!-- Nav tabs -->
+                                            <ul class="nav nav-pills" role="tablist">
+                                                <li role="presentation" class="active"><a href="#tab25" role="tab" data-toggle="tab">2021</a></li>
+                                                <li role="presentation"><a href="#tab26" role="tab" data-toggle="tab">2020</a></li>
+
+                                            </ul>
+                                            <!-- Tab panes -->
+                                            <div class="tab-content">
+                                                <div role="tabpanel" class="tab-pane active fade in" id="tab25">
+                                                            <table id ="user" class="display table" style="width: 100%; cellspacing: 0;">
+                                                    <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>Ene</th>
+                                                            <th>Feb</th>
+                                                            <th>Mar</th>
+                                                            <th>Abr</th>
+                                                            <th>May</th>
+                                                            <th>Jun</th>
+                                                            <th>Jul</th>
+                                                            <th>Ago</th>
+                                                            <th>Sep</th>
+                                                            <th>Oct</th>
+                                                            <th>Nov</th>
+                                                            <th>Dic</th>
+                                                            <th>Total</th>
+
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                                <tr>
+
+                                                                    <th scope="row" id="OcupadasVentiuno">{{OcupadasVentiuno.name}}</th>
+                                                                    <td><a href="#" id="OcupadasVentiuno_ene" data-type="number" data-pk="1" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.ene}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_feb" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.feb}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_mar" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.mar}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_abr" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.abr}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_may" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.may}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_jun" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.jun}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_jul" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.jul}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_ago" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.ago}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_sep" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.sep}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_oct" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.oct}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_nov" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.nov}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_dic" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.dic}}</a></td>
+
+                                                                    <td id="OcupadasVentiuno_total">{{OcupadasVentiuno.tot}}</td>
+
+                                                                </tr>
+                                                                <tr>
+
+                                                                    <th scope="row" id="DisponiblesVentiuno">{{DisponiblesVentiuno.name}}</th>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_ene" data-type="number" data-pk="1" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.ene}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_feb" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.feb}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_mar" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.mar}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_abr" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.abr}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_may" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.may}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_jun" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.jun}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_jul" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.jul}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_ago" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.ago}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_sep" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.sep}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_oct" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.oct}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_nov" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.nov}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_dic" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.dic}}</a></td>
+
+                                                                    <td id="DisponiblesVentiuno_total">{{DisponiblesVentiuno.tot}}</td>
+
+                                                                </tr>
                                                             <tr>
-                                                                    <th></th>
-                                                                
-                                                                    <th>Ene</th>
-                                                                    <th>Feb</th>
-                                                                    <th>Mar</th>
-                                                                    <th>Abr</th>
-                                                                    <th>May</th>
-                                                                    <th>Jun</th>
-                                                                    <th>Jul</th>
-                                                                    <th>Ago</th>
-                                                                    <th>Sep</th>
-                                                                    <th>Oct</th>
-                                                                    <th>Nov</th>
-                                                                    <th>Dic</th>
-                                                                    <th>Total</th>
+                                                                    <th scope="row">Porcentaje Ventiuno </th>
+                                                                    <td id="totVentiuno_ene">{{totVentiuno.ene}}</td>
+                                                                    <td id="totVentiuno_feb">{{totVentiuno.feb}}</td>
+                                                                    <td id="totVentiuno_mar">{{totVentiuno.mar}}</td>
+                                                                    <td id="totVentiuno_abr">{{totVentiuno.abr}}</td>
+                                                                    <td id="totVentiuno_may">{{totVentiuno.may}}</td>
+                                                                    <td id="totVentiuno_jun">{{totVentiuno.jun}}</td>
+                                                                    <td id="totVentiuno_jul">{{totVentiuno.jul}}</td>
+                                                                    <td id="totVentiuno_ago">{{totVentiuno.ago}}</td>
+                                                                    <td id="totVentiuno_sep">{{totVentiuno.sep}}</td>
+                                                                    <td id="totVentiuno_oct">{{totVentiuno.oct}}</td>
+                                                                    <td id="totVentiuno_nov">{{totVentiuno.nov}}</td>
+                                                                    <td id="totVentiuno_dic">{{totVentiuno.dic}}</td>
+
+                                                                    <td id="totVentiuno_total">{{totVentiuno.tot}}</td>
 
 
-
-                                                            </tr>
-                                                        </thead>
-                                                        
-                                            <tbody id="a">
-                                                        {% for cumplimiento in consultas_cumplimiento%}
-                                                            {%if cumplimiento.id == 3%}
-                                                                <tr>
-                                                                <th scope="row">Ejecutadas</th>
-                                                                <td id="{{cumplimiento.name}}_ene_a">{{cumplimiento.ene}}</td>
-                                                                <td id="{{cumplimiento.name}}_feb_a">{{cumplimiento.feb}}</td>
-                                                                <td id="{{cumplimiento.name}}_mar_a">{{cumplimiento.mar}}</td>
-                                                                <td id="{{cumplimiento.name}}_abr_a">{{cumplimiento.abr}}</td>
-                                                                <td id="{{cumplimiento.name}}_may_a">{{cumplimiento.may}}</td>
-                                                                <td id="{{cumplimiento.name}}_jun_a">{{cumplimiento.jun}}</td>
-                                                                <td id="{{cumplimiento.name}}_jul_a">{{cumplimiento.jul}}</td>
-                                                                <td id="{{cumplimiento.name}}_ago_a">{{cumplimiento.ago}}</td>
-                                                                <td id="{{cumplimiento.name}}_sep_a">{{cumplimiento.sep}}</td>
-                                                                <td id="{{cumplimiento.name}}_oct_a">{{cumplimiento.oct}}</td>
-                                                                <td id="{{cumplimiento.name}}_nov_a">{{cumplimiento.nov}}</td>
-                                                                <td id="{{cumplimiento.name}}_dic_a">{{cumplimiento.dic}}</td>
-                                                                <td id="{{cumplimiento.name}}_tot_a">{{cumplimiento.tot}}</td>
                                                                 </tr>
+                                                            </tbody>
+                                                        </table>                                                       
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane fade" id="tab26">
+                                                    <table id ="user" class="display table" style="width: 100%; cellspacing: 0;">
+                                                    <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>Ene</th>
+                                                            <th>Feb</th>
+                                                            <th>Mar</th>
+                                                            <th>Abr</th>
+                                                            <th>May</th>
+                                                            <th>Jun</th>
+                                                            <th>Jul</th>
+                                                            <th>Ago</th>
+                                                            <th>Sep</th>
+                                                            <th>Oct</th>
+                                                            <th>Nov</th>
+                                                            <th>Dic</th>
+                                                            <th>Total</th>
 
-                                                            {%endif%}                                                        
-                                                        {%if cumplimiento.id == 5%}
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
                                                                 <tr>
-                                                                <th scope="row">Altas</th>
-                                                                <td><a href="#" id="a_ene" data-type="number" data-pk="20" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.ene}}</a></td>
-                                                                <td><a href="#" id="a_feb" data-type="number" data-pk="20" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.feb}}</a></td>
-                                                                <td><a href="#" id="a_mar" data-type="number" data-pk="20" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.mar}}</a></td>
-                                                                <td><a href="#" id="a_abr" data-type="number" data-pk="20" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.abr}}</a></td>
-                                                                <td><a href="#" id="a_may" data-type="number" data-pk="20" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.may}}</a></td>
-                                                                <td><a href="#" id="a_jun" data-type="number" data-pk="20" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.jun}}</a></td>
-                                                                <td><a href="#" id="a_jul" data-type="number" data-pk="20" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.jul}}</a></td>
-                                                                <td><a href="#" id="a_ago" data-type="number" data-pk="20" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.ago}}</a></td>
-                                                                <td><a href="#" id="a_sep" data-type="number" data-pk="20" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.sep}}</a></td>
-                                                                <td><a href="#" id="a_oct" data-type="number" data-pk="20" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.oct}}</a></td>
-                                                                <td><a href="#" id="a_nov" data-type="number" data-pk="20" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.nov}}</a></td>
-                                                                <td><a href="#" id="a_dic" data-type="number" data-pk="20" data-title="Ingrese cantidad de consultas NSP" class="editable editable-click" style="display: inline;">{{cumplimiento.dic}}</a></td>
-                                                                <td id="a_tot">{{cumplimiento.tot}}</td>
-                                                                </tr>
-                                                        {%endif%}
 
-                                                    {%endfor%}
-                                                
-                                                
-                                            </tbody>
-                                        </table>
+                                                                    <th scope="row" id="OcupadasVeinte">{{OcupadasVeinte.name}}</th>
+                                                                    <td><a href="#" id="OcupadasVeinte_ene" data-type="number" data-pk="1" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVeinte.ene}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVeinte_feb" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVeinte.feb}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVeinte_mar" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVeinte.mar}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVeinte_abr" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVeinte.abr}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVeinte_may" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVeinte.may}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVeinte_jun" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVeinte.jun}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVeinte_jul" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVeinte.jul}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVeinte_ago" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVeinte.ago}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVeinte_sep" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVeinte.sep}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVeinte_oct" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVeinte.oct}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVeinte_nov" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVeinte.nov}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVeinte_dic" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVeinte.dic}}</a></td>
+
+                                                                    <td id="OcupadasVeinte_total">{{OcupadasVeinte.tot}}</td>
+
+                                                                </tr>
+                                                                <tr>
+
+                                                                    <th scope="row" id="DisponiblesVeinte">{{DisponiblesVeinte.name}}</th>
+                                                                    <td><a href="#" id="DisponiblesVeinte_ene" data-type="number" data-pk="1" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVeinte.ene}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVeinte_feb" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVeinte.feb}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVeinte_mar" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVeinte.mar}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVeinte_abr" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVeinte.abr}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVeinte_may" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVeinte.may}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVeinte_jun" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVeinte.jun}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVeinte_jul" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVeinte.jul}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVeinte_ago" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVeinte.ago}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVeinte_sep" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVeinte.sep}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVeinte_oct" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVeinte.oct}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVeinte_nov" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVeinte.nov}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVeinte_dic" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVeinte.dic}}</a></td>
+
+                                                                    <td id="DisponiblesVeinte_total">{{DisponiblesVeinte.tot}}</td>
+
+                                                                </tr>
+                                                            <tr>
+                                                                    <th scope="row">Porcentaje Veinte </th>
+                                                                    <td id="totVeinte_ene">{{totVeinte.ene}}</td>
+                                                                    <td id="totVeinte_feb">{{totVeinte.feb}}</td>
+                                                                    <td id="totVeinte_mar">{{totVeinte.mar}}</td>
+                                                                    <td id="totVeinte_abr">{{totVeinte.abr}}</td>
+                                                                    <td id="totVeinte_may">{{totVeinte.may}}</td>
+                                                                    <td id="totVeinte_jun">{{totVeinte.jun}}</td>
+                                                                    <td id="totVeinte_jul">{{totVeinte.jul}}</td>
+                                                                    <td id="totVeinte_ago">{{totVeinte.ago}}</td>
+                                                                    <td id="totVeinte_sep">{{totVeinte.sep}}</td>
+                                                                    <td id="totVeinte_oct">{{totVeinte.oct}}</td>
+                                                                    <td id="totVeinte_nov">{{totVeinte.nov}}</td>
+                                                                    <td id="totVeinte_dic">{{totVeinte.dic}}</td>
+
+                                                                    <td id="totVeinte_total">{{totVeinte.tot}}</td>
+
+
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>                                                </div>
+
+                                            </div>
                                         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    </div>
+                                 </div>
+                                    
+                                    
                                     </div>
                      
                     
