@@ -676,16 +676,36 @@ def post_horas(request):
     
     meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic']
     dicts= fila.__dict__
+    
+
     def sumaMess(fila):
         sumaMes=0
         for mes in meses:
             sumaMes=sumaMes+ int(fila[mes])
         return sumaMes 
     def sumaTotal():
-        totalActual = dict_total[name[1]]   
-        sumaTotal_= int(totalActual) - int(oldValue) + int(valueSubmit)
-        
-        return sumaTotal_
+        #totalActual = dict_total[name[1]]   
+        #sumaTotal_= int(totalActual) - int(oldValue) + int(valueSubmit)
+
+
+        if (año[0]=="Ocupadas"):
+            second = HorasNoges.objects.get(clave='Disponibles'+año[1])
+            second = second.__dict__
+            if (second[name[1]]==0):
+                return False
+            porcentaje = int(int(valueSubmit)*100/int(second[name[1]]))
+            
+
+
+            
+        else:
+            if(año[0]=="Disponibles"):         
+                second = HorasNoges.objects.get(clave='Ocupadas'+año[1])
+                second = second.__dict__
+                if(valueSubmit=='0'):
+                    return False
+                porcentaje = int(int(second[name[1]]*100/int(valueSubmit)))
+        return porcentaje
 
     if name[1] == "ene":
         oldValue= fila.ene
@@ -788,11 +808,14 @@ def post_horas(request):
     totalEspecialidad= sumaMess(dicts)
     fila.tot = totalEspecialidad
     fila.save()
-    sumaTotal()
-    
-    totalTotal=sumaMess(dict_total)
-    total.tot= totalTotal
-    total.save()
+    filaDisponibles = HorasNoges.objects.get(clave='Disponibles'+año[1])
+    filaDisponibles = filaDisponibles.__dict__ 
+    filaOcupadas = HorasNoges.objects.get(clave='Ocupadas'+año[1])
+    filaOcupadas = filaOcupadas.__dict__
+    porcentTotal=int(int(filaOcupadas['tot']*100/int(filaDisponibles['tot'])))
+    total.tot= porcentTotal
+    total.save()    
+
     
     ## Send Json
     context = {}
@@ -801,7 +824,7 @@ def post_horas(request):
     context['posicion'] = name[0]
     context['año'] = año[1]
     context['mes'] = name[1]
-    context['totalTotal'] = totalTotal
+    context['totalTotal'] = porcentTotal
     #context['Especialidad'] = name[0]
     #context['Mes'] = name[1]
     context = json.dumps(context)

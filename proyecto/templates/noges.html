@@ -137,36 +137,32 @@
                                             <thead>
                                                 <tr>
                                                     <th></th>
-                                                    <th>Resultados</th>
-                                                    <th>Resultados</th>
-                                                    <th>Resultados</th>
+                                                    <th>2020</th>
+                                                    <th>2021</th>
 
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <th scope="row">Resultados</th>
-                                                    <td id="metaNuevas">0</td>
-                                                    <td id="metaControles">0</td>
-                                                    <td id="metaTotal">0</td>
+                                                    <th scope="row">Horas ocupadas en quirófano</th>
+                                                    <td id="OcupadasVeinte">{{OcupadasVeinte.tot}}</td>
+                                                    <td id="OcupadasVentiuno">{{OcupadasVentiuno.tot}}</td>
 
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row">Resultados</th>
+                                                    <th scope="row">Horas disponibles en quirófano	</th>
 
                                                    
-                                                    <td id="{{ejecutadas.name}}">0</td>
-                                                    <td id="{{ejecutadas.name}}">0</td>
-                                                    <td id="{{ejecutadas.name}}">0</td>
+                                                    <td id="DisponiblesVeinte">{{DisponiblesVeinte.tot}}</td>
+                                                    <td id="DisponiblesVentiuno">{{DisponiblesVentiuno.tot}}</td>
 
 
 
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row">Resultados</th>
-                                                    <td id="resultados_nuevas">0%</td>
-                                                    <td id="resultados_controles">0%</td>
-                                                    <td id="resultados_total">0%</td>
+                                                    <th scope="row">Porcentaje de horas ocupadas en quirófano</th>
+                                                    <td id="resultadosVeinte">{{totVeinte.tot}}%</td>
+                                                    <td id="resultadosVentiuno">{{totVentiuno.tot}}%</td>
 
                                                 </tr>
                                             </tbody>
@@ -345,20 +341,20 @@
                                                                 </tr>
                                                             <tr>
                                                                     <th scope="row">Porcentaje Ventiuno </th>
-                                                                    <td id="totVentiuno_ene">{{totVentiuno.ene}}</td>
-                                                                    <td id="totVentiuno_feb">{{totVentiuno.feb}}</td>
-                                                                    <td id="totVentiuno_mar">{{totVentiuno.mar}}</td>
-                                                                    <td id="totVentiuno_abr">{{totVentiuno.abr}}</td>
-                                                                    <td id="totVentiuno_may">{{totVentiuno.may}}</td>
-                                                                    <td id="totVentiuno_jun">{{totVentiuno.jun}}</td>
-                                                                    <td id="totVentiuno_jul">{{totVentiuno.jul}}</td>
-                                                                    <td id="totVentiuno_ago">{{totVentiuno.ago}}</td>
-                                                                    <td id="totVentiuno_sep">{{totVentiuno.sep}}</td>
-                                                                    <td id="totVentiuno_oct">{{totVentiuno.oct}}</td>
-                                                                    <td id="totVentiuno_nov">{{totVentiuno.nov}}</td>
-                                                                    <td id="totVentiuno_dic">{{totVentiuno.dic}}</td>
+                                                                    <td id="totVentiuno_ene">{{totVentiuno.ene}}%</td>
+                                                                    <td id="totVentiuno_feb">{{totVentiuno.feb}}%</td>
+                                                                    <td id="totVentiuno_mar">{{totVentiuno.mar}}%</td>
+                                                                    <td id="totVentiuno_abr">{{totVentiuno.abr}}%</td>
+                                                                    <td id="totVentiuno_may">{{totVentiuno.may}}%</td>
+                                                                    <td id="totVentiuno_jun">{{totVentiuno.jun}}%</td>
+                                                                    <td id="totVentiuno_jul">{{totVentiuno.jul}}%</td>
+                                                                    <td id="totVentiuno_ago">{{totVentiuno.ago}}%</td>
+                                                                    <td id="totVentiuno_sep">{{totVentiuno.sep}}%</td>
+                                                                    <td id="totVentiuno_oct">{{totVentiuno.oct}}%</td>
+                                                                    <td id="totVentiuno_nov">{{totVentiuno.nov}}%</td>
+                                                                    <td id="totVentiuno_dic">{{totVentiuno.dic}}%</td>
 
-                                                                    <td id="totVentiuno_total">{{totVentiuno.tot}}</td>
+                                                                    <td id="totVentiuno_total">{{totVentiuno.tot}}%</td>
 
 
                                                                 </tr>
@@ -429,20 +425,20 @@
                                                                 </tr>
                                                             <tr>
                                                                     <th scope="row">Porcentaje Veinte </th>
-                                                                    <td id="totVeinte_ene">{{totVeinte.ene}}</td>
-                                                                    <td id="totVeinte_feb">{{totVeinte.feb}}</td>
-                                                                    <td id="totVeinte_mar">{{totVeinte.mar}}</td>
-                                                                    <td id="totVeinte_abr">{{totVeinte.abr}}</td>
-                                                                    <td id="totVeinte_may">{{totVeinte.may}}</td>
-                                                                    <td id="totVeinte_jun">{{totVeinte.jun}}</td>
-                                                                    <td id="totVeinte_jul">{{totVeinte.jul}}</td>
-                                                                    <td id="totVeinte_ago">{{totVeinte.ago}}</td>
-                                                                    <td id="totVeinte_sep">{{totVeinte.sep}}</td>
-                                                                    <td id="totVeinte_oct">{{totVeinte.oct}}</td>
-                                                                    <td id="totVeinte_nov">{{totVeinte.nov}}</td>
-                                                                    <td id="totVeinte_dic">{{totVeinte.dic}}</td>
+                                                                    <td id="totVeinte_ene">{{totVeinte.ene}}%</td>
+                                                                    <td id="totVeinte_feb">{{totVeinte.feb}}%</td>
+                                                                    <td id="totVeinte_mar">{{totVeinte.mar}}%</td>
+                                                                    <td id="totVeinte_abr">{{totVeinte.abr}}%</td>
+                                                                    <td id="totVeinte_may">{{totVeinte.may}}%</td>
+                                                                    <td id="totVeinte_jun">{{totVeinte.jun}}%</td>
+                                                                    <td id="totVeinte_jul">{{totVeinte.jul}}%</td>
+                                                                    <td id="totVeinte_ago">{{totVeinte.ago}}%</td>
+                                                                    <td id="totVeinte_sep">{{totVeinte.sep}}%</td>
+                                                                    <td id="totVeinte_oct">{{totVeinte.oct}}%</td>
+                                                                    <td id="totVeinte_nov">{{totVeinte.nov}}%</td>
+                                                                    <td id="totVeinte_dic">{{totVeinte.dic}}%</td>
 
-                                                                    <td id="totVeinte_total">{{totVeinte.tot}}</td>
+                                                                    <td id="totVeinte_total">{{totVeinte.tot}}%</td>
 
 
                                                                 </tr>
