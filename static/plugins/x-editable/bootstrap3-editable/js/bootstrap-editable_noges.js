@@ -302,6 +302,8 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
         },
 
         save: function(submitValue) {
+            var nombre = (this.options.name).split("_");
+            console.log(nombre[0]);
 
             //try parse composite pk defined as json string in data-pk 
             this.options.pk = $.fn.editableutils.tryParseJson(this.options.pk, true); 
@@ -346,7 +348,7 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                 "showMethod": "fadeIn",
                 "hideMethod": "fadeOut"
                 }
-
+                if(nombre[0]== "Ginecología" || nombre[0]=="Cirugia Infantil" || nombre[0]=="CMF" || nombre[0]=="Traumatología" || nombre[0]=="TMT Infantil" || nombre[0]=="Otorrinolaringología Infantil" || nombre[0]=="Cirugia Vascular" || nombre[0]=="Cirugia General" || nombre[0]=="CMF Infantil" || nombre[0]=="Urología Infantil" || nombre[0]=="Oftalmología" || nombre[0]=="Obstetricia" || nombre[0]=="Urología" || nombre[0]=="Total"){
                 $.ajax({
                     method: 'POST',
                     url:    "/post_noges/",
@@ -377,6 +379,39 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                     }
                 
             });
+        }else{
+            $.ajax({
+                method: 'POST',
+                url:    "/post_horas/",
+                dataType: "json",
+                data: { 'name': this.options.name,
+                        'submitValue': parseInt(submitValue),
+                        
+
+                },
+                headers:{
+                "X-CSRFToken": getCookie('csrftoken'),
+
+                    },
+                success: function(response){
+                   //var totalEspecialidad = response.Especialidad+"_total";
+                    console.log(response);
+                    document.getElementById(response.posicion+'_total').innerHTML = response.totalFila;
+                    document.getElementById('tot'+response.año+'_'+response.mes).innerHTML = response.totalMes+'%';
+                    document.getElementById('tot'+response.año+'_total').innerHTML = response.totalTotal+'%';
+                    var submit= document.getElementById(response.posicion+'_total').innerHTML;
+                    var submitPerc = document.getElementById('tot'+response.año+'_total').innerHTML;
+                    document.getElementById(response.posicion).innerHTML = submit;
+                    document.getElementById('resultados'+response.año).innerHTML = submitPerc;
+                    toastr["success"]("Consultas en ausentismo agregada exitosamente!");
+                              },
+                error: function (data) {
+                toastr["error"]("Acción no se pudo realizar en BD. Consultar con especialista.");
+                // Your error handling logic here..
+                }
+            
+        });
+        }
 
             
             
