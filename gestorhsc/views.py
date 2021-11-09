@@ -42,8 +42,53 @@ def inicio(request):
     indicadores_json['proyectadas'] = consultasProyectadas
 
     
+    mydate = datetime.now()
     
-    return render(request, 'inicio.html', {'indicadores':indicadores_json})
+    meses = {
+            "Jan": "ene",
+            "Feb": "feb",
+            "Mar": "mar",
+            "Apr": "abr",
+            "May": "may",
+            "Jun":"jun",
+            "Jul": "jul",
+            "Aug": "ago",
+            "Sep": "sep",
+            "Oct" : "oct",
+            "Nov":"nov",
+            "Dec": "dic"
+            }
+    mesActual = meses[mydate.strftime("%b")]
+    
+    actualOcupacion = TotHorasNoges.objects.get(id=2).tot
+
+
+    
+    añoAnterior = TotHorasNoges.objects.get(id=2)
+    añoAnterior = añoAnterior.__dict__
+    añoAnterior = añoAnterior[mesActual]
+    
+    produccion = NogesMES.objects.all()
+    acumuladorMa=0
+    menor = {}
+    mayor= ''
+    for especialidad in produccion:
+        if (especialidad.tot > acumuladorMa):
+            acumuladorMa = especialidad.tot
+            mayor = especialidad.nombre
+        menor[especialidad.id]= especialidad.tot
+    valores_ord = sorted(menor.items(), reverse=True)
+
+    print(valores_ord)
+            
+        
+    
+    print(actualOcupacion, añoAnterior)
+    
+    
+    
+    
+    return render(request, 'inicio.html', {'indicadores':indicadores_json, 'actualOcupacion':actualOcupacion, 'añoAnterior':añoAnterior, 'Mayor':'mayor' })
 
 def calendario(request):
 
@@ -451,6 +496,7 @@ def consultas(request):
     context = {'consultas_metas':consultas_meta_queryset, 'consultas_totales':consultas_totales, 'consultas_cumplimiento': consultas_cumplimiento_queryset}
     
     return render(request, 'consultas.html/', context)
+
 def noges(request):
     # nogesMES, EspecialidadnoGES
     nogesMES = NogesMES.objects.all()
@@ -829,6 +875,8 @@ def post_horas(request):
     #context['Mes'] = name[1]
     context = json.dumps(context)
     return HttpResponse(context)
+@csrf_exempt
+
 def post_noges(request):
     name = request.POST.get('name') 
     valueSubmit = request.POST.get('submitValue')
