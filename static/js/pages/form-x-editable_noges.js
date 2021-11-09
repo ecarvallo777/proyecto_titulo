@@ -237,6 +237,96 @@ $(function(value){
     $('#Urología\\ Infantil_dic').editable(); 
     
 
+
+
+    // Según horas.
+    $('#OcupadasVeinte_ene').editable(); 
+    $('#OcupadasVeinte_feb').editable(); 
+    $('#OcupadasVeinte_mar').editable(); 
+    $('#OcupadasVeinte_abr').editable(); 
+    $('#OcupadasVeinte_may').editable(); 
+    $('#OcupadasVeinte_jun').editable(); 
+    $('#OcupadasVeinte_jul').editable(); 
+    $('#OcupadasVeinte_ago').editable(); 
+    $('#OcupadasVeinte_sep').editable(); 
+    $('#OcupadasVeinte_oct').editable(); 
+    $('#OcupadasVeinte_nov').editable(); 
+    $('#OcupadasVeinte_dic').editable(); 
+    $('#OcupadasVeinte_total').editable(); 
+
+
+    $('#DisponiblesVeinte_ene').editable(); 
+    $('#DisponiblesVeinte_feb').editable(); 
+    $('#DisponiblesVeinte_mar').editable(); 
+    $('#DisponiblesVeinte_abr').editable(); 
+    $('#DisponiblesVeinte_may').editable(); 
+    $('#DisponiblesVeinte_jun').editable(); 
+    $('#DisponiblesVeinte_jul').editable(); 
+    $('#DisponiblesVeinte_ago').editable(); 
+    $('#DisponiblesVeinte_sep').editable(); 
+    $('#DisponiblesVeinte_oct').editable(); 
+    $('#DisponiblesVeinte_nov').editable(); 
+    $('#DisponiblesVeinte_dic').editable(); 
+    $('#DisponiblesVeinte_total').editable(); 
+
+
+    $('#totVeinte_ene').editable(); 
+    $('#totVeinte_feb').editable(); 
+    $('#totVeinte_mar').editable(); 
+    $('#totVeinte_abr').editable(); 
+    $('#totVeinte_may').editable(); 
+    $('#totVeinte_jun').editable(); 
+    $('#totVeinte_jul').editable(); 
+    $('#totVeinte_ago').editable(); 
+    $('#totVeinte_sep').editable(); 
+    $('#totVeinte_oct').editable(); 
+    $('#totVeinte_nov').editable(); 
+    $('#totVeinte_dic').editable(); 
+    $('#totVeinte_total').editable(); 
+
+    $('#OcupadasVentiuno_ene').editable(); 
+    $('#OcupadasVentiuno_feb').editable(); 
+    $('#OcupadasVentiuno_mar').editable(); 
+    $('#OcupadasVentiuno_abr').editable(); 
+    $('#OcupadasVentiuno_may').editable(); 
+    $('#OcupadasVentiuno_jun').editable(); 
+    $('#OcupadasVentiuno_jul').editable(); 
+    $('#OcupadasVentiuno_ago').editable(); 
+    $('#OcupadasVentiuno_sep').editable(); 
+    $('#OcupadasVentiuno_oct').editable(); 
+    $('#OcupadasVentiuno_nov').editable(); 
+    $('#OcupadasVentiuno_dic').editable(); 
+    $('#OcupadasVentiuno_total').editable(); 
+
+
+    $('#DisponiblesVentiuno_ene').editable(); 
+    $('#DisponiblesVentiuno_feb').editable(); 
+    $('#DisponiblesVentiuno_mar').editable(); 
+    $('#DisponiblesVentiuno_abr').editable(); 
+    $('#DisponiblesVentiuno_may').editable(); 
+    $('#DisponiblesVentiuno_jun').editable(); 
+    $('#DisponiblesVentiuno_jul').editable(); 
+    $('#DisponiblesVentiuno_ago').editable(); 
+    $('#DisponiblesVentiuno_sep').editable(); 
+    $('#DisponiblesVentiuno_oct').editable(); 
+    $('#DisponiblesVentiuno_nov').editable(); 
+    $('#DisponiblesVentiuno_dic').editable(); 
+    $('#DisponiblesVentiuno_total').editable(); 
+
+
+    $('#totVentiuno_ene').editable(); 
+    $('#totVentiuno_feb').editable(); 
+    $('#totVentiuno_mar').editable(); 
+    $('#totVentiuno_abr').editable(); 
+    $('#totVentiuno_may').editable(); 
+    $('#totVentiuno_jun').editable(); 
+    $('#totVentiuno_jul').editable(); 
+    $('#totVentiuno_ago').editable(); 
+    $('#totVentiuno_sep').editable(); 
+    $('#totVentiuno_oct').editable(); 
+    $('#totVentiuno_nov').editable(); 
+    $('#totVentiuno_dic').editable(); 
+    $('#totVentiuno_total').editable(); 
    $('#user .editable').on('hidden', function(e, reason){
         if(reason === 'save' || reason === 'nochange') {
             var $next = $(this).closest('tr').next().find('.editable');

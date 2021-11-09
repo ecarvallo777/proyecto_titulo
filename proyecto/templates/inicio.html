@@ -73,208 +73,287 @@
                         </ol>
                     </div>
                 </div>
-                <div id="main-wrapper">
-                    <div class="panel-content">
-                        <div class="filter-items">
-                            <div class="row grid-wrap mrg20">
-                                <div class="col m4 grid-item col s6 col l3">
-                                    <div class="stat-box widget bg-clr1">
-                                        <div class="wdgt-opt">
-                                            <span class="wdgt-opt-btn"><i class="ion-android-more-vertical"></i></span>
-                                            <div class="wdgt-opt-lst brd-rd5">
-                                                <a class="delt-wdgt" href="#" title="">Delete</a>
-                                                <a class="expnd-wdgt" href="#" title="">Expand</a>
-                                                <a class="refrsh-wdgt" href="#" title="">Refresh</a>
-                                            </div>
-                                        </div>
-                                        <div class="wdgt-ldr">
-                                            <div class="ball-scale-multiple">
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                            </div>
-                                        </div>
-                                        <i class="ion-android-checkbox-blank"></i>
-                                        <div id="a1" class="stat-box-innr">
-                                            <span id="consultasrealizadas"><i class="counter">
-                                            {%for key, value in indicadores.items%}
-                                              {%if key == '1' %}                                          
-                                              {{value}}
-                                              {%endif%}
-                                            {%endfor%}</i>%</span>
-                                            <h5>Consultas realizadas </h5>
-                                        </div>
-                                        <span><i class="ion-ios-stopwatch"></i> En relación a lo proyectado</span>
-                                    </div>
-                                </div>
-                                <div class="col m4 grid-item col s6 col l3">
-                                    <div class="stat-box widget bg-clr2">
-                                        <div class="wdgt-opt">
-                                            <span class="wdgt-opt-btn"><i class="ion-android-more-vertical"></i></span>
-                                            <div class="wdgt-opt-lst brd-rd5">
-                                                <a class="delt-wdgt" href="#" title="">Delete</a>
-                                                <a class="expnd-wdgt" href="#" title="">Expand</a>
-                                                <a class="refrsh-wdgt" href="#" title="">Refresh</a>
-                                            </div>
-                                        </div>
-                                        <div class="wdgt-ldr">
-                                            <div class="ball-scale-multiple">
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                            </div>
-                                        </div>
-                                        <i class="ion-android-checkbox"></i>
-                                        <div class="stat-box-innr">
-    
-                                            <span id="consultasnuevas"><i class="counter">
-                                            {%for key, value in indicadores.items%}
-                                              {%if key == '2' %}                                          
-                                              {{value}}
-                                              {%endif%}
-                                            {%endfor%}</i>%</span>
-                                            <h5>Consultas Nuevas</h5>
+                <div class="panel-body">
+                                        <div role="tabpanel">
+                                            <!-- Nav tabs -->
+                                            <ul class="nav nav-tabs" role="tablist">
+                                                <li role="presentation" class="active"><a href="#tab5" role="tab" data-toggle="tab">no GES</a></li>
+                                                <li role="presentation"><a href="#tab6" role="tab" data-toggle="tab">Consultas</a></li>
+                                            </ul>
+                                            <!-- Tab panes -->
+                                            <div class="tab-content">
+                                                <div role="tabpanel" class="tab-pane active fade in" id="tab5">
+                                                                                                <div class="row grid-wrap mrg20">
+                                                                                                    <div class="col m4 grid-item col s6 col l3">
+                                                                                                        <div class="stat-box widget bg-clr2">
+                                                                                                            
+                                                                                                            <div class="wdgt-ldr">
+                                                                                                                <div class="ball-scale-multiple">
+                                                                                                                    <div></div>
+                                                                                                                    <div></div>
+                                                                                                                    <div></div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <i class="ion-android-checkbox"></i>
+                                                                                                            <div class="stat-box-innr">
+                                                                        
+                                                                                                                <span id="consultasnuevas"><i class="counter">
+                                                                                                                {%for key, value in indicadores.items%}
+                                                                                                                {%if key == '2' %}                                          
+                                                                                                                {{value}}
+                                                                                                                {%endif%}
+                                                                                                                {%endfor%}</i>%</span>
+                                                                                                                <h5>Consultas Nuevas</h5>
 
-                                        </div>
-                                        <span><i class="ion-ios-stopwatch"></i>En relación a las consultas realiz.</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="col m4 grid-item col s6 col l3">
-                                    <div class="stat-box widget bg-clr3">
-                                        <div class="wdgt-opt">
-                                            <span class="wdgt-opt-btn"><i class="ion-android-more-vertical"></i></span>
-                                            <div class="wdgt-opt-lst brd-rd5">
-                                                <a class="delt-wdgt" href="#" title="">Delete</a>
-                                                <a class="expnd-wdgt" href="#" title="">Expand</a>
-                                                <a class="refrsh-wdgt" href="#" title="">Refresh</a>
-                                            </div>
-                                        </div>
-                                        <div class="wdgt-ldr">
-                                            <div class="ball-scale-multiple">
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                            </div>
-                                        </div>
-                                        <i class="ion-android-checkbox-outline"></i>
-                                        <div class="stat-box-innr">
-                                            <span><i class="counter">{%for key, value in indicadores.items%}
-                                              {%if key == '3' %}                                          
-                                              {{value}}
-                                              {%endif%}
-                                            {%endfor%}</i>%</span>
-                                            <h5>Altas</h5>
-                                        </div>
-                                        <span><i class="ion-ios-stopwatch"></i> En relación a las consultas realiz.</span>
-                                    </div>
-                                </div>
-                                <div class="col m4 grid-item col s6 col l3">
-                                    <div class="stat-box widget bg-clr4">
-                                        <div class="wdgt-opt">
-                                            <span class="wdgt-opt-btn"><i class="ion-android-more-vertical"></i></span>
-                                            <div class="wdgt-opt-lst brd-rd5">
-                                                <a class="delt-wdgt" href="#" title="">Delete</a>
-                                                <a class="expnd-wdgt" href="#" title="">Expand</a>
-                                                <a class="refrsh-wdgt" href="#" title="">Refresh</a>
-                                            </div>
-                                        </div>
-                                        <div class="wdgt-ldr">
-                                            <div class="ball-scale-multiple">
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                            </div>
-                                        </div>
-                                        <i class="ion-android-close"></i>
-                                        <div class="stat-box-innr">
-                                            <span> <i class="counter">{%for key, value in indicadores.items%}
-                                              {%if key == '4' %}                                          
-                                              {{value}}
-                                              {%endif%}
-                                            {%endfor%}</i>%</span>
-                                            <h5>No se presentan</h5>
-                                        </div>
-                                        <span><i class="ion-ios-stopwatch"></i> En relación a las consultas realiz.</span>
-                                    </div>
-                                </div>
-                                <div class="col m12 grid-item col s12 col l12">
-                <div class="traffic-src widget">
-                    <div class="wdgt-opt">
-                        <span class="wdgt-opt-btn"><i class="ion-android-more-vertical"></i></span>
-                        <div class="wdgt-opt-lst brd-rd5">
-                            <a class="delt-wdgt" href="#" title="">Delete</a>
-                            <a class="expnd-wdgt" href="#" title="">Expand</a>
-                            <a class="refrsh-wdgt" href="#" title="">Refresh</a>
-                        </div>
-                    </div>
-                    <div class="wdgt-ldr">
-                        <div class="ball-scale-multiple">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col m5 col s12 col l5">
-                            <div class="trfc-cnt" id="proyeccions">
-                                
+                                                                                                            </div>
+                                                                                                            <span><i class="ion-ios-stopwatch"></i>En relación a las consultas realiz.</span>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col m4 grid-item col s6 col l3">
+                                                                                                        <div class="stat-box widget bg-clr8">
+                                                                                                            
+                                                                                                            <div class="wdgt-ldr">
+                                                                                                                <div class="ball-scale-multiple">
+                                                                                                                    <div></div>
+                                                                                                                    <div></div>
+                                                                                                                    <div></div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <i class="ion-android-checkbox"></i>
+                                                                                                            <div class="stat-box-innr">
+                                                                        
+                                                                                                                <span id="consultasnuevas"><i class="counter">
+                                                                                                                {%for key, value in indicadores.items%}
+                                                                                                                {%if key == '2' %}                                          
+                                                                                                                {{value}}
+                                                                                                                {%endif%}
+                                                                                                                {%endfor%}</i>%</span>
+                                                                                                                <h5>Consultas Nuevas</h5>
+
+                                                                                                            </div>
+                                                                                                            <span><i class="ion-ios-stopwatch"></i>En relación a las consultas realiz.</span>
+                                                                                                        </div>
+                                                                                                    </div>  
+                                                                                                    <div class="col m4 grid-item col s6 col l3">
+                                                                                                        <div class="stat-box widget bg-clr6">
+                                                                                                           
+                                                                                                            <div class="wdgt-ldr">
+                                                                                                                <div class="ball-scale-multiple">
+                                                                                                                    <div></div>
+                                                                                                                    <div></div>
+                                                                                                                    <div></div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <i class="ion-android-checkbox"></i>
+                                                                                                            <div class="stat-box-innr">
+                                                                        
+                                                                                                                <span id="consultasnuevas"><i class="counter">
+                                                                                                                {%for key, value in indicadores.items%}
+                                                                                                                {%if key == '2' %}                                          
+                                                                                                                {{value}}
+                                                                                                                {%endif%}
+                                                                                                                {%endfor%}</i>%</span>
+                                                                                                                <h5>Consultas Nuevas</h5>
+
+                                                                                                            </div>
+                                                                                                            <span><i class="ion-ios-stopwatch"></i>En relación a las consultas realiz.</span>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col m4 grid-item col s6 col l3">
+                                                                                                        <div class="stat-box widget bg-clr1">
+
+                                                                                                            <div class="wdgt-ldr">
+                                                                                                                <div class="ball-scale-multiple">
+                                                                                                                    <div></div>
+                                                                                                                    <div></div>
+                                                                                                                    <div></div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <i class="ion-android-checkbox"></i>
+                                                                                                            <div class="stat-box-innr">
+                                                                        
+                                                                                                                <span id="consultasnuevas"><i class="counter">
+                                                                                                                {%for key, value in indicadores.items%}
+                                                                                                                {%if key == '2' %}                                          
+                                                                                                                {{value}}
+                                                                                                                {%endif%}
+                                                                                                                {%endfor%}</i>%</span>
+                                                                                                                <h5>Consultas Nuevas</h5>
+
+                                                                                                            </div>
+                                                                                                            <span><i class="ion-ios-stopwatch"></i>En relación a las consultas realiz.</span>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    </div>        
+                                                                                                    
+                                                                                                <div>
+                                                                                                    <div id="chart2"></div>
+                                                                                                </div>
+
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane fade" id="tab6">
+                                                                                            <div class="filter-items">
+                                                                                                <div class="row grid-wrap mrg20">
+                                                                                                    <div class="col m4 grid-item col s6 col l3">
+                                                                                                        <div class="stat-box widget bg-clr1">
+                                                                                                            
+                                                                                                            <div class="wdgt-ldr">
+                                                                                                                <div class="ball-scale-multiple">
+                                                                                                                    <div></div>
+                                                                                                                    <div></div>
+                                                                                                                    <div></div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <i class="ion-android-checkbox-blank"></i>
+                                                                                                            <div id="a1" class="stat-box-innr">
+                                                                                                                <span id="consultasrealizadas"><i class="counter">
+                                                                                                                {%for key, value in indicadores.items%}
+                                                                                                                {%if key == '1' %}                                          
+                                                                                                                {{value}}
+                                                                                                                {%endif%}
+                                                                                                                {%endfor%}</i>%</span>
+                                                                                                                <h5>Consultas realiz. </h5>
+                                                                                                            </div>
+                                                                                                            <span><i class="ion-ios-stopwatch"></i> En relación a lo proyectado</span>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col m4 grid-item col s6 col l3">
+                                                                                                        <div class="stat-box widget bg-clr2">
+                                                                                                            
+                                                                                                            <div class="wdgt-ldr">
+                                                                                                                <div class="ball-scale-multiple">
+                                                                                                                    <div></div>
+                                                                                                                    <div></div>
+                                                                                                                    <div></div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <i class="ion-android-checkbox"></i>
+                                                                                                            <div class="stat-box-innr">
+                                                                        
+                                                                                                                <span id="consultasnuevas"><i class="counter">
+                                                                                                                {%for key, value in indicadores.items%}
+                                                                                                                {%if key == '2' %}                                          
+                                                                                                                {{value}}
+                                                                                                                {%endif%}
+                                                                                                                {%endfor%}</i>%</span>
+                                                                                                                <h5>Consultas Nuevas</h5>
+
+                                                                                                            </div>
+                                                                                                            <span><i class="ion-ios-stopwatch"></i>En relación a las consultas realiz.</span>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    
+                                                                                                    <div class="col m4 grid-item col s6 col l3">
+                                                                                                        <div class="stat-box widget bg-clr3">
+                                                                                                            
+                                                                                                            <div class="wdgt-ldr">
+                                                                                                                <div class="ball-scale-multiple">
+                                                                                                                    <div></div>
+                                                                                                                    <div></div>
+                                                                                                                    <div></div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <i class="ion-android-checkbox-outline"></i>
+                                                                                                            <div class="stat-box-innr">
+                                                                                                                <span><i class="counter">{%for key, value in indicadores.items%}
+                                                                                                                {%if key == '3' %}                                          
+                                                                                                                {{value}}
+                                                                                                                {%endif%}
+                                                                                                                {%endfor%}</i>%</span>
+                                                                                                                <h5>Altas</h5>
+                                                                                                            </div>
+                                                                                                            <span><i class="ion-ios-stopwatch"></i> En relación a las consultas realiz.</span>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col m4 grid-item col s6 col l3">
+                                                                                                        <div class="stat-box widget bg-clr4">
+                                                                                                           
+                                                                                                            <div class="wdgt-ldr">
+                                                                                                                <div class="ball-scale-multiple">
+                                                                                                                    <div></div>
+                                                                                                                    <div></div>
+                                                                                                                    <div></div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <i class="ion-android-close"></i>
+                                                                                                            <div class="stat-box-innr">
+                                                                                                                <span> <i class="counter">{%for key, value in indicadores.items%}
+                                                                                                                {%if key == '4' %}                                          
+                                                                                                                {{value}}
+                                                                                                                {%endif%}
+                                                                                                                {%endfor%}</i>%</span>
+                                                                                                                <h5>No se presentan</h5>
+                                                                                                            </div>
+                                                                                                            <span><i class="ion-ios-stopwatch"></i> En relación a las consultas realiz.</span>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col m12 grid-item col s12 col l12">
+                                                                                    <div class="traffic-src widget">
+                                                                                       
+                                                                                        <div class="wdgt-ldr">
+                                                                                            <div class="ball-scale-multiple">
+                                                                                                <div></div>
+                                                                                                <div></div>
+                                                                                                <div></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <div class="col m5 col s12 col l5">
+                                                                                                <div class="trfc-cnt" id="proyeccions">
+                                                                                                    
 
 
 
-                            </div>
-                            <div class="rat-itms">
-                                <div class="rat-itm">
-                                    <div class="rat-itm-inf">
-                                        <span><i class="counter">{%for key, value in indicadores.items%}
-                                              {%if key == 'proyectadas' %}                                          
-                                              {{value}}
-                                              {%endif%}
-                                            {%endfor%}
-                                        </i></span>
-                                        <i>Meta</i>
-                                    </div>
-                                    <i class="ion-connection-bars blue-clr"></i>
-                                </div>
-                                <div class="rat-itm">
-                                    <div class="rat-itm-inf">
-                                        <span><i class="counter" id="Percent"></i>%</span>
-                                        <i>Últ. mes</i>
-                                    </div>
-                                    <i class="ion-arrow-graph-down-right green-clr"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col m7 col s12 col l7">
-                            <div class="traffic-chart-wrp">
-                                <div id="chrt1" style="height: 195px;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col m12 grid-item col s12 col l12">
-                <div class="totl-revnu widget pad50-40">
-                    <div class="wdgt-opt">
-                        <span class="wdgt-opt-btn"><i class="ion-android-more-vertical"></i></span>
-                        <div class="wdgt-opt-lst brd-rd5">
-                            <a class="delt-wdgt" href="#" title="">Delete</a>
-                            <a class="expnd-wdgt" href="#" title="">Expand</a>
-                            <a class="refrsh-wdgt" href="#" title="">Refresh</a>
-                        </div>
-                    </div>
-                    <div class="wdgt-ldr">
-                        <div class="ball-scale-multiple">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <h4 class="widget-title">Consultas proyectadas por especialidad.</h4>
-                    <div id="chart5"></div>
-                </div>
+                                                                                                </div>
+                                                                                                <div class="rat-itms">
+                                                                                                    <div class="rat-itm">
+                                                                                                        <div class="rat-itm-inf">
+                                                                                                            <span><i class="counter">{%for key, value in indicadores.items%}
+                                                                                                                {%if key == 'proyectadas' %}                                          
+                                                                                                                {{value}}
+                                                                                                                {%endif%}
+                                                                                                                {%endfor%}
+                                                                                                            </i></span>
+                                                                                                            <i>Meta</i>
+                                                                                                        </div>
+                                                                                                        <i class="ion-connection-bars blue-clr"></i>
+                                                                                                    </div>
+                                                                                                    <div class="rat-itm">
+                                                                                                        <div class="rat-itm-inf">
+                                                                                                            <span><i class="counter" id="Percent"></i>%</span>
+                                                                                                            <i>Últ. mes</i>
+                                                                                                        </div>
+                                                                                                        <i class="ion-arrow-graph-down-right green-clr"></i>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col m7 col s12 col l7">
+                                                                                                <div class="traffic-chart-wrp">
+                                                                                                    <div id="chrt1" style="height: 195px;"></div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col m12 grid-item col s12 col l12">
+                                                                                    <div class="totl-revnu widget pad50-40">
+                                                                                       
+                                                                                        <div class="wdgt-ldr">
+                                                                                            <div class="ball-scale-multiple">
+                                                                                                <div></div>
+                                                                                                <div></div>
+                                                                                                <div></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <h4 class="widget-title">Consultas proyectadas por especialidad.</h4>
+                                                                                        <div id="chart5"></div>
+                                                                                    </div>
 
-                </div><!-- Main Wrapper -->
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                
                 <div class="page-footer">
                     <p class="no-s">2021 &copy; Universidad de Talca.</p>
                     

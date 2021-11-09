@@ -1,10 +1,11 @@
 from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import render
-from gestorhsc.models import Especialista, Contrato, Especialidad, Agenda, MetasConsultas, MetasTotales, ConsultasCumplimiento, NogesMES, Nogestotales
+from gestorhsc.models import Especialista, Contrato, Especialidad, Agenda, MetasConsultas, MetasTotales, ConsultasCumplimiento, NogesMES, Nogestotales, HorasNoges, TotHorasNoges 
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 from datetime import date, timedelta, datetime
 import json
+import re
 def calendars(request):
     return render(request, 'calendars.html' )
 @csrf_exempt
@@ -455,7 +456,21 @@ def noges(request):
     nogesMES = NogesMES.objects.all()
     NogesTotales = Nogestotales.objects.all()
     
-    context = {'nogesMES':nogesMES, 'NogesTotales':NogesTotales}
+    # HorasNoges, TotHorasNoges --- Según Horas.
+    
+    OcupadasVeinte = HorasNoges.objects.get(id=1)
+    DisponiblesVeinte = HorasNoges.objects.get(id=2)
+    totVeinte = TotHorasNoges.objects.get(id=1)
+    
+    OcupadasVentiuno = HorasNoges.objects.get(id=3)
+    DisponiblesVentiuno= HorasNoges.objects.get(id=4)
+    totVentiuno = TotHorasNoges.objects.get(id=2)
+    
+    OcupadasVentidos = HorasNoges.objects.get(id=5)
+    DisponiblesVentidos = HorasNoges.objects.get(id=6)
+    totVentidos = TotHorasNoges.objects.get(id=3)
+    
+    context = {'nogesMES':nogesMES, 'NogesTotales':NogesTotales, 'OcupadasVeinte':OcupadasVeinte, 'DisponiblesVeinte':DisponiblesVeinte, 'OcupadasVentiuno':OcupadasVentiuno, 'DisponiblesVentiuno': DisponiblesVentiuno, 'OcupadasVentidos':OcupadasVentidos, 'DisponiblesVentidos': DisponiblesVentidos, 'totVeinte': totVeinte, 'totVentiuno': totVentiuno, 'totVentidos':totVentidos}
     
     return render(request, 'noges.html/', context)
 
@@ -644,7 +659,176 @@ def precargar(request):
     return HttpResponse(events)
 
 @csrf_exempt
+def post_horas(request):
+    name = request.POST.get('name') 
+    valueSubmit = request.POST.get('submitValue')
+    name= name.split(sep="_")
+    
+    fila = HorasNoges.objects.get(clave=name[0])
 
+    año= re.findall('[A-Z][a-z]*', name[0])
+    claveTotal = 'tot'+año[1]
+    total= TotHorasNoges.objects.get(clave=claveTotal)
+    
+    dict_total=total.__dict__
+    
+    
+    
+    meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic']
+    dicts= fila.__dict__
+    
+
+    def sumaMess(fila):
+        sumaMes=0
+        for mes in meses:
+            sumaMes=sumaMes+ int(fila[mes])
+        return sumaMes 
+    def sumaTotal():
+        #totalActual = dict_total[name[1]]   
+        #sumaTotal_= int(totalActual) - int(oldValue) + int(valueSubmit)
+
+
+        if (año[0]=="Ocupadas"):
+            second = HorasNoges.objects.get(clave='Disponibles'+año[1])
+            second = second.__dict__
+            if (second[name[1]]==0):
+                return False
+            porcentaje = int(int(valueSubmit)*100/int(second[name[1]]))
+            
+
+
+            
+        else:
+            if(año[0]=="Disponibles"):         
+                second = HorasNoges.objects.get(clave='Ocupadas'+año[1])
+                second = second.__dict__
+                if(valueSubmit=='0'):
+                    return False
+                porcentaje = int(int(second[name[1]]*100/int(valueSubmit)))
+        return porcentaje
+
+    if name[1] == "ene":
+        oldValue= fila.ene
+        totalMes = sumaTotal()
+        total.ene = totalMes
+        total.save()
+        fila.ene = valueSubmit
+        fila.save()
+        
+
+
+    elif name[1] =="feb":
+        oldValue= fila.feb
+        totalMes = sumaTotal()
+        total.feb = totalMes
+        total.save()
+        fila.feb = valueSubmit
+        fila.save()
+
+    elif name[1] == "mar":
+        oldValue= fila.mar
+        totalMes = sumaTotal()
+        total.mar = totalMes
+        total.save()
+        fila.mar = valueSubmit
+        fila.save()
+
+    elif name[1] == "abr":
+        oldValue= fila.abr
+        totalMes = sumaTotal()
+        total.abr = totalMes
+        total.save()
+        fila.abr = valueSubmit
+        fila.save()
+
+    elif name[1] == "may":
+        oldValue= fila.may
+        totalMes = sumaTotal()
+        total.may = totalMes
+        total.save()
+        fila.may = valueSubmit
+        fila.save()
+
+    elif name[1] == "jun":
+        oldValue= fila.jun
+        totalMes = sumaTotal()
+        total.jun = totalMes
+        total.save()
+        fila.jun = valueSubmit
+        fila.save()
+
+    elif name[1] == "jul":
+        oldValue= fila.jul
+        totalMes = sumaTotal()
+        total.jul = totalMes
+        total.save()
+        fila.jul = valueSubmit
+        fila.save()
+
+    elif name[1] == "ago":
+        oldValue= fila.ago
+        totalMes = sumaTotal()
+        total.ago = totalMes
+        total.save()
+        fila.ago = valueSubmit
+        fila.save()
+
+    elif name[1] == "sep":
+        oldValue= fila.sep
+        totalMes = sumaTotal()
+        total.sep = totalMes
+        total.save()
+        fila.sep = valueSubmit
+        fila.save()
+ 
+    elif name[1] == "oct":
+        oldValue= fila.oct
+        totalMes = sumaTotal()
+        total.oct = totalMes
+        total.save()
+        fila.oct = valueSubmit
+        fila.save()
+
+    elif name[1] == "nov":
+        oldValue= fila.nov
+        totalMes = sumaTotal()
+        total.nov = totalMes
+        total.save()
+        fila.nov = valueSubmit
+        fila.save()
+
+    elif name[1] == "dic":
+        oldValue= fila.dic
+        totalMes = sumaTotal()
+        total.dic = totalMes
+        total.save()
+        fila.dic = valueSubmit
+        fila.save()
+
+    totalEspecialidad= sumaMess(dicts)
+    fila.tot = totalEspecialidad
+    fila.save()
+    filaDisponibles = HorasNoges.objects.get(clave='Disponibles'+año[1])
+    filaDisponibles = filaDisponibles.__dict__ 
+    filaOcupadas = HorasNoges.objects.get(clave='Ocupadas'+año[1])
+    filaOcupadas = filaOcupadas.__dict__
+    porcentTotal=int(int(filaOcupadas['tot']*100/int(filaDisponibles['tot'])))
+    total.tot= porcentTotal
+    total.save()    
+
+    
+    ## Send Json
+    context = {}
+    context['totalMes'] = totalMes
+    context['totalFila'] = totalEspecialidad
+    context['posicion'] = name[0]
+    context['año'] = año[1]
+    context['mes'] = name[1]
+    context['totalTotal'] = porcentTotal
+    #context['Especialidad'] = name[0]
+    #context['Mes'] = name[1]
+    context = json.dumps(context)
+    return HttpResponse(context)
 def post_noges(request):
     name = request.POST.get('name') 
     valueSubmit = request.POST.get('submitValue')
@@ -691,7 +875,7 @@ def post_noges(request):
     elif name[1] == "mar":
         oldValue= t.mar
         totalMes = sumaTotal()
-        s.feb = totalMes
+        s.mar = totalMes
         s.save()
         t.mar = valueSubmit
         t.save()
@@ -791,4 +975,6 @@ def post_noges(request):
     
 
     return HttpResponse(context)
+
+
 # Create your views here.

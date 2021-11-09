@@ -50,5 +50,7 @@ urlpatterns = [
     
     path('precargar/', precargar),
     path('post_noges/', post_noges),
+    
+    path('post_horas/', post_horas),
 
 ]

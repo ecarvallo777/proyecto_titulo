@@ -118,6 +118,44 @@ class Nogestotales(models.Model):
         return self.tot    
     
     
+class HorasNoges(models.Model):
+    name = models.CharField(max_length=30)
+    clave= models.CharField(max_length=30)
+    año= models.IntegerField()
+    ene= models.IntegerField()
+    feb= models.IntegerField()
+    mar=models.IntegerField()
+    abr=models.IntegerField()
+    may=models.IntegerField()
+    jun=models.IntegerField()
+    jul=models.IntegerField()
+    ago=models.IntegerField()
+    sep=models.IntegerField()
+    oct=models.IntegerField()
+    nov=models.IntegerField()
+    dic=models.IntegerField()
+    tot=models.IntegerField()
+    def __str__(self):
+        return self.name   
     
+class TotHorasNoges(models.Model):
+    name = models.CharField(max_length=30)
+    clave=models.CharField(max_length=30)
+    año= models.IntegerField()
+    ene= models.IntegerField()
+    feb= models.IntegerField()
+    mar=models.IntegerField()
+    abr=models.IntegerField()
+    may=models.IntegerField()
+    jun=models.IntegerField()
+    jul=models.IntegerField()
+    ago=models.IntegerField()
+    sep=models.IntegerField()
+    oct=models.IntegerField()
+    nov=models.IntegerField()
+    dic=models.IntegerField()
+    tot=models.IntegerField()
+    def __str__(self):
+        return self.name  
 # Create your models here.
 
