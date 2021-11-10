@@ -53,5 +53,6 @@ urlpatterns = [
     
     path('post_horas/', post_horas),
     path('get_chart1/', get_chart1 ),
+    path('get_chart2/', get_chart2),
 
 ]

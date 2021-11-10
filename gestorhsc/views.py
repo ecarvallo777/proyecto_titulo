@@ -108,6 +108,21 @@ def get_chart1(request):
     datos = json.dumps(datos)
     
     return HttpResponse(datos)
+def get_chart2(request):
+    produccionMensual = Nogestotales.objects.get(id=1)
+    produccionMensual = produccionMensual.__dict__
+    produccionMensual.pop('_state', None)
+    meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic']
+    dato = []
+    for mes in meses:
+        dato.append(produccionMensual[mes])
+
+    datos = {}
+    datos['produccion'] = dato
+
+    datos = json.dumps(datos)
+    
+    return HttpResponse(datos)
 def calendario(request):
 
     especialidad_queryset = Especialidad.objects.all()
