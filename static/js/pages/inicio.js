@@ -70,7 +70,6 @@
                 let consultas_proyeccion = [];
                 let especialidades = [];
                 let totalTotal = [];
-                console.log(response);
                 for (var i=0; i< response.length; i++){
                     if(response[i].model == "gestorhsc.especialidad"){
                         especialidades.push(response[i]);
@@ -239,30 +238,52 @@
         });
 
 
-        // Chart horas
+        // Chart 1 horas
+
+        $.ajax({
+            method: 'GET',
+            url:    "/get_chart1/",
+            dataType: "json",
+            
+            headers:{
+            "X-CSRFToken": getCookie('csrftoken'),
+
+                },
+            success: function(response){
+                //llenarChart1(response);
+                llenarChart1(response.Anterior, response.Actual);
+            },
+            error: function (data) {
+            }
+        
+    }); 
+
+    function llenarChart1(anterior, actual){
         var ctx1 = document.getElementById("chart1").getContext("2d");
         var data1 = {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+            
             datasets: [
                 {
-                    label: "My First dataset",
+                    label: "2020",
                     fillColor: "rgba(220,220,220,0.2)",
                     strokeColor: "rgba(220,220,220,1)",
                     pointColor: "rgba(220,220,220,1)",
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [65, 59, 80, 81, 56, 55, 40]
+                    data: anterior
+                    
                 },
                 {
-                    label: "My Second dataset",
+                    label: "2021",
                     fillColor: "rgba(34,186,160,0.2)",
                     strokeColor: "rgba(34,186,160,1)",
                     pointColor: "rgba(34,186,160,1)",
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(18,175,203,1)",
-                    data: [28, 48, 40, 19, 86, 27, 90]
+                    data: actual
                 }
             ]
         };
@@ -282,9 +303,19 @@
             datasetStroke : true,
             datasetStrokeWidth : 2,
             datasetFill : true,
-            legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
-            responsive: true
+            legendTemplate : '<table>'
+            +'<% for (var i=0; i<datasets.length; i++) { %>'
+            +'<tr><td><div class=\"boxx\" style=\"background-color:<%=datasets[i].fillColor %>\"></div></td>'
+            +'<% if (datasets[i].label) { %><td><%= datasets[i].label %></td><% } %></tr><tr height="5"></tr>'
+            +'<% } %>'
+            +'</table>',
+            multiTooltipTemplate: "<%= datasetLabel %> - <%= value %>",
+            responsive: true,
+
+           
         });
+
+    }
         // chart 2
     var ctx2 = document.getElementById("chart2").getContext("2d");
     var data2 = {
@@ -323,39 +354,7 @@
         responsive: true
     });
 
-    var ctx4 = document.getElementById("chart4").getContext("2d");
-    var data4 = [
-        {
-            value: 300,
-            color:"#F25656",
-            highlight: "#FD7A7A",
-            label: "Red"
-        },
-        {
-            value: 50,
-            color: "#22BAA0",
-            highlight: "#36E7C8",
-            label: "Green"
-        },
-        {
-            value: 100,
-            color: "#F2CA4C",
-            highlight: "#FBDB6E",
-            label: "Yellow"
-        }
-    ];
     
-    var myDoughnutChart = new Chart(ctx4).Doughnut(data4,{
-        segmentShowStroke : true,
-        segmentStrokeColor : "#fff",
-        segmentStrokeWidth : 2,
-        animationSteps : 100,
-        animationEasing : "easeOutBounce",
-        animateRotate : true,
-        animateScale : false,
-        legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>",
-        responsive: true
-    });
 
     // 
 

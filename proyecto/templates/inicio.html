@@ -98,7 +98,7 @@
                                                                                                             <div class="stat-box-innr">
                                                                         
                                                                                                                 <span id="consultasnuevas"><i class="counter">
-                                                                                                                10</i>%</span>
+                                                                                                                {{actualOcupacion}}</i>%</span>
                                                                                                                 <h5>Ocupación Actual de pabellones disponibles</h5>
 
                                                                                                             </div>
@@ -118,7 +118,7 @@
                                                                                                             <div class="stat-box-innr">
                                                                         
                                                                                                                 <span id="consultasnuevas"><i class="counter">
-                                                                                                                24</i>%</span>
+                                                                                                                {{añoAnterior}}</i>%</span>
                                                                                                                 <h5>Ocupación último mes de pabellones disponibles</h5>
 
                                                                                                             </div>
@@ -137,7 +137,7 @@
                                                                                                             <i class="glyphicon glyphicon-sort-by-attributes-alt"></i>
                                                                                                             <div class="stat-box-innr">
                                                                         
-                                                                                                                <span id="consultasnuevas">Cirugia Gral.</span>
+                                                                                                                <span id="consultasnuevas">{{Mayor}}.</span>
                                                                                                                 <h5>Especialidad con mayor producción de cirugias</h5>
 
                                                                                                             </div>
@@ -157,36 +157,32 @@
                                                                                                             <div class="stat-box-innr">
                                                                         
                                                                                                                 <span id="consultasnuevas">
-                                                                                                                Traumatología</span>
+                                                                                                                {{Menor}}.</span>
                                                                                                                 <h5>Especialidad con menor producción de cirugias</h5>
 
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
-                                                                                                    </div>        
+                                                                                                
                                                                                                     
-                                                                                                <div class="row">
-                                                                                                    <div class="col-md-6">
-                                                                                                        <div class="panel panel-white">
-                                                                                                            <div class="panel-heading">
-                                                                                                                <h3 class="panel-title">Proyección</h3>
-                                                                                                            </div>
-                                                                                                            <div>
-                                                                                                                
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <div class="col-md-6">
-                                                                                                        <div class="panel panel-white">
-                                                                                                            <div class="panel-heading">
-                                                                                                                <h3 class="panel-title">Gráfico meta</h3>
-                                                                                                            </div>
-                                                                                                                <div>
-                                                                                                                    <canvas id="chart1" height="150"></canvas>
-                                                                                                                </div>                                                                                       
+                                                                                                <div class="col m12 grid-item col s12 col l12">
+                                                                                    <div class="totl-revnu widget pad50-40">
+                                                                                       
+                                                                                        <div class="wdgt-ldr">
+                                                                                            <div class="ball-scale-multiple">
+                                                                                                <div></div>
+                                                                                                <div></div>
+                                                                                                <div></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <h4 class="widget-title">Consultas proyectadas por especialidad.</h4>
+                                                                                        <div>
+                                                                                                                    <canvas id="chart1" height="100"></canvas>
+                                                                                                                    <div id="legendDiv"></div>
 
-                                                                                                    </div>
-                                                                                                </div>
+                                                                                                                </div>
+                                                                                    </div>
+                                                                                </div>
                                                                                 <div class="col m12 grid-item col s12 col l12">
                                                                                     <div class="totl-revnu widget pad50-40">
                                                                                        

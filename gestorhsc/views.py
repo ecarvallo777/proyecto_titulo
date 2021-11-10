@@ -69,27 +69,45 @@ def inicio(request):
     añoAnterior = añoAnterior[mesActual]
     
     produccion = NogesMES.objects.all()
-    acumuladorMa=0
-    menor = {}
-    mayor= ''
+    acumuladorMa=produccion[0].tot
+    acumuladorMe=produccion[0].tot
+    mayor= produccion[0].nombre
+    menor = produccion[0].nombre
     for especialidad in produccion:
         if (especialidad.tot > acumuladorMa):
             acumuladorMa = especialidad.tot
             mayor = especialidad.nombre
-        menor[especialidad.id]= especialidad.tot
-    valores_ord = sorted(menor.items(), reverse=True)
-
-    print(valores_ord)
+        if (especialidad.tot < acumuladorMe):   
+            acumuladorMe = especialidad.tot
+            menor= especialidad.nombre
+            
+        
             
         
     
-    print(actualOcupacion, añoAnterior)
     
     
     
     
-    return render(request, 'inicio.html', {'indicadores':indicadores_json, 'actualOcupacion':actualOcupacion, 'añoAnterior':añoAnterior, 'Mayor':'mayor' })
-
+    return render(request, 'inicio.html', {'indicadores':indicadores_json, 'actualOcupacion':actualOcupacion, 'añoAnterior':añoAnterior, 'Mayor':mayor, 'Menor':menor })
+def get_chart1(request):
+    veinte = TotHorasNoges.objects.get(id=1)
+    veinte = veinte.__dict__
+    veintiuno = TotHorasNoges.objects.get(id=2)
+    veintiuno = veintiuno.__dict__
+    acAnterior = []
+    acActual= []
+    meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic']
+    for mes in meses:
+        
+        acAnterior.append(veinte[mes])
+        acActual.append(veintiuno[mes])
+    datos = {}
+    datos['Anterior'] = acAnterior
+    datos['Actual'] = acActual  
+    datos = json.dumps(datos)
+    
+    return HttpResponse(datos)
 def calendario(request):
 
     especialidad_queryset = Especialidad.objects.all()
