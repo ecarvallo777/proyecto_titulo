@@ -23,6 +23,7 @@
         <link href="{% static 'plugins/switchery/switchery.min.css' %}" rel="stylesheet" type="text/css"/>
         <link href="{% static 'plugins/3d-bold-navigation/css/style.css' %}" rel="stylesheet" type="text/css"/>	
         <link href="{% static 'plugins/slidepushmenus/css/component.css' %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static 'plugins/toastr/toastr.min.css' %}" rel="stylesheet"/>
 
         
         <!-- Theme Styles -->
@@ -94,7 +95,7 @@
                         <li class="droplink active open"><a href="inputmockup.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon glyphicon-stats"></span><p>Listas</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li ><a href="/consultas"><p>Consultas</p></a>
-                                <li class="active"><a href="/noges"><p>No ges</p></a>
+                                <li class="active"><a href="/noges"><p>No GES</p></a>
 
                         
                     </ul>
@@ -219,18 +220,18 @@
                                                 <tr>
 
                                                     <th scope="row" id="{{especialidad.especialidad}}">{{especialidad.especialidad}}</th>
-                                                    <td><a href="#" id="{{especialidad.especialidad}}_ene" data-type="number" data-pk="1" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.ene}}</a></td>
-                                                    <td><a href="#" id="{{especialidad.especialidad}}_feb" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.feb}}</a></td>
-                                                    <td><a href="#" id="{{especialidad.especialidad}}_mar" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.mar}}</a></td>
-                                                    <td><a href="#" id="{{especialidad.especialidad}}_abr" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.abr}}</a></td>
-                                                    <td><a href="#" id="{{especialidad.especialidad}}_may" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.may}}</a></td>
-                                                    <td><a href="#" id="{{especialidad.especialidad}}_jun" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.jun}}</a></td>
-                                                    <td><a href="#" id="{{especialidad.especialidad}}_jul" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.jul}}</a></td>
-                                                    <td><a href="#" id="{{especialidad.especialidad}}_ago" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.ago}}</a></td>
-                                                    <td><a href="#" id="{{especialidad.especialidad}}_sep" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.sep}}</a></td>
-                                                    <td><a href="#" id="{{especialidad.especialidad}}_oct" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.oct}}</a></td>
-                                                    <td><a href="#" id="{{especialidad.especialidad}}_nov" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.nov}}</a></td>
-                                                    <td><a href="#" id="{{especialidad.especialidad}}_dic" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{especialidad.dic}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_ene" data-type="number" data-pk="1" data-title="Ingrese cantidad de cirugias" class="editable editable-click" style="display: inline;">{{especialidad.ene}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_feb" data-type="number" data-pk="2" data-title="Ingrese cantidad de cirugias" class="editable editable-click" style="display: inline;">{{especialidad.feb}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_mar" data-type="number" data-pk="2" data-title="Ingrese cantidad de cirugias" class="editable editable-click" style="display: inline;">{{especialidad.mar}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_abr" data-type="number" data-pk="2" data-title="Ingrese cantidad de cirugias" class="editable editable-click" style="display: inline;">{{especialidad.abr}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_may" data-type="number" data-pk="2" data-title="Ingrese cantidad de cirugias" class="editable editable-click" style="display: inline;">{{especialidad.may}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_jun" data-type="number" data-pk="2" data-title="Ingrese cantidad de cirugias" class="editable editable-click" style="display: inline;">{{especialidad.jun}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_jul" data-type="number" data-pk="2" data-title="Ingrese cantidad de cirugias" class="editable editable-click" style="display: inline;">{{especialidad.jul}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_ago" data-type="number" data-pk="2" data-title="Ingrese cantidad de cirugias" class="editable editable-click" style="display: inline;">{{especialidad.ago}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_sep" data-type="number" data-pk="2" data-title="Ingrese cantidad de cirugias" class="editable editable-click" style="display: inline;">{{especialidad.sep}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_oct" data-type="number" data-pk="2" data-title="Ingrese cantidad de cirugias" class="editable editable-click" style="display: inline;">{{especialidad.oct}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_nov" data-type="number" data-pk="2" data-title="Ingrese cantidad de cirugias" class="editable editable-click" style="display: inline;">{{especialidad.nov}}</a></td>
+                                                    <td><a href="#" id="{{especialidad.especialidad}}_dic" data-type="number" data-pk="2" data-title="Ingrese cantidad de cirugias" class="editable editable-click" style="display: inline;">{{especialidad.dic}}</a></td>
 
                                                     <td id="{{especialidad.especialidad}}_total">{{especialidad.tot}}</td>
 
@@ -304,18 +305,18 @@
                                                                 <tr>
 
                                                                     <th scope="row" id="OcupadasVentiuno">{{OcupadasVentiuno.name}}</th>
-                                                                    <td><a href="#" id="OcupadasVentiuno_ene" data-type="number" data-pk="1" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.ene}}</a></td>
-                                                                    <td><a href="#" id="OcupadasVentiuno_feb" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.feb}}</a></td>
-                                                                    <td><a href="#" id="OcupadasVentiuno_mar" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.mar}}</a></td>
-                                                                    <td><a href="#" id="OcupadasVentiuno_abr" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.abr}}</a></td>
-                                                                    <td><a href="#" id="OcupadasVentiuno_may" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.may}}</a></td>
-                                                                    <td><a href="#" id="OcupadasVentiuno_jun" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.jun}}</a></td>
-                                                                    <td><a href="#" id="OcupadasVentiuno_jul" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.jul}}</a></td>
-                                                                    <td><a href="#" id="OcupadasVentiuno_ago" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.ago}}</a></td>
-                                                                    <td><a href="#" id="OcupadasVentiuno_sep" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.sep}}</a></td>
-                                                                    <td><a href="#" id="OcupadasVentiuno_oct" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.oct}}</a></td>
-                                                                    <td><a href="#" id="OcupadasVentiuno_nov" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.nov}}</a></td>
-                                                                    <td><a href="#" id="OcupadasVentiuno_dic" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.dic}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_ene" data-type="number" data-pk="1" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.ene}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_feb" data-type="number" data-pk="2" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.feb}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_mar" data-type="number" data-pk="2" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.mar}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_abr" data-type="number" data-pk="2" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.abr}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_may" data-type="number" data-pk="2" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.may}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_jun" data-type="number" data-pk="2" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.jun}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_jul" data-type="number" data-pk="2" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.jul}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_ago" data-type="number" data-pk="2" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.ago}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_sep" data-type="number" data-pk="2" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.sep}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_oct" data-type="number" data-pk="2" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.oct}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_nov" data-type="number" data-pk="2" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.nov}}</a></td>
+                                                                    <td><a href="#" id="OcupadasVentiuno_dic" data-type="number" data-pk="2" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{OcupadasVentiuno.dic}}</a></td>
 
                                                                     <td id="OcupadasVentiuno_total">{{OcupadasVentiuno.tot}}</td>
 
@@ -323,18 +324,18 @@
                                                                 <tr>
 
                                                                     <th scope="row" id="DisponiblesVentiuno">{{DisponiblesVentiuno.name}}</th>
-                                                                    <td><a href="#" id="DisponiblesVentiuno_ene" data-type="number" data-pk="1" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.ene}}</a></td>
-                                                                    <td><a href="#" id="DisponiblesVentiuno_feb" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.feb}}</a></td>
-                                                                    <td><a href="#" id="DisponiblesVentiuno_mar" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.mar}}</a></td>
-                                                                    <td><a href="#" id="DisponiblesVentiuno_abr" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.abr}}</a></td>
-                                                                    <td><a href="#" id="DisponiblesVentiuno_may" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.may}}</a></td>
-                                                                    <td><a href="#" id="DisponiblesVentiuno_jun" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.jun}}</a></td>
-                                                                    <td><a href="#" id="DisponiblesVentiuno_jul" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.jul}}</a></td>
-                                                                    <td><a href="#" id="DisponiblesVentiuno_ago" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.ago}}</a></td>
-                                                                    <td><a href="#" id="DisponiblesVentiuno_sep" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.sep}}</a></td>
-                                                                    <td><a href="#" id="DisponiblesVentiuno_oct" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.oct}}</a></td>
-                                                                    <td><a href="#" id="DisponiblesVentiuno_nov" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.nov}}</a></td>
-                                                                    <td><a href="#" id="DisponiblesVentiuno_dic" data-type="number" data-pk="2" data-title="Ingrese cantidad de consultas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.dic}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_ene" data-type="number" data-pk="1" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.ene}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_feb" data-type="number" data-pk="2" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.feb}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_mar" data-type="number" data-pk="2" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.mar}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_abr" data-type="number" data-pk="2" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.abr}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_may" data-type="number" data-pk="2" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.may}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_jun" data-type="number" data-pk="2" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.jun}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_jul" data-type="number" data-pk="2" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.jul}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_ago" data-type="number" data-pk="2" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.ago}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_sep" data-type="number" data-pk="2" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.sep}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_oct" data-type="number" data-pk="2" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.oct}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_nov" data-type="number" data-pk="2" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.nov}}</a></td>
+                                                                    <td><a href="#" id="DisponiblesVentiuno_dic" data-type="number" data-pk="2" data-title="Ingrese cantidad de horas" class="editable editable-click" style="display: inline;">{{DisponiblesVentiuno.dic}}</a></td>
 
                                                                     <td id="DisponiblesVentiuno_total">{{DisponiblesVentiuno.tot}}</td>
 

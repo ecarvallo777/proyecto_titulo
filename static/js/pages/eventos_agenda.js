@@ -34,7 +34,7 @@ function getCookie(name) {
             contenido = "<tr>"+
                 "<th scope='row'>"+response[i].Especialidad+"</th>"+
             
-                "<td>"+(response[i].Conteo*2)+"</td>"+ //Se multiplica la cantidad de eventos por especialidad por 2 ya que el rendimiento es 2 x bloque
+                "<td>"+(response[i].Conteo)+"</td>"+ //Se multiplica la cantidad de eventos por especialidad por 2 ya que el rendimiento es 2 x bloque
             
 
                 "</tr>";
@@ -44,7 +44,7 @@ function getCookie(name) {
             total = "<tr>"+
             "<th scope='row'>Total</th>"+
         
-            "<td>"+(suma*2)+"</td>"+
+            "<td>"+suma+"</td>"+
         
 
             "</tr>";

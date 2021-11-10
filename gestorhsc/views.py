@@ -456,7 +456,8 @@ def get_eventos(request):
   
     for e in post:
         especialidad = str(e.especialista.especialidad)
-
+        especialidad_obj = Especialidad.objects.get(nombre=especialidad)
+        rendimiento = especialidad_obj.rendimiento 
 
         i =0
         u='false'
@@ -470,9 +471,9 @@ def get_eventos(request):
         if isinstance(u, int):
             dic = list[u]
             conteo = int(dic.get("Conteo"))
-            dic["Conteo"] = conteo + 1
+            dic["Conteo"] = conteo + (1 * rendimiento)
         else: 
-            dic = {'Especialidad': especialidad, 'Conteo': 1}
+            dic = {'Especialidad': especialidad, 'Conteo': (1*rendimiento)}
             list.append(dic)
          
     list_json = json.dumps(list)
@@ -641,10 +642,12 @@ def agregarEspecialidad(request):
     nombre = request.POST.get("input-nombre")
     tasa_crecimiento = request.POST.get("input-tcrecimiento")
     ausentismo = request.POST.get("input-ausentismo")
+    rendimiento = request.POST.get("input-rendimiento")
     
     p= Especialidad(nombre=nombre,
                     tasa_crecimiento=tasa_crecimiento,
-                    ausentismo=ausentismo).save()
+                    ausentismo=ausentismo,
+                    rendimiento=rendimiento).save()
     return HttpResponse()
     
     
@@ -654,14 +657,15 @@ def modificarEspecialidad(request):
     nombre = request.POST.get("nombre")
     tasa_crecimiento = request.POST.get("tasa_crecimiento")
     ausentismo = request.POST.get("ausentismo")
+    rendimiento = request.POST.get("rendimiento")
     ID = request.POST.get("id")
-    print(ID)
     
     p= Especialidad.objects.get(pk=ID)
     
     p.nombre = nombre
     p.tasa_crecimiento = tasa_crecimiento
     p.ausentismo = ausentismo
+    p.rendimiento = rendimiento
     p.save()
     return HttpResponse()
     

@@ -371,7 +371,7 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                         
                         
          
-                        toastr["success"]("Consultas en ausentismo agregada exitosamente!")
+                        toastr["success"]("Cirugias agregadas exitosamente!")
                                   },
                     error: function (data) {
                     toastr["error"]("Acción no se pudo realizar en BD. Consultar con especialista.")
@@ -395,7 +395,6 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                     },
                 success: function(response){
                    //var totalEspecialidad = response.Especialidad+"_total";
-                    console.log(response);
                     document.getElementById(response.posicion+'_total').innerHTML = response.totalFila;
                     document.getElementById('tot'+response.año+'_'+response.mes).innerHTML = response.totalMes+'%';
                     document.getElementById('tot'+response.año+'_total').innerHTML = response.totalTotal+'%';
@@ -403,7 +402,7 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                     var submitPerc = document.getElementById('tot'+response.año+'_total').innerHTML;
                     document.getElementById(response.posicion).innerHTML = submit;
                     document.getElementById('resultados'+response.año).innerHTML = submitPerc;
-                    toastr["success"]("Consultas en ausentismo agregada exitosamente!");
+                    toastr["success"]("Horas agregadas exitosamente!");
                               },
                 error: function (data) {
                 toastr["error"]("Acción no se pudo realizar en BD. Consultar con especialista.");

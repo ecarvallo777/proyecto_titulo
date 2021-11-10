@@ -553,7 +553,7 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                         var value2 = document.getElementById("a_"+codigo[1]).innerHTML;  
                         var key2 = "a";           
                         reCargarPorcentaje(codigo[1], parseInt(value2), key2);
-                        toastr["success"]("Meta de especialidad modificada exitosamente!")
+                        toastr["success"]("Cantidad de consultas modificada exitosamente!")
 
                         },
                         error: function (data) {
@@ -600,7 +600,7 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                         
          
                     reCargarPorcentaje(codigo[1], parseInt(submitValue), codigo[0]);
-                    toastr["success"]("Consultas en ausentismo agregada exitosamente!")
+                    toastr["success"]("Consultas en NSP agregada exitosamente!")
                                   },
                     error: function (data) {
                     toastr["error"]("Acción no se pudo realizar en BD. Consultar con especialista.")

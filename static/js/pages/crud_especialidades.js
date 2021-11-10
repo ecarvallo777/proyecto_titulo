@@ -53,6 +53,11 @@ function validaForm(){
         $("#input-ausentismo").focus();
         return false;
     }
+    if($("#input-rendimiento").val() == ""){
+        toastr["error"]("El campo Rendimiento no puede estar vacío!")
+        $("#input-rendimiento").focus();
+        return false;
+    }
     
     
     
@@ -81,6 +86,7 @@ function agregar(){
             data: { 'input-nombre': $("#input-nombre").val(),
                     'input-tcrecimiento': $("#input-tcrecimiento").val(),
                     'input-ausentismo': $("#input-ausentismo").val(),
+                    'input-rendimiento': $("#input-rendimiento").val(),
 
 
             },
@@ -133,6 +139,11 @@ function validaFormM(){
         $("#input-ausentismoM").focus();
         return false;
     }
+    if($("#input-rendimientoM").val() == ""){
+        toastr["error"]("El campo Rendimiento no puede estar vacío!")
+        $("#input-rendimientoM").focus();
+        return false;
+    }
     
     
     
@@ -148,6 +159,8 @@ function validaFormM(){
         document.getElementById("input-nombreM").value =formss.nombre.value;
         document.getElementById("input-tcrecimientoM").value = formss.tasa_crecimiento.value;
         document.getElementById("input-ausentismoM").value = formss.ausentismo.value;
+        document.getElementById("input-rendimientoM").value = formss.rendimiento.value;
+
 
         id = formss.modificarid.value;
     
@@ -167,6 +180,8 @@ function validaFormM(){
                 data: { 'nombre': $("#input-nombreM").val(),
                         'tasa_crecimiento': $("#input-tcrecimientoM").val(),
                         'ausentismo' : $("#input-ausentismoM").val(),
+                        'rendimiento' : $("#input-rendimientoM").val(),
+
                         
                         'id': id,
     

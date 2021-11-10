@@ -101,7 +101,7 @@
                         <li class="droplink"><a href="inputmockup.html" class="waves-effect waves-button"><span class="menu-icon glyphicon glyphicon glyphicon-stats"></span><p>Listas</p><span class="arrow"></span></a>
                             <ul class="sub-menu">
                                 <li ><a href="/consultas"><p>Consultas</p></a>
-                                <li><a href="/noges"><p>No ges</p></a>
+                                <li><a href="/noges"><p>No GES</p></a>
 
                         
                     </ul>
@@ -150,6 +150,7 @@
                                                 <th>Nombre</th>
                                                 <th>Tasa de crecimiento</th>
                                                 <th>Ausentismo</th>
+                                                <th>Rendimiento</th>
 
                                                 <th>Acción</th>
 
@@ -170,11 +171,15 @@
                                                 <td>{{especialidad.nombre}}</a></td>
                                                 <td>{{especialidad.tasa_crecimiento}}</td>
                                                 <td>{{especialidad.ausentismo}}</td>
+                                                <td>{{especialidad.rendimiento}}</td>
+
                                                 <td>
                                                 <form>
                                                     <input type="hidden" name="nombre" value="{{especialidad.nombre}}">
                                                     <input type="hidden" name="tasa_crecimiento" value="{{especialidad.tasa_crecimiento}}">
                                                     <input type="hidden" name="ausentismo" value="{{especialidad.ausentismo}}">
+                                                    <input type="hidden" name="rendimiento" value="{{especialidad.rendimiento}}">
+
 
                                                     <button type="button" name ="modificarid" value="{{especialidad.id}}" class="btn btn-warning btn-rounded" onClick=modif(this.form);>Modificar</button>
 
@@ -217,6 +222,10 @@
                                             <label for="control-label">Ausentismo</label>
                                             <input type="text" class="form-control" id="input-ausentismo" name="input-ausentismo" placeholder="Escriba porcentaje ausentismo">
                                         </div>
+                                        <div class="form-group">
+                                            <label for="control-label">Rendimiento</label>
+                                            <input type="text" class="form-control" id="input-rendimiento" name="input-rendimiento" placeholder="Escriba rendimiento de especialidad">
+                                        </div>
                                         <button type="submit" class="btn btn-primary" onClick=agregar();>Guardar</button>
                                     </form>
                                 
@@ -246,6 +255,10 @@
                                         <div class="form-group">
                                             <label for="control-label">Ausentismo</label>
                                             <input type="text" class="form-control" id="input-ausentismoM" name="input-ausentismoM" placeholder="Escriba porcentaje ausentismo">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="control-label">Rendimiento</label>
+                                            <input type="text" class="form-control" id="input-rendimientoM" name="input-rendimientoM" placeholder="Escriba rendimiento de especialidad">
                                         </div>
                                         <button type="submit" class="btn btn-primary" onClick=enviar();>Guardar</button>
                                     </form>
