@@ -17,3 +17,7 @@ En el AJAX de este ejemplo, se envían los datos del evento recién arrastrado a
 ![Screenshot](3.png)
 
 ![Screenshot](4.png)
+
+![Screenshot](5.png)
+
+El evento se registra en la base de datos y retorna el id que se le ha asignado al evento en la BD.
