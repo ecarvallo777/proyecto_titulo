@@ -12,4 +12,8 @@ de un especialista y el calendario, se realiza una petición AJAX hacia el servi
 
 ![Screenshot](2.png)
 
+En el AJAX de este ejemplo, se envían los datos del evento recién arrastrado al calendario junto al id del especialista.
 
+![Screenshot](3.png)
+
+![Screenshot](4.png)
