@@ -20,6 +20,8 @@ En el AJAX de este ejemplo, se envían los datos del evento recién arrastrado a
 
 ![Screenshot](5.png)
 
-El evento se registra en la base de datos y retorna el id que se le ha asignado al evento en la BD. Luego de que la comunicación ha sido efectiva y el evento ha sido almacenado en la base de datos, el evento se guarda en la lista que contiene todos los eventos del especialista desplegados en el calendario actual, asignandole la id que se le asignó en la BD para así gestionarlo desde el frontend.
+El evento se registra en la base de datos y retorna el id que se le ha asignado al evento en la BD. 
 
 ![Screenshot](6.png)
+
+Luego de que la comunicación ha sido efectiva y el evento ha sido almacenado en la base de datos, el evento se guarda en la lista que contiene todos los eventos del especialista desplegados en el calendario actual, asignandole la id que se le asignó en la BD para así gestionarlo desde el frontend.
